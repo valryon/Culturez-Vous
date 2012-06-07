@@ -1,0 +1,79 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="CulturezVous.WP7.Views.ParametersPage"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"  
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:vm="clr-namespace:CulturezVous.WP7.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+    shell:SystemTray.IsVisible="True"
+    shell:SystemTray.Opacity="0"
+    shell:SystemTray.BackgroundColor="Transparent"   >
+
+    <d:DesignProperties.DataContext>
+        <vm:ParametersPageViewModel/>
+    </d:DesignProperties.DataContext>
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardIn"/>
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" RenderTransformOrigin="0.5,0.5">
+        <Grid.RenderTransform>
+            <CompositeTransform/>
+        </Grid.RenderTransform>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock x:Name="ApplicationTitle" Text="{Binding ApplicationTitle}" Style="{StaticResource PhoneTextNormalStyle}" FontSize="{StaticResource PhoneFontSizeMediumLarge}" />
+            <TextBlock x:Name="PageTitle" Text="Paramètres" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <StackPanel Grid.Row="1"  Margin="24,0,0,0" >
+
+            <TextBlock Text="tuile de l'application" FontSize="{StaticResource PhoneFontSizeLarge}" Visibility="{Binding LowMemoryDeviceParametersVisibility}" />
+            <Button Margin="12,0" Name="addBtn" Click="addBtn_Click" Visibility="{Binding LowMemoryDeviceParametersVisibility}">Ajouter la tuile</Button>
+            <TextBlock Text="mise à jour du contenu" FontSize="{StaticResource PhoneFontSizeLarge}" Margin="0,15,0,0" Visibility="{Binding LowMemoryDeviceParametersVisibility}"  />
+            <CheckBox Margin="-12,0,0,0"  IsChecked="{Binding IsBackgroundAgentAuthorized}" Name="authorizeCb" Checked="authorizeCb_Checked" Unchecked="authorizeCb_Unchecked" Visibility="{Binding LowMemoryDeviceParametersVisibility}" >
+                <TextBlock Text="Autoriser la mise à jour du contenu en tâche de fond" TextWrapping="Wrap" Visibility="{Binding LowMemoryDeviceParametersVisibility}" />
+            </CheckBox>
+
+
+            <TextBlock Text="site officiel" FontSize="{StaticResource PhoneFontSizeLarge}" Margin="0,15,0,0" />
+
+            <HyperlinkButton Content="www.culturez-vous.fr" FontSize="{StaticResource PhoneFontSizeMediumLarge}" Command="{Binding ShowWebsiteCommand}" Margin="-12,0,0,0" />
+
+        </StackPanel>
+    </Grid>
+
+</phone:PhoneApplicationPage>

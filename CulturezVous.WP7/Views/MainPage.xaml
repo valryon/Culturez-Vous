@@ -1,0 +1,325 @@
+﻿<phone:PhoneApplicationPage 
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"  
+    x:Class="CulturezVous.WP7.Views.MainPage"
+    xmlns:vm="clr-namespace:CulturezVous.WP7.ViewModels"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait"  Orientation="Portrait"
+    shell:SystemTray.IsVisible="True"
+    shell:SystemTray.Opacity="0"
+    shell:SystemTray.BackgroundColor="Transparent"   >
+
+    <d:DesignProperties.DataContext>
+        <vm:MainPageViewModel/>
+    </d:DesignProperties.DataContext>
+
+    <phone:PhoneApplicationPage.Resources>
+        <Storyboard x:Name="showMoreAnimationWords">
+            <DoubleAnimation Duration="0:0:0.4" To="90" Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.RotationY)" Storyboard.TargetName="moreWordsPanel" d:IsOptimized="True">
+                <DoubleAnimation.EasingFunction>
+                    <QuarticEase EasingMode="EaseIn"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation Duration="0:0:0.4" To="0" Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.CenterOfRotationX)" Storyboard.TargetName="moreWordsPanel" d:IsOptimized="True">
+                <DoubleAnimation.EasingFunction>
+                    <QuarticEase EasingMode="EaseIn"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="moreWordsPanel">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Name="resetMoreAnimationWords">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.RotationY)" Storyboard.TargetName="moreWordsPanel">
+                <EasingDoubleKeyFrame KeyTime="0" Value="90">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.3" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="moreWordsPanel">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.303" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.CenterOfRotationX)" Storyboard.TargetName="moreWordsPanel" d:IsOptimized="True">
+                <DoubleAnimation.EasingFunction>
+                    <BackEase EasingMode="EaseInOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+        <Storyboard x:Name="showMoreAnimationCTPs">
+            <DoubleAnimation Duration="0:0:0.4" To="90" Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.RotationY)" Storyboard.TargetName="moreCTPPanel" d:IsOptimized="True">
+                <DoubleAnimation.EasingFunction>
+                    <QuarticEase EasingMode="EaseIn"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation Duration="0:0:0.4" To="0" Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.CenterOfRotationX)" Storyboard.TargetName="moreCTPPanel" d:IsOptimized="True">
+                <DoubleAnimation.EasingFunction>
+                    <QuarticEase EasingMode="EaseIn"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="moreCTPPanel">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Name="resetMoreAnimationCTPs">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.RotationY)" Storyboard.TargetName="moreCTPPanel">
+                <EasingDoubleKeyFrame KeyTime="0" Value="90">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.3" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="moreCTPPanel">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.303" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.CenterOfRotationX)" Storyboard.TargetName="moreCTPPanel" d:IsOptimized="True">
+                <DoubleAnimation.EasingFunction>
+                    <BackEase EasingMode="EaseInOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+        <Storyboard x:Name="showSettingsAnimation">
+            <DoubleAnimation Duration="0:0:0.4" To="90" Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.RotationY)" Storyboard.TargetName="settingsPanel" d:IsOptimized="True">
+                <DoubleAnimation.EasingFunction>
+                    <QuarticEase EasingMode="EaseIn"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation Duration="0:0:0.4" To="0" Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.CenterOfRotationX)" Storyboard.TargetName="settingsPanel" d:IsOptimized="True">
+                <DoubleAnimation.EasingFunction>
+                    <QuarticEase EasingMode="EaseIn"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="settingsPanel">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Name="resetSettingsAnimation">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.RotationY)" Storyboard.TargetName="settingsPanel">
+                <EasingDoubleKeyFrame KeyTime="0" Value="90">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.3" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="settingsPanel">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.303" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.CenterOfRotationX)" Storyboard.TargetName="settingsPanel" d:IsOptimized="True">
+                <DoubleAnimation.EasingFunction>
+                    <BackEase EasingMode="EaseInOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+
+
+
+    </phone:PhoneApplicationPage.Resources>
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardIn"/>
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+    <!--LayoutRoot contains the root grid where all other page content is placed-->
+    <Grid x:Name="LayoutRoot" IsHitTestVisible="{Binding IsPivotAvailable}">
+        <controls:Panorama x:Name="panorama" Title="{Binding ApplicationTitle}" RenderTransformOrigin="0.5,0.5" TitleTemplate="{StaticResource PanoramaTitleTemplate}" Background="{Binding PanoramaBackgroundImage}">
+            <controls:Panorama.RenderTransform>
+                <CompositeTransform/>
+            </controls:Panorama.RenderTransform>
+            <controls:Panorama.Projection>
+                <PlaneProjection/>
+            </controls:Panorama.Projection>
+
+            <controls:PanoramaItem x:Name="wordsPanoramaItem" Header="expressions" FontSize="20" RenderTransformOrigin="0.5,0.5" >
+                <controls:PanoramaItem.RenderTransform>
+                    <CompositeTransform/>
+                </controls:PanoramaItem.RenderTransform>
+                <controls:PanoramaItem.Projection>
+                    <PlaneProjection/>
+                </controls:PanoramaItem.Projection>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="{Binding ScrollingState}">
+                        <ListBox Name="wordsListBox" 
+                                 ItemsSource="{Binding Words}" 
+                                 ItemTemplate="{StaticResource WordListItemTemplate}" 
+                                 ScrollViewer.VerticalScrollBarVisibility="Disabled" 
+                                 toolkit:TiltEffect.IsTiltEnabled="True"
+                                 Tap="otherListBox_Tap" />
+                    </ScrollViewer>
+                    <Button Margin="12,0,0,24" Grid.Row="1" Name="moreWordsPanel" Click="moreWordsPanel_Click" toolkit:TiltEffect.IsTiltEnabled="True" IsEnabled="{Binding IsEnabled}">
+                        <Button.Projection>
+                            <PlaneProjection/>
+                        </Button.Projection>
+                        <Button.Template>
+                            <ControlTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{Binding MoreUri}" />
+                                    <TextBlock Text="voir tout"  Margin="12,0,0,0"  FontSize="{StaticResource PhoneFontSizeLarge}" />
+                                </StackPanel>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+
+            </controls:PanoramaItem>
+
+            <controls:PanoramaItem Header="mots d'esprit" Name="ctpsPanoramaItems">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="{Binding ScrollingState}">
+                        <ListBox Name="CTPListBox" 
+                                 ItemsSource="{Binding CTPs}" 
+                                 ItemTemplate="{StaticResource CTPListItemTemplate}" 
+                                 ScrollViewer.VerticalScrollBarVisibility="Disabled" 
+                                 toolkit:TiltEffect.IsTiltEnabled="True"
+                                 Tap="otherListBox_Tap" />
+                    </ScrollViewer>
+
+                    <Button Margin="12,0,0,24" Grid.Row="1" Name="moreCTPPanel" Click="moreCTPPanel_Click" toolkit:TiltEffect.IsTiltEnabled="True" IsEnabled="{Binding IsEnabled}">
+                        <Button.Projection>
+                            <PlaneProjection/>
+                        </Button.Projection>
+                        <Button.Template>
+                            <ControlTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{Binding MoreUri}" />
+                                    <TextBlock Text="voir tout"  Margin="12,0,0,0"  FontSize="{StaticResource PhoneFontSizeLarge}" />
+                                </StackPanel>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+
+            </controls:PanoramaItem>
+
+            <controls:PanoramaItem Header="application" Name="appPanoramaItem">
+                <Grid Margin="12,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0" >
+                        
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            
+                            <Grid Grid.Row="0" Grid.ColumnSpan="2" Margin="0, 0, 0, 24">
+                                <Rectangle Fill="{StaticResource PhoneAccentBrush}" Opacity="0.8" />
+                                <Border BorderThickness="3" Opacity="0.1" BorderBrush="Black" />
+                                <TextBlock Text="Équipe" FontSize="{StaticResource PhoneFontSizeMediumLarge}" Margin="12, 6" />
+                            </Grid>
+                            
+                            <TextBlock Grid.Row="1" Text="Développeur" FontSize="{StaticResource PhoneFontSizeMediumLarge}" Foreground="{StaticResource PhoneSubtleBrush}" Margin="0,0,0,12" />
+                            <TextBlock Grid.Row="1" Grid.Column="1" Text="Damien Mayance" FontSize="{StaticResource PhoneFontSizeMediumLarge}" Margin="0" />
+                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Design" FontSize="{StaticResource PhoneFontSizeMediumLarge}" Foreground="{StaticResource PhoneSubtleBrush}" Margin="0,0,0,12" />
+                            <TextBlock Grid.Row="2" Grid.Column="1" Text="Matthieu Oger" FontSize="{StaticResource PhoneFontSizeMediumLarge}" />
+                            <TextBlock Grid.Row="3" Grid.Column="0" Text="Idée originale" FontSize="{StaticResource PhoneFontSizeMediumLarge}"  Margin="0,0,24,24" Foreground="{StaticResource PhoneSubtleBrush}" />
+                            <TextBlock Grid.Row="3" Grid.Column="1" Text="Anaïs Noblanc" FontSize="{StaticResource PhoneFontSizeMediumLarge}" />
+                            
+                            <Grid Grid.Row="4" Grid.ColumnSpan="2"  Margin="0, 0, 0, 24">
+                                <Rectangle Fill="{StaticResource PhoneAccentBrush}" Opacity="0.8" />
+                                <Border BorderThickness="3" Opacity="0.1" BorderBrush="Black" />
+                                <TextBlock Text="Remerciements" FontSize="{StaticResource PhoneFontSizeMediumLarge}" Margin="12, 6" />
+                            </Grid>
+                            <TextBlock Grid.Row="5" Grid.ColumnSpan="2" Text="Jean-Philippe d'1Jour1Mot" FontSize="{StaticResource PhoneFontSizeMediumLarge}" />
+                            <TextBlock Grid.Row="6" Grid.ColumnSpan="2" Text="Nicolas Pillon, Marion Chrétien" FontSize="{StaticResource PhoneFontSizeMediumLarge}" />
+                            <TextBlock Grid.Row="7" Grid.ColumnSpan="2" Text="Thibault Person" FontSize="{StaticResource PhoneFontSizeMediumLarge}" />
+                            
+                        </Grid>
+                    </StackPanel>
+
+                    <Button Margin="0,0,0,0" Grid.Row="1" Name="settingsPanel" Click="settings_Click" toolkit:TiltEffect.IsTiltEnabled="True" IsEnabled="{Binding IsEnabled}">
+                        <Button.Projection>
+                            <PlaneProjection/>
+                        </Button.Projection>
+                        <Button.Template>
+                            <ControlTemplate>
+                                <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,24">
+                                    <Image Source="{Binding SettingsIconUri}" />
+                                    <TextBlock Text="Paramètres" FontSize="{StaticResource PhoneFontSizeLarge}" Margin="12,0,0,0" Name="parametresTb" />
+                                </StackPanel>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+            </controls:PanoramaItem>
+
+        </controls:Panorama>
+
+    </Grid>
+
+</phone:PhoneApplicationPage>

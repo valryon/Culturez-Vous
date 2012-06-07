@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2940F639-C6D3-4232-A3DF-C955F7C39032}</ProjectGuid>
+    <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CulturezVous.WP7</RootNamespace>
+    <AssemblyName>CulturezVous.WP7</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <SilverlightApplication>true</SilverlightApplication>
+    <SupportedCultures>
+    </SupportedCultures>
+    <XapOutputs>true</XapOutputs>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <XapFilename>CulturezVous.xap</XapFilename>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <SilverlightAppEntry>CulturezVous.WP7.App</SilverlightAppEntry>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <Utf8Output>true</Utf8Output>
+    <ExpressionBlendVersion>4.0.30816.0</ExpressionBlendVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Bin\Release\</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DiffPlex">
+      <HintPath>..\packages\DiffPlex.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Interactions" />
+    <Reference Include="Microsoft.Phone" />
+    <Reference Include="Microsoft.Phone.Controls, Version=7.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Phone.Controls.Toolkit, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b772ad94eb9ca604" />
+    <Reference Include="Microsoft.Phone.Interop" />
+    <Reference Include="Microsoft.Xna.Framework.GamerServices" />
+    <Reference Include="system.data.linq" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Interactivity" />
+    <Reference Include="mscorlib.extensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ScrollingListControl.cs" />
+    <Compile Include="Services\ImagesManager.cs" />
+    <Compile Include="Services\TextDiff.cs" />
+    <Compile Include="Services\TileCreator.cs" />
+    <Compile Include="Utils\Command.cs" />
+    <Compile Include="Utils\DynamicXaml.xaml.cs">
+      <DependentUpon>DynamicXaml.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\MetroGridHelper.cs" />
+    <Compile Include="Utils\VisualChildFinder.cs" />
+    <Compile Include="ViewModels\ContrepeterieViewModel.cs" />
+    <Compile Include="ViewModels\DefinitionViewModel.cs" />
+    <Compile Include="ViewModels\DetailsPageViewModel.cs" />
+    <Compile Include="ViewModels\ListPageViewModel.cs" />
+    <Compile Include="ViewModels\MainPageViewModel.cs" />
+    <Compile Include="Utils\ViewModelBase.cs" />
+    <Compile Include="ViewModels\ParametersPageViewModel.cs" />
+    <Compile Include="ViewModels\WordViewModel.cs" />
+    <Compile Include="ViewModels\ElementViewModel.cs" />
+    <Compile Include="Views\ContentPresenters\DetailsContentPresenter.cs" />
+    <Compile Include="Views\DetailsPage.xaml.cs">
+      <DependentUpon>DetailsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ContentPresenters\ElementsContentPresenter.cs" />
+    <Compile Include="Views\ListPage.xaml.cs">
+      <DependentUpon>ListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\ParametersPage.xaml.cs">
+      <DependentUpon>ParametersPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+    <Page Include="Resources\Templates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Utils\DynamicXaml.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DetailsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ParametersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Properties\AppManifest.xml" />
+    <None Include="Properties\WMAppManifest.xml">
+      <SubType>Designer</SubType>
+    </None>
+    <Resource Include="Resources\Bouchons\bouchon_data.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ApplicationIcon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Background.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Resources\Images\Dark\moreIcon.png" />
+    <Resource Include="Resources\Images\Dark\settingsIcon.png" />
+    <Resource Include="Resources\Images\Light\settingsIcon.png" />
+    <Resource Include="Resources\Images\Dark\unlockIcon.png" />
+    <Resource Include="Resources\Images\Light\moreIcon.png" />
+    <Resource Include="Resources\Images\Backgrounds\Dark.jpg" />
+    <Resource Include="Resources\Images\Backgrounds\Light.jpg" />
+    <Resource Include="Resources\Images\Light\unlockIcon.png" />
+    <Content Include="Resources\Images\Dark\appbar.back.rest.png" />
+    <Content Include="Resources\Images\Dark\appbar.next.rest.png" />
+    <Content Include="Resources\Images\Dark\refreshIcon.png" />
+    <Content Include="Resources\Images\Dark\unfavoriteIcon.png" />
+    <Content Include="Resources\Images\Light\appbar.back.rest.png" />
+    <Content Include="Resources\Images\Light\appbar.next.rest.png" />
+    <Content Include="Resources\Images\Light\refreshIcon.png" />
+    <Content Include="Resources\Images\Light\searchIcon.png" />
+    <Content Include="Resources\Images\Dark\favoriteIcon.png" />
+    <Content Include="Resources\Images\Dark\shareIcon.png" />
+    <Content Include="Resources\Images\Light\favoriteIcon.png" />
+    <Content Include="Resources\Images\Dark\searchIcon.png" />
+    <Content Include="Resources\Images\Light\shareIcon.png" />
+    <Content Include="Resources\Images\Light\unfavoriteIcon.png" />
+    <Resource Include="Resources\Images\Dark\lockIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\Localization\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CulturezVous.Data\CulturezVous.Data.csproj">
+      <Project>{5AC5B730-48A0-4BD1-90B7-0F7A5CF17794}</Project>
+      <Name>CulturezVous.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CulturezVous.TileUpdateAgent\CulturezVous.TileUpdateAgent.csproj">
+      <Project>{2EAA0855-D8A7-4CCC-86DB-AC7FCAD99E02}</Project>
+      <Name>CulturezVous.TileUpdateAgent</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions />
+</Project>

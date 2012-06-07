@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Deployment xmlns="http://schemas.microsoft.com/windowsphone/2009/deployment" AppPlatformVersion="7.1">
+  <App xmlns="" ProductID="{7e0f7f2f-f168-4232-9f4f-7b95598c776f}" Title="Culturez-Vous" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="CulturezVous.WP7 author" Description="Sample description" Publisher="CulturezVous.WP7">
+    <IconPath IsRelative="true" IsResource="false">ApplicationIcon.png</IconPath>
+    <Capabilities>
+      <Capability Name="ID_CAP_NETWORKING" />
+      <Capability Name="ID_CAP_MEDIALIB" />
+    </Capabilities>
+    <!--<Requirements>
+      <Requirement Name="ID_REQ_MEMORY_90" />
+    </Requirements>-->
+    <Tasks>
+      <DefaultTask Name="_default" NavigationPage="Views/MainPage.xaml" />
+      <ExtendedTask Name="BackgroundTask">
+        <BackgroundServiceAgent Specifier="ScheduledTaskAgent" Name="CulturezVous.TileUpdateAgent" Source="CulturezVous.TileUpdateAgent" Type="CulturezVous.TileUpdateAgent.ScheduledAgent" />
+      </ExtendedTask>
+    </Tasks>
+    <Tokens>
+      <PrimaryToken TokenID="CulturezVous.WP7Token" TaskName="_default">
+        <TemplateType5>
+          <BackgroundImageURI IsRelative="true" IsResource="false">Background.png</BackgroundImageURI>
+          <Count>0</Count>
+          <Title>Culturez-Vous</Title>
+        </TemplateType5>
+      </PrimaryToken>
+    </Tokens>
+  </App>
+</Deployment>
