@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "33FDC7D81632DA98000B67A5"
+               BlueprintIdentifier = "33E4CC4C163433E1000693F4"
                BuildableName = "Culturez-Vous.app"
                BlueprintName = "Culturez-Vous"
                ReferencedContainer = "container:Culturez-Vous.xcodeproj">
@@ -32,7 +32,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "33FDC7D81632DA98000B67A5"
+            BlueprintIdentifier = "33E4CC4C163433E1000693F4"
             BuildableName = "Culturez-Vous.app"
             BlueprintName = "Culturez-Vous"
             ReferencedContainer = "container:Culturez-Vous.xcodeproj">
@@ -51,7 +51,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "33FDC7D81632DA98000B67A5"
+            BlueprintIdentifier = "33E4CC4C163433E1000693F4"
             BuildableName = "Culturez-Vous.app"
             BlueprintName = "Culturez-Vous"
             ReferencedContainer = "container:Culturez-Vous.xcodeproj">
@@ -69,7 +69,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "33FDC7D81632DA98000B67A5"
+            BlueprintIdentifier = "33E4CC4C163433E1000693F4"
             BuildableName = "Culturez-Vous.app"
             BlueprintName = "Culturez-Vous"
             ReferencedContainer = "container:Culturez-Vous.xcodeproj">

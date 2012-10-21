@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ElementManager.h"
 
-@interface HomeTableViewController : UITableViewController {
+@interface HomeTableViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
+{
     
     NSMutableArray *cvElementsArray;
     NSManagedObjectContext *managedObjectContext;
