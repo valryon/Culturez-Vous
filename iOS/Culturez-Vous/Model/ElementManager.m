@@ -17,18 +17,19 @@
     // Création d'un nouveau mot à partir du cache
     Word *word = (Word *)[NSEntityDescription insertNewObjectForEntityForName:@"Word" inManagedObjectContext:app.managedObjectContext];
     
-    // Mise à jour des données
-    [word setTitle:title];
-    [word setDate:date];
+    if(word != NULL) {
+        // Mise à jour des données
+        [word setTitle:title];
+        [word setDate:date];
     
-    // Sauvegarde dans le cache
-    NSError *error = nil;
-    if (![app.managedObjectContext save:&error]) {
-        // Handle the error.
-        NSLog(@"%@", [error localizedDescription]);
+        // Sauvegarde dans le cache
+        NSError *error = nil;
+        if (![app.managedObjectContext save:&error]) {
+            // Handle the error.
+            NSLog(@"%@", [error localizedDescription]);
+        }
     }
-    
-    return nil;
+    return word;
 }
 
 @end

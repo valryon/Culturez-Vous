@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "ElementManager.h"
+#import "ElementTableViewCell.h"
+#import "DetailViewController.h"
 
 @interface HomeTableViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 {
@@ -22,5 +24,7 @@
 @property (nonatomic, retain) NSMutableArray *cvElementsArray;
 // Cache
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+// Table view
+@property(nonatomic, strong) IBOutlet UITableView *tableView;
 
 @end

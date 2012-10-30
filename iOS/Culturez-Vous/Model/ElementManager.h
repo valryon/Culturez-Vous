@@ -10,6 +10,7 @@
 #import "Element.h"
 #import "Word.h"
 #import "Definition.h"
+#import "Contrepeterie.h"
 
 @interface ElementManager : NSObject
 

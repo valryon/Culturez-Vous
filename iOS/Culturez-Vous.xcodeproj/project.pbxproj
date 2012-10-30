@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		33D81EF61640712A00E531B4 /* ElementTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D81EF21640712A00E531B4 /* ElementTableViewCell.m */; };
+		33D81EF71640712A00E531B4 /* HomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D81EF41640712A00E531B4 /* HomeTableViewController.m */; };
+		33D81EF81640712A00E531B4 /* Storyboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33D81EF51640712A00E531B4 /* Storyboard_iPhone.storyboard */; };
+		33D81EFB1640715500E531B4 /* ElementManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D81EFA1640715500E531B4 /* ElementManager.m */; };
+		33D81EFE164075A800E531B4 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D81EFD164075A800E531B4 /* DetailViewController.m */; };
 		33E4CC52163433E1000693F4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33E4CC51163433E1000693F4 /* UIKit.framework */; };
 		33E4CC54163433E1000693F4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33E4CC53163433E1000693F4 /* Foundation.framework */; };
 		33E4CC56163433E1000693F4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33E4CC55163433E1000693F4 /* CoreGraphics.framework */; };
@@ -18,16 +23,22 @@
 		33E4CC68163433E1000693F4 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33E4CC67163433E1000693F4 /* Default@2x.png */; };
 		33E4CC6A163433E1000693F4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33E4CC69163433E1000693F4 /* Default-568h@2x.png */; };
 		33E4CC6D163433E1000693F4 /* Culturez_Vous.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 33E4CC6B163433E1000693F4 /* Culturez_Vous.xcdatamodeld */; };
-		33E4CC7A16343434000693F4 /* HomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E4CC7816343434000693F4 /* HomeTableViewController.m */; };
-		33E4CC7B16343434000693F4 /* Storyboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33E4CC7916343434000693F4 /* Storyboard_iPhone.storyboard */; };
 		33E4CC8516343B77000693F4 /* Contrepeterie.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E4CC8416343B77000693F4 /* Contrepeterie.m */; };
 		33E4CC8816343B77000693F4 /* Element.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E4CC8716343B77000693F4 /* Element.m */; };
 		33E4CC8B16343B77000693F4 /* Definition.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E4CC8A16343B77000693F4 /* Definition.m */; };
 		33E4CC8E16343B77000693F4 /* Word.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E4CC8D16343B77000693F4 /* Word.m */; };
-		33E4CC9116343E22000693F4 /* ElementManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E4CC9016343E22000693F4 /* ElementManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		33D81EF11640712A00E531B4 /* ElementTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ElementTableViewCell.h; path = Views/ElementTableViewCell.h; sourceTree = "<group>"; };
+		33D81EF21640712A00E531B4 /* ElementTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ElementTableViewCell.m; path = Views/ElementTableViewCell.m; sourceTree = "<group>"; };
+		33D81EF31640712A00E531B4 /* HomeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeTableViewController.h; path = Views/HomeTableViewController.h; sourceTree = "<group>"; };
+		33D81EF41640712A00E531B4 /* HomeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeTableViewController.m; path = Views/HomeTableViewController.m; sourceTree = "<group>"; };
+		33D81EF51640712A00E531B4 /* Storyboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard_iPhone.storyboard; path = Views/Storyboard_iPhone.storyboard; sourceTree = "<group>"; };
+		33D81EF91640715500E531B4 /* ElementManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ElementManager.h; path = Model/ElementManager.h; sourceTree = "<group>"; };
+		33D81EFA1640715500E531B4 /* ElementManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ElementManager.m; path = Model/ElementManager.m; sourceTree = "<group>"; };
+		33D81EFC164075A800E531B4 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailViewController.h; path = Views/DetailViewController.h; sourceTree = "<group>"; };
+		33D81EFD164075A800E531B4 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailViewController.m; path = Views/DetailViewController.m; sourceTree = "<group>"; };
 		33E4CC4D163433E1000693F4 /* Culturez-Vous.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Culturez-Vous.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		33E4CC51163433E1000693F4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		33E4CC53163433E1000693F4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -43,9 +54,6 @@
 		33E4CC67163433E1000693F4 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		33E4CC69163433E1000693F4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		33E4CC6C163433E1000693F4 /* Culturez_Vous.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Culturez_Vous.xcdatamodel; sourceTree = "<group>"; };
-		33E4CC7716343434000693F4 /* HomeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTableViewController.h; sourceTree = "<group>"; };
-		33E4CC7816343434000693F4 /* HomeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTableViewController.m; sourceTree = "<group>"; };
-		33E4CC7916343434000693F4 /* Storyboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard_iPhone.storyboard; sourceTree = "<group>"; };
 		33E4CC8316343B77000693F4 /* Contrepeterie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Contrepeterie.h; path = Model/Contrepeterie.h; sourceTree = "<group>"; };
 		33E4CC8416343B77000693F4 /* Contrepeterie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Contrepeterie.m; path = Model/Contrepeterie.m; sourceTree = "<group>"; };
 		33E4CC8616343B77000693F4 /* Element.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Element.h; path = Model/Element.h; sourceTree = "<group>"; };
@@ -54,8 +62,6 @@
 		33E4CC8A16343B77000693F4 /* Definition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Definition.m; path = Model/Definition.m; sourceTree = "<group>"; };
 		33E4CC8C16343B77000693F4 /* Word.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Word.h; path = Model/Word.h; sourceTree = "<group>"; };
 		33E4CC8D16343B77000693F4 /* Word.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Word.m; path = Model/Word.m; sourceTree = "<group>"; };
-		33E4CC8F16343E22000693F4 /* ElementManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ElementManager.h; sourceTree = "<group>"; };
-		33E4CC9016343E22000693F4 /* ElementManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ElementManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,9 +110,13 @@
 		33E4CC59163433E1000693F4 /* Culturez-Vous */ = {
 			isa = PBXGroup;
 			children = (
-				33E4CC7716343434000693F4 /* HomeTableViewController.h */,
-				33E4CC7816343434000693F4 /* HomeTableViewController.m */,
-				33E4CC7916343434000693F4 /* Storyboard_iPhone.storyboard */,
+				33D81EF91640715500E531B4 /* ElementManager.h */,
+				33D81EFA1640715500E531B4 /* ElementManager.m */,
+				33D81EF11640712A00E531B4 /* ElementTableViewCell.h */,
+				33D81EF21640712A00E531B4 /* ElementTableViewCell.m */,
+				33D81EF31640712A00E531B4 /* HomeTableViewController.h */,
+				33D81EF41640712A00E531B4 /* HomeTableViewController.m */,
+				33D81EF51640712A00E531B4 /* Storyboard_iPhone.storyboard */,
 				33E4CC62163433E1000693F4 /* AppDelegate.h */,
 				33E4CC63163433E1000693F4 /* AppDelegate.m */,
 				33E4CC6B163433E1000693F4 /* Culturez_Vous.xcdatamodeld */,
@@ -119,8 +129,8 @@
 				33E4CC8316343B77000693F4 /* Contrepeterie.h */,
 				33E4CC8416343B77000693F4 /* Contrepeterie.m */,
 				33E4CC5A163433E1000693F4 /* Supporting Files */,
-				33E4CC8F16343E22000693F4 /* ElementManager.h */,
-				33E4CC9016343E22000693F4 /* ElementManager.m */,
+				33D81EFC164075A800E531B4 /* DetailViewController.h */,
+				33D81EFD164075A800E531B4 /* DetailViewController.m */,
 			);
 			path = "Culturez-Vous";
 			sourceTree = "<group>";
@@ -194,7 +204,7 @@
 				33E4CC66163433E1000693F4 /* Default.png in Resources */,
 				33E4CC68163433E1000693F4 /* Default@2x.png in Resources */,
 				33E4CC6A163433E1000693F4 /* Default-568h@2x.png in Resources */,
-				33E4CC7B16343434000693F4 /* Storyboard_iPhone.storyboard in Resources */,
+				33D81EF81640712A00E531B4 /* Storyboard_iPhone.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,12 +218,14 @@
 				33E4CC60163433E1000693F4 /* main.m in Sources */,
 				33E4CC64163433E1000693F4 /* AppDelegate.m in Sources */,
 				33E4CC6D163433E1000693F4 /* Culturez_Vous.xcdatamodeld in Sources */,
-				33E4CC7A16343434000693F4 /* HomeTableViewController.m in Sources */,
 				33E4CC8516343B77000693F4 /* Contrepeterie.m in Sources */,
 				33E4CC8816343B77000693F4 /* Element.m in Sources */,
 				33E4CC8B16343B77000693F4 /* Definition.m in Sources */,
 				33E4CC8E16343B77000693F4 /* Word.m in Sources */,
-				33E4CC9116343E22000693F4 /* ElementManager.m in Sources */,
+				33D81EF61640712A00E531B4 /* ElementTableViewCell.m in Sources */,
+				33D81EF71640712A00E531B4 /* HomeTableViewController.m in Sources */,
+				33D81EFB1640715500E531B4 /* ElementManager.m in Sources */,
+				33D81EFE164075A800E531B4 /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
