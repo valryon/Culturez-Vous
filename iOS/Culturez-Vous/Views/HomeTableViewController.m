@@ -18,19 +18,20 @@
 {
     [super viewDidLoad];
     
-    cvElementsArray  = [[NSMutableArray alloc] init];
+    cvElementsArray  = [NSMutableArray alloc];
     
     if(elementDownloader == NULL) {
         elementDownloader = [[ElementDownloader alloc] init];
+        elementDownloader.downloadComplete = ^(NSArray* elements){
+            // TODO Rafraîchir la vue ?
+        };
     }
     
     // Chargement des données
-    // TODO
+    // TODO Vérifier ce qu'il y a en cache avant, tout ça
     [elementDownloader downloadElementsWithPage:1];
     
-    //if(element != nil){
-    //    [cvElementsArray insertObject:element atIndex:0];
-    //}
+    cvElementsArray = [cvElementsArray initWithArray:[ElementCache getAllElements]];
 }
 
 - (void)didReceiveMemoryWarning

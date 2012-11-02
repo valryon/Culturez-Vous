@@ -22,4 +22,6 @@
 
 - (BOOL) saveCache;
 
++ (NSArray*) getAllElements;
+
 @end

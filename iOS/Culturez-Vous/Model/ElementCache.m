@@ -72,5 +72,24 @@
     return true;
 }
 
++(NSArray *)getAllElements
+{
+    AppDelegate* app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    
+    NSEntityDescription *entityDescription = [NSEntityDescription
+                                              entityForName:@"Word" inManagedObjectContext:app.managedObjectContext];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDescription];
+    
+    NSError *error;
+    NSArray *array = [app.managedObjectContext executeFetchRequest:request error:&error];
+    if (array == nil)
+    {
+        NSLog(@"%@", [error localizedDescription]);
+        return NULL;
+    }
+    
+    return array;
+}
 
 @end
