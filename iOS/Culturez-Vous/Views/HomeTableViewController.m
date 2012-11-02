@@ -12,6 +12,7 @@
 
 @synthesize cvElementsArray;
 @synthesize managedObjectContext;
+@synthesize elementDownloader;
 
 - (void)viewDidLoad
 {
@@ -19,12 +20,17 @@
     
     cvElementsArray  = [[NSMutableArray alloc] init];
     
-    // Test de la création en cache d'éléments
-    Element* element = [ElementManager createNewWord:@"Element de test" withDate:[[NSDate alloc] init]];
-    
-    if(element != nil){
-        [cvElementsArray insertObject:element atIndex:0];
+    if(elementDownloader == NULL) {
+        elementDownloader = [[ElementDownloader alloc] init];
     }
+    
+    // Chargement des données
+    // TODO
+    [elementDownloader downloadElementsWithPage:1];
+    
+    //if(element != nil){
+    //    [cvElementsArray insertObject:element atIndex:0];
+    //}
 }
 
 - (void)didReceiveMemoryWarning

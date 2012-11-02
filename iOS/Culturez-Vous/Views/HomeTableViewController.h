@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ElementManager.h"
+#import "ElementDownloader.h"
 #import "ElementTableViewCell.h"
 #import "DetailViewController.h"
 
@@ -26,5 +26,7 @@
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 // Table view
 @property(nonatomic, strong) IBOutlet UITableView *tableView;
+
+@property (nonatomic,strong) ElementDownloader *elementDownloader;
 
 @end
