@@ -17,8 +17,6 @@
 {
     [super viewDidLoad];
     
-    self.title = @"Culturez-Vous ! Tous les éléments.";
-    
     cvElementsArray  = [[NSMutableArray alloc] init];
     
     // Test de la création en cache d'éléments
