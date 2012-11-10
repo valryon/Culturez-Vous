@@ -11,17 +11,22 @@
 #import "Word.h"
 #import "Definition.h"
 #import "Contrepeterie.h"
+#import "Constants.h"
 
 @interface ElementCache : NSObject
 
-- (Definition*)createNewDefinition:(NSString *)details withContent:(NSString *)content;
-
-- (Word*) createNewWord:(NSString*) title withDate:(NSDate*) date;
-
-- (Contrepeterie*)createNewContrepeterie:(NSString *)title withDate:(NSDate *)date withContent:(NSString*) content withSolution:(NSString*) solution;
++ (Word*) createNewWordNoContext;
++ (Definition*) createNewDefinitionNoContext;
++ (Contrepeterie*) createNewContreperieNoContext;
 
 - (BOOL) saveCache;
 
-+ (NSArray*) getAllElements;
+- (NSArray*) getElements:(NSString*)type withPage:(int) page;
+
+- (NSArray *)getAllElements:(NSString*)type;
+
+- (NSFetchRequest*) prepareFetchRequest:(NSString*) elementType;
+
+- (NSFetchRequest*) prepareFetchRequestPaginated:(NSString*) elementType forPage:(int)page;
 
 @end

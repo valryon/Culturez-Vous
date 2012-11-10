@@ -7,13 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ElementDownloader.h"
+#import "ElementManager.h"
 #import "ElementTableViewCell.h"
 #import "DetailViewController.h"
 
 @interface HomeTableViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 {
-    
     NSMutableArray *cvElementsArray;
     NSManagedObjectContext *managedObjectContext;
     
@@ -27,6 +26,6 @@
 // Table view
 @property(nonatomic, strong) IBOutlet UITableView *tableView;
 
-@property (nonatomic,strong) ElementDownloader *elementDownloader;
+@property (nonatomic, retain) ElementManager *elementManager;
 
 @end

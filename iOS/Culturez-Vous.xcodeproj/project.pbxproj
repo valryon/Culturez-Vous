@@ -19,6 +19,7 @@
 		3338650E16440EC500C37665 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 3338650B16440EC500C37665 /* README.md */; };
 		3338650F16440EC500C37665 /* SMXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 3338650D16440EC500C37665 /* SMXMLDocument.m */; };
 		33386512164419E900C37665 /* ElementCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 33386511164419E900C37665 /* ElementCache.m */; };
+		33D75560164EA8A8003FA28A /* ElementManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D7555F164EA8A8003FA28A /* ElementManager.m */; };
 		33D81EF61640712A00E531B4 /* ElementTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D81EF21640712A00E531B4 /* ElementTableViewCell.m */; };
 		33D81EF71640712A00E531B4 /* HomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D81EF41640712A00E531B4 /* HomeTableViewController.m */; };
 		33D81EF81640712A00E531B4 /* Storyboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33D81EF51640712A00E531B4 /* Storyboard_iPhone.storyboard */; };
@@ -66,6 +67,9 @@
 		3338650D16440EC500C37665 /* SMXMLDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMXMLDocument.m; sourceTree = "<group>"; };
 		33386510164419E900C37665 /* ElementCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ElementCache.h; path = Model/ElementCache.h; sourceTree = "<group>"; };
 		33386511164419E900C37665 /* ElementCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ElementCache.m; path = Model/ElementCache.m; sourceTree = "<group>"; };
+		33D7555E164EA8A8003FA28A /* ElementManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ElementManager.h; path = Model/ElementManager.h; sourceTree = "<group>"; };
+		33D7555F164EA8A8003FA28A /* ElementManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ElementManager.m; path = Model/ElementManager.m; sourceTree = "<group>"; };
+		33D75567164EB3EA003FA28A /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		33D81EF11640712A00E531B4 /* ElementTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ElementTableViewCell.h; path = Views/ElementTableViewCell.h; sourceTree = "<group>"; };
 		33D81EF21640712A00E531B4 /* ElementTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ElementTableViewCell.m; path = Views/ElementTableViewCell.m; sourceTree = "<group>"; };
 		33D81EF31640712A00E531B4 /* HomeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeTableViewController.h; path = Views/HomeTableViewController.h; sourceTree = "<group>"; };
@@ -153,12 +157,55 @@
 			path = Libraries/SMXMLDocument;
 			sourceTree = "<group>";
 		};
+		33D75564164EA99F003FA28A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				33D75566164EA9DF003FA28A /* CoreData */,
+				33386510164419E900C37665 /* ElementCache.h */,
+				33386511164419E900C37665 /* ElementCache.m */,
+				33D81EF91640715500E531B4 /* ElementDownloader.h */,
+				33D81EFA1640715500E531B4 /* ElementDownloader.m */,
+				33D7555E164EA8A8003FA28A /* ElementManager.h */,
+				33D7555F164EA8A8003FA28A /* ElementManager.m */,
+				33E4CC8416343B77000693F4 /* Contrepeterie.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		33D75565164EA9B5003FA28A /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				33D81EFC164075A800E531B4 /* DetailViewController.h */,
+				33D81EFD164075A800E531B4 /* DetailViewController.m */,
+				33D81EF11640712A00E531B4 /* ElementTableViewCell.h */,
+				33D81EF21640712A00E531B4 /* ElementTableViewCell.m */,
+				33D81EF31640712A00E531B4 /* HomeTableViewController.h */,
+				33D81EF41640712A00E531B4 /* HomeTableViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		33D75566164EA9DF003FA28A /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				33E4CC8916343B77000693F4 /* Definition.h */,
+				33E4CC6B163433E1000693F4 /* Culturez_Vous.xcdatamodeld */,
+				33E4CC8A16343B77000693F4 /* Definition.m */,
+				33E4CC8C16343B77000693F4 /* Word.h */,
+				33E4CC8D16343B77000693F4 /* Word.m */,
+				33E4CC8316343B77000693F4 /* Contrepeterie.h */,
+				33E4CC8616343B77000693F4 /* Element.h */,
+				33E4CC8716343B77000693F4 /* Element.m */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
 		33E4CC42163433E1000693F4 = {
 			isa = PBXGroup;
 			children = (
+				33E4CC59163433E1000693F4 /* Culturez-Vous */,
 				3338650A16440EC500C37665 /* SMXMLDocument */,
 				333864E91644012A00C37665 /* AFNetworking */,
-				33E4CC59163433E1000693F4 /* Culturez-Vous */,
 				33E4CC50163433E1000693F4 /* Frameworks */,
 				33E4CC4E163433E1000693F4 /* Products */,
 			);
@@ -186,29 +233,13 @@
 		33E4CC59163433E1000693F4 /* Culturez-Vous */ = {
 			isa = PBXGroup;
 			children = (
-				33D81EF91640715500E531B4 /* ElementDownloader.h */,
-				33D81EFA1640715500E531B4 /* ElementDownloader.m */,
-				33D81EF11640712A00E531B4 /* ElementTableViewCell.h */,
-				33D81EF21640712A00E531B4 /* ElementTableViewCell.m */,
-				33D81EF31640712A00E531B4 /* HomeTableViewController.h */,
-				33D81EF41640712A00E531B4 /* HomeTableViewController.m */,
-				33D81EF51640712A00E531B4 /* Storyboard_iPhone.storyboard */,
+				33D75565164EA9B5003FA28A /* ViewControllers */,
+				33D75564164EA99F003FA28A /* Model */,
 				33E4CC62163433E1000693F4 /* AppDelegate.h */,
 				33E4CC63163433E1000693F4 /* AppDelegate.m */,
-				33E4CC6B163433E1000693F4 /* Culturez_Vous.xcdatamodeld */,
-				33E4CC8C16343B77000693F4 /* Word.h */,
-				33E4CC8D16343B77000693F4 /* Word.m */,
-				33E4CC8916343B77000693F4 /* Definition.h */,
-				33E4CC8A16343B77000693F4 /* Definition.m */,
-				33E4CC8616343B77000693F4 /* Element.h */,
-				33E4CC8716343B77000693F4 /* Element.m */,
-				33E4CC8316343B77000693F4 /* Contrepeterie.h */,
-				33E4CC8416343B77000693F4 /* Contrepeterie.m */,
+				33D81EF51640712A00E531B4 /* Storyboard_iPhone.storyboard */,
 				33E4CC5A163433E1000693F4 /* Supporting Files */,
-				33D81EFC164075A800E531B4 /* DetailViewController.h */,
-				33D81EFD164075A800E531B4 /* DetailViewController.m */,
-				33386510164419E900C37665 /* ElementCache.h */,
-				33386511164419E900C37665 /* ElementCache.m */,
+				33D75567164EB3EA003FA28A /* Constants.h */,
 			);
 			path = "Culturez-Vous";
 			sourceTree = "<group>";
@@ -316,6 +347,7 @@
 				333865051644012A00C37665 /* UIImageView+AFNetworking.m in Sources */,
 				3338650F16440EC500C37665 /* SMXMLDocument.m in Sources */,
 				33386512164419E900C37665 /* ElementCache.m in Sources */,
+				33D75560164EA8A8003FA28A /* ElementManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

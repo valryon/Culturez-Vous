@@ -12,26 +12,25 @@
 
 @synthesize cvElementsArray;
 @synthesize managedObjectContext;
-@synthesize elementDownloader;
+@synthesize elementManager;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    cvElementsArray = [[NSMutableArray alloc] init];
     
-    cvElementsArray  = [NSMutableArray alloc];
+    elementManager = [[ElementManager alloc ]init];
     
-    if(elementDownloader == NULL) {
-        elementDownloader = [[ElementDownloader alloc] init];
-        elementDownloader.downloadComplete = ^(NSArray* elements){
-            // TODO Rafraîchir la vue ?
-        };
-    }
-    
-    // Chargement des données
-    // TODO Vérifier ce qu'il y a en cache avant, tout ça
-    [elementDownloader downloadElementsWithPage:1];
-    
-    cvElementsArray = [cvElementsArray initWithArray:[ElementCache getAllElements]];
+    // On essaie de récupèrer les nouveaux éléments
+    [elementManager updateElementsWithCallback:^{
+        
+        // Puis on charge la première page
+        [elementManager getElementsWithPage:1 withCallback:^(int page, NSArray *elements) {
+            // TODO Ajouter les éléments
+        }];
+        //TODO code
+    }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -95,5 +94,6 @@
         detailViewController.element = [self.cvElementsArray objectAtIndex:[self.tableView indexPathForSelectedRow].row];
     }
 }
+
 
 @end

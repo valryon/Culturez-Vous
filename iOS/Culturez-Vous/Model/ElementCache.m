@@ -10,7 +10,43 @@
 
 @implementation ElementCache
 
-#pragma Instanciation des objets en cache
++ (Word*) createNewWordNoContext
+{
+    AppDelegate* app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    
+    NSEntityDescription *entity = [[app.managedObjectModel entitiesByName] objectForKey:@"Word"];
+    
+    Word *word = [[Word alloc] initWithEntity:entity
+               insertIntoManagedObjectContext:nil];
+    
+    return word;
+}
++ (Definition*) createNewDefinitionNoContext
+{
+    AppDelegate* app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    
+    NSEntityDescription *entity = [[app.managedObjectModel entitiesByName] objectForKey:@"Definition"];
+    
+    Definition *def = [[Definition alloc] initWithEntity:entity
+               insertIntoManagedObjectContext:nil];
+    
+    return def;
+}
++ (Contrepeterie*) createNewContreperieNoContext
+{
+    AppDelegate* app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    
+    NSEntityDescription *entity = [[app.managedObjectModel entitiesByName] objectForKey:@"Contrepeterie"];
+    
+    Contrepeterie *ctp = [[Contrepeterie alloc] initWithEntity:entity
+               insertIntoManagedObjectContext:nil];
+    
+    return ctp;
+}
+
+
+
+#pragma TODO Supprimer : Instanciation des objets en cache
 
 - (id)createNewDefinition:(NSString *)details withContent:(NSString *)content
 {
@@ -58,6 +94,8 @@
     return ctp;
 }
 
+#pragma Sauvegarde du cache
+
 -(BOOL)saveCache
 {
     AppDelegate* app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
@@ -72,14 +110,64 @@
     return true;
 }
 
-+(NSArray *)getAllElements
+#pragma Recherche dans le cache
+
+- (NSFetchRequest*) prepareFetchRequest:(NSString*) elementType
 {
     AppDelegate* app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     
+    // Récupération d'éléments
     NSEntityDescription *entityDescription = [NSEntityDescription
-                                              entityForName:@"Word" inManagedObjectContext:app.managedObjectContext];
+                                              entityForName:elementType inManagedObjectContext:app.managedObjectContext];
+    
+    // Création d'une requête
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     [request setEntity:entityDescription];
+    
+    // Tri par date
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
+                                        initWithKey:@"date" ascending:NO];
+    [request setSortDescriptors:@[sortDescriptor]];
+    
+    return request;
+}
+
+- (NSFetchRequest*) prepareFetchRequestPaginated:(NSString*) elementType forPage:(int)page
+{
+    if(page < 0) page = 0;
+    
+    // Requête standard
+    NSFetchRequest *request = [self prepareFetchRequest:elementType];
+    
+    // Pagination
+    request.fetchOffset = page * ELEMENTS_PER_PAGE; // Index de début
+    request.fetchLimit = ELEMENTS_PER_PAGE; // Taille de la page
+    
+    return request;
+}
+
+- (NSArray*) getElements:(NSString*)type withPage:(int) page
+{
+    AppDelegate* app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    
+    NSFetchRequest *request = [self prepareFetchRequestPaginated:type forPage:page];
+    
+    NSError *error;
+    NSArray *array = [app.managedObjectContext executeFetchRequest:request error:&error];
+    if (array == nil)
+    {
+        NSLog(@"%@", [error localizedDescription]);
+        return NULL;
+    }
+    
+    return array;
+}
+
+- (NSArray *)getAllElements:(NSString*)type
+{
+    AppDelegate* app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    
+    NSFetchRequest *request = [self prepareFetchRequest:type];
     
     NSError *error;
     NSArray *array = [app.managedObjectContext executeFetchRequest:request error:&error];

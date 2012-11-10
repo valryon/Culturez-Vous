@@ -10,26 +10,13 @@
 
 @implementation ElementDownloader
 
-@synthesize downloadComplete;
-
-static ElementCache* elementCache;
-
--(id)init
-{
-    self = [super init];
-    
-    if(elementCache == NULL) {
-        elementCache = [[ElementCache alloc] init];
-    }
-    
-    return self;
-}
-
 #pragma Téléchargement des données depuis le WS
 
-- (void)downloadElementsWithPage:(int)page
+- (void) downloadElementsWithPage:(int) page withCallback:(DownloaderCallback) callback
 {
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://thegreatpaperadventure.com/CulturezVous/index.php/element/page/1"]];
+    if(page < 1) page = 1;
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString: [NSString stringWithFormat:@"http://thegreatpaperadventure.com/CulturezVous/index.php/element/page/%d", page]]];
     
     // Appel au webservice
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
@@ -41,8 +28,8 @@ static ElementCache* elementCache;
             
             NSArray *elements = [self parseXml:response];
             
-            if(self.downloadComplete) {
-                self.downloadComplete(elements);
+            if(callback) {
+                callback(elements);
             }
         }
         failure:^(AFHTTPRequestOperation *operation, NSError *error)
@@ -97,20 +84,28 @@ static ElementCache* elementCache;
         // Mot
         if([type isEqualToString:@"mot"]){
             
-            Word* word = [elementCache createNewWord:title withDate:date];
+            Word *word = [ElementCache createNewWordNoContext];
+            
+            word.title = title;
+            word.date = date;
             
             if(word != NULL) {
                 NSMutableArray* definitionsArray = [[NSMutableArray alloc] init];
             
                 // Définitions
                 SMXMLElement* definitionsXml = [elementXml childNamed:@"definitions"];
+                
                 for (SMXMLElement *defXml in [definitionsXml childrenNamed:@"definitions"]) {
                 
                     NSString *content = [defXml valueWithPath:@"content"];
                     NSString *details = [defXml valueWithPath:@"details"];
                 
-                    Definition* def = [elementCache createNewDefinition:details withContent:content];
+                    Definition *def = [ElementCache createNewDefinitionNoContext];
+
             
+                    def.details = details;
+                    def.content = content;
+                    
                     // TODO insertion de la définition dans le mot
                     NSLog(@"DEBUG: Definition added");
                 }
@@ -126,16 +121,18 @@ static ElementCache* elementCache;
             NSString *content = [elementXml valueWithPath:@"content"];
             NSString *solution = [elementXml valueWithPath:@"solution"];
             
-            Contrepeterie* ctp = [elementCache createNewContrepeterie:title withDate:date withContent:content withSolution:solution];
+            Contrepeterie *ctp = [ElementCache createNewContreperieNoContext];
+            
+            ctp.title = title;
+            ctp.date = date;
+            ctp.content = content;
+            ctp.solution = solution;
             
             if(ctp != NULL) {
                 [elementsArray addObject:ctp];
                 NSLog(@"DEBUG: Contreperie added %@",ctp.title);
             }
         }
-        
-        // Sauvegarde
-        [elementCache saveCache];
         
         // Flux d'exemple
 //        <element>

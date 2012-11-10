@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Element.h"
 
-@interface DetailViewController : UIViewController
+@interface DetailViewController : UITableViewController
 
 @property (strong, nonatomic) Element *element;
 @property (weak, nonatomic) IBOutlet UILabel *elementTitleLabel;
