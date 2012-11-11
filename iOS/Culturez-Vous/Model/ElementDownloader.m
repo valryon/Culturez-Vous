@@ -20,7 +20,8 @@
     
     // Appel au webservice
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
+    [operation
+     setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
      {
          // On parse les éléments récupérés
          NSString *response = [operation responseString];
@@ -32,7 +33,7 @@
              callback(elements);
          }
      }
-                                     failure:^(AFHTTPRequestOperation *operation, NSError *error)
+     failure:^(AFHTTPRequestOperation *operation, NSError *error)
      {
          // Erreur survenue
          NSLog(@"ERROR: downElementsWithPage: %@", error);
@@ -61,6 +62,8 @@
 	// Récupération des éléménts
 	for (SMXMLElement *elementXml in [document.root childrenNamed:@"element"]) {
         
+        Element *element = NULL;
+        
         // Pour chaque élément, on instancie et remplit un objet
 		NSString *type = [elementXml valueWithPath:@"type"];
 		NSString *title = [elementXml valueWithPath:@"title"];
@@ -74,10 +77,6 @@
         if([type isEqualToString:@"mot"]){
             
             Word *word = [ElementCache createNewWordNoContext];
-            
-            word.title = title;
-            word.date = date;
-            word.dbId = dbId;
             
             if(word != NULL) {
                 NSMutableArray* definitionsArray = [[NSMutableArray alloc] init];
@@ -100,9 +99,10 @@
                     NSLog(@"DEBUG: Definition found");
                 }
                 
-                [elementsArray addObject:word];
                 NSLog(@"DEBUG: Word found %@",word.title);
             }
+            
+            element = word;
         }
         // Contrepeterie
         else if([type isEqualToString:@"contrepétrie"]) {
@@ -113,17 +113,21 @@
             
             Contrepeterie *ctp = [ElementCache createNewContreperieNoContext];
             
-            ctp.title = title;
-            ctp.date = date;
             ctp.content = content;
             ctp.solution = solution;
-            ctp.dbId = dbId;
             
-            if(ctp != NULL) {
-                [elementsArray addObject:ctp];
-                NSLog(@"DEBUG: Contreperie found %@",ctp.title);
-            }
+            NSLog(@"DEBUG: Contreperie found %@",ctp.title);
+            
+            element = ctp;
         }
+        
+        element.title = title;
+        element.date = date;
+        element.dbId = dbId;
+        element.author = author;
+        element.authorInfo = authorInfo;
+        
+        [elementsArray addObject:element];
         
         // Flux d'exemple
         //        <element>

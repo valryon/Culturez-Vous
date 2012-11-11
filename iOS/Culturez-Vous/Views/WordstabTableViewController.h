@@ -9,8 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "ElementManager.h"
 #import "ElementTableViewCell.h"
-#import "DetailViewController.h"
+#import "DetailTableViewController.h"
 #import "DateFormatter.h"
+#import "Element.h"
+#import "Word.h"
+#import "Contrepeterie.h"
+#import "Definition.h"
 
 @interface WordstabTableViewController : UITableViewController<UITableViewDelegate, UITableViewDataSource>
 {

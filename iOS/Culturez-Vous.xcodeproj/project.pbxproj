@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3306DE151650554900008F6A /* Element.m in Sources */ = {isa = PBXBuildFile; fileRef = 3306DE141650554900008F6A /* Element.m */; };
+		3306DE19165061CD00008F6A /* DetailDateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3306DE18165061CD00008F6A /* DetailDateCell.m */; };
+		3306DE1C165061F000008F6A /* ElementTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3306DE1B165061F000008F6A /* ElementTableViewCell.m */; };
+		3306DE1F1650620D00008F6A /* DetailAuthorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3306DE1E1650620D00008F6A /* DetailAuthorCell.m */; };
+		3306DE221650626800008F6A /* DetailWordDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3306DE211650626800008F6A /* DetailWordDetailsCell.m */; };
+		3306DE251650627E00008F6A /* DetailWordContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3306DE241650627E00008F6A /* DetailWordContentCell.m */; };
+		3306DE281650629300008F6A /* DetailCtpContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3306DE271650629300008F6A /* DetailCtpContentCell.m */; };
+		3306DE2B165062A600008F6A /* DetailCtpSolutionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3306DE2A165062A600008F6A /* DetailCtpSolutionCell.m */; };
 		333864FD1644012A00C37665 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 333864EB1644012A00C37665 /* AFHTTPClient.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		333864FE1644012A00C37665 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 333864ED1644012A00C37665 /* AFHTTPRequestOperation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		333864FF1644012A00C37665 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 333864EF1644012A00C37665 /* AFImageRequestOperation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
@@ -20,16 +28,14 @@
 		3338650F16440EC500C37665 /* SMXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 3338650D16440EC500C37665 /* SMXMLDocument.m */; };
 		33386512164419E900C37665 /* ElementCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 33386511164419E900C37665 /* ElementCache.m */; };
 		333CBACE164FED4C000A689D /* DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 333CBACD164FED4C000A689D /* DateFormatter.m */; };
-		333CBAD4164FF58C000A689D /* Element.m in Sources */ = {isa = PBXBuildFile; fileRef = 333CBAD3164FF58C000A689D /* Element.m */; };
 		333CBAD7164FF58D000A689D /* Definition.m in Sources */ = {isa = PBXBuildFile; fileRef = 333CBAD6164FF58D000A689D /* Definition.m */; };
 		333CBADA164FF58D000A689D /* Word.m in Sources */ = {isa = PBXBuildFile; fileRef = 333CBAD9164FF58D000A689D /* Word.m */; };
 		333CBADD164FF58D000A689D /* Contrepeterie.m in Sources */ = {isa = PBXBuildFile; fileRef = 333CBADC164FF58D000A689D /* Contrepeterie.m */; };
 		333CBAE01650022D000A689D /* WordstabTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 333CBADF1650022D000A689D /* WordstabTableViewController.m */; };
 		33D75560164EA8A8003FA28A /* ElementManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D7555F164EA8A8003FA28A /* ElementManager.m */; };
-		33D81EF61640712A00E531B4 /* ElementTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D81EF21640712A00E531B4 /* ElementTableViewCell.m */; };
 		33D81EF81640712A00E531B4 /* Storyboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33D81EF51640712A00E531B4 /* Storyboard_iPhone.storyboard */; };
 		33D81EFB1640715500E531B4 /* ElementDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D81EFA1640715500E531B4 /* ElementDownloader.m */; };
-		33D81EFE164075A800E531B4 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D81EFD164075A800E531B4 /* DetailViewController.m */; };
+		33D81EFE164075A800E531B4 /* DetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D81EFD164075A800E531B4 /* DetailTableViewController.m */; };
 		33E4CC52163433E1000693F4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33E4CC51163433E1000693F4 /* UIKit.framework */; };
 		33E4CC54163433E1000693F4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33E4CC53163433E1000693F4 /* Foundation.framework */; };
 		33E4CC56163433E1000693F4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33E4CC55163433E1000693F4 /* CoreGraphics.framework */; };
@@ -44,6 +50,22 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3306DE131650554900008F6A /* Element.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Element.h; path = Model/CoreData/Element.h; sourceTree = "<group>"; };
+		3306DE141650554900008F6A /* Element.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Element.m; path = Model/CoreData/Element.m; sourceTree = "<group>"; };
+		3306DE17165061CD00008F6A /* DetailDateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailDateCell.h; path = Views/Cells/DetailDateCell.h; sourceTree = "<group>"; };
+		3306DE18165061CD00008F6A /* DetailDateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailDateCell.m; path = Views/Cells/DetailDateCell.m; sourceTree = "<group>"; };
+		3306DE1A165061F000008F6A /* ElementTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ElementTableViewCell.h; path = Views/Cells/ElementTableViewCell.h; sourceTree = "<group>"; };
+		3306DE1B165061F000008F6A /* ElementTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ElementTableViewCell.m; path = Views/Cells/ElementTableViewCell.m; sourceTree = "<group>"; };
+		3306DE1D1650620D00008F6A /* DetailAuthorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailAuthorCell.h; path = Views/Cells/DetailAuthorCell.h; sourceTree = "<group>"; };
+		3306DE1E1650620D00008F6A /* DetailAuthorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailAuthorCell.m; path = Views/Cells/DetailAuthorCell.m; sourceTree = "<group>"; };
+		3306DE201650626800008F6A /* DetailWordDetailsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailWordDetailsCell.h; path = Views/Cells/DetailWordDetailsCell.h; sourceTree = "<group>"; };
+		3306DE211650626800008F6A /* DetailWordDetailsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailWordDetailsCell.m; path = Views/Cells/DetailWordDetailsCell.m; sourceTree = "<group>"; };
+		3306DE231650627E00008F6A /* DetailWordContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailWordContentCell.h; path = Views/Cells/DetailWordContentCell.h; sourceTree = "<group>"; };
+		3306DE241650627E00008F6A /* DetailWordContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailWordContentCell.m; path = Views/Cells/DetailWordContentCell.m; sourceTree = "<group>"; };
+		3306DE261650629300008F6A /* DetailCtpContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailCtpContentCell.h; path = Views/Cells/DetailCtpContentCell.h; sourceTree = "<group>"; };
+		3306DE271650629300008F6A /* DetailCtpContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailCtpContentCell.m; path = Views/Cells/DetailCtpContentCell.m; sourceTree = "<group>"; };
+		3306DE29165062A600008F6A /* DetailCtpSolutionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailCtpSolutionCell.h; path = Views/Cells/DetailCtpSolutionCell.h; sourceTree = "<group>"; };
+		3306DE2A165062A600008F6A /* DetailCtpSolutionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailCtpSolutionCell.m; path = Views/Cells/DetailCtpSolutionCell.m; sourceTree = "<group>"; };
 		333864EA1644012A00C37665 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		333864EB1644012A00C37665 /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		333864EC1644012A00C37665 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -70,8 +92,6 @@
 		33386511164419E900C37665 /* ElementCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ElementCache.m; path = Model/ElementCache.m; sourceTree = "<group>"; };
 		333CBACC164FED4C000A689D /* DateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DateFormatter.h; path = Utils/DateFormatter.h; sourceTree = "<group>"; };
 		333CBACD164FED4C000A689D /* DateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DateFormatter.m; path = Utils/DateFormatter.m; sourceTree = "<group>"; };
-		333CBAD2164FF58C000A689D /* Element.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Element.h; path = Model/CoreData/Element.h; sourceTree = "<group>"; };
-		333CBAD3164FF58C000A689D /* Element.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Element.m; path = Model/CoreData/Element.m; sourceTree = "<group>"; };
 		333CBAD5164FF58D000A689D /* Definition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Definition.h; path = Model/CoreData/Definition.h; sourceTree = "<group>"; };
 		333CBAD6164FF58D000A689D /* Definition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Definition.m; path = Model/CoreData/Definition.m; sourceTree = "<group>"; };
 		333CBAD8164FF58D000A689D /* Word.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Word.h; path = Model/CoreData/Word.h; sourceTree = "<group>"; };
@@ -83,13 +103,11 @@
 		33D7555E164EA8A8003FA28A /* ElementManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ElementManager.h; path = Model/ElementManager.h; sourceTree = "<group>"; };
 		33D7555F164EA8A8003FA28A /* ElementManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ElementManager.m; path = Model/ElementManager.m; sourceTree = "<group>"; };
 		33D75567164EB3EA003FA28A /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
-		33D81EF11640712A00E531B4 /* ElementTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ElementTableViewCell.h; path = Views/ElementTableViewCell.h; sourceTree = "<group>"; };
-		33D81EF21640712A00E531B4 /* ElementTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ElementTableViewCell.m; path = Views/ElementTableViewCell.m; sourceTree = "<group>"; };
 		33D81EF51640712A00E531B4 /* Storyboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard_iPhone.storyboard; path = Views/Storyboard_iPhone.storyboard; sourceTree = "<group>"; };
 		33D81EF91640715500E531B4 /* ElementDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ElementDownloader.h; path = Model/ElementDownloader.h; sourceTree = "<group>"; };
 		33D81EFA1640715500E531B4 /* ElementDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ElementDownloader.m; path = Model/ElementDownloader.m; sourceTree = "<group>"; };
-		33D81EFC164075A800E531B4 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailViewController.h; path = Views/DetailViewController.h; sourceTree = "<group>"; };
-		33D81EFD164075A800E531B4 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailViewController.m; path = Views/DetailViewController.m; sourceTree = "<group>"; };
+		33D81EFC164075A800E531B4 /* DetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailTableViewController.h; path = Views/DetailTableViewController.h; sourceTree = "<group>"; };
+		33D81EFD164075A800E531B4 /* DetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailTableViewController.m; path = Views/DetailTableViewController.m; sourceTree = "<group>"; };
 		33E4CC4D163433E1000693F4 /* Culturez-Vous.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Culturez-Vous.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		33E4CC51163433E1000693F4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		33E4CC53163433E1000693F4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -122,6 +140,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3306DE161650617000008F6A /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				3306DE1A165061F000008F6A /* ElementTableViewCell.h */,
+				3306DE1B165061F000008F6A /* ElementTableViewCell.m */,
+				3306DE17165061CD00008F6A /* DetailDateCell.h */,
+				3306DE18165061CD00008F6A /* DetailDateCell.m */,
+				3306DE1D1650620D00008F6A /* DetailAuthorCell.h */,
+				3306DE1E1650620D00008F6A /* DetailAuthorCell.m */,
+				3306DE201650626800008F6A /* DetailWordDetailsCell.h */,
+				3306DE211650626800008F6A /* DetailWordDetailsCell.m */,
+				3306DE231650627E00008F6A /* DetailWordContentCell.h */,
+				3306DE241650627E00008F6A /* DetailWordContentCell.m */,
+				3306DE261650629300008F6A /* DetailCtpContentCell.h */,
+				3306DE271650629300008F6A /* DetailCtpContentCell.m */,
+				3306DE29165062A600008F6A /* DetailCtpSolutionCell.h */,
+				3306DE2A165062A600008F6A /* DetailCtpSolutionCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		333864E91644012A00C37665 /* AFNetworking */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,12 +225,11 @@
 		33D75565164EA9B5003FA28A /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				3306DE161650617000008F6A /* Cells */,
 				333CBADE1650022D000A689D /* WordstabTableViewController.h */,
 				333CBADF1650022D000A689D /* WordstabTableViewController.m */,
-				33D81EFC164075A800E531B4 /* DetailViewController.h */,
-				33D81EFD164075A800E531B4 /* DetailViewController.m */,
-				33D81EF11640712A00E531B4 /* ElementTableViewCell.h */,
-				33D81EF21640712A00E531B4 /* ElementTableViewCell.m */,
+				33D81EFC164075A800E531B4 /* DetailTableViewController.h */,
+				33D81EFD164075A800E531B4 /* DetailTableViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -205,8 +243,8 @@
 				333CBAD9164FF58D000A689D /* Word.m */,
 				333CBAD5164FF58D000A689D /* Definition.h */,
 				333CBAD6164FF58D000A689D /* Definition.m */,
-				333CBAD2164FF58C000A689D /* Element.h */,
-				333CBAD3164FF58C000A689D /* Element.m */,
+				3306DE131650554900008F6A /* Element.h */,
+				3306DE141650554900008F6A /* Element.m */,
 				33E4CC6B163433E1000693F4 /* Culturez_Vous.xcdatamodeld */,
 			);
 			name = CoreData;
@@ -341,9 +379,8 @@
 				33E4CC60163433E1000693F4 /* main.m in Sources */,
 				33E4CC64163433E1000693F4 /* AppDelegate.m in Sources */,
 				33E4CC6D163433E1000693F4 /* Culturez_Vous.xcdatamodeld in Sources */,
-				33D81EF61640712A00E531B4 /* ElementTableViewCell.m in Sources */,
 				33D81EFB1640715500E531B4 /* ElementDownloader.m in Sources */,
-				33D81EFE164075A800E531B4 /* DetailViewController.m in Sources */,
+				33D81EFE164075A800E531B4 /* DetailTableViewController.m in Sources */,
 				333864FD1644012A00C37665 /* AFHTTPClient.m in Sources */,
 				333864FE1644012A00C37665 /* AFHTTPRequestOperation.m in Sources */,
 				333864FF1644012A00C37665 /* AFImageRequestOperation.m in Sources */,
@@ -357,11 +394,18 @@
 				33386512164419E900C37665 /* ElementCache.m in Sources */,
 				33D75560164EA8A8003FA28A /* ElementManager.m in Sources */,
 				333CBACE164FED4C000A689D /* DateFormatter.m in Sources */,
-				333CBAD4164FF58C000A689D /* Element.m in Sources */,
 				333CBAD7164FF58D000A689D /* Definition.m in Sources */,
 				333CBADA164FF58D000A689D /* Word.m in Sources */,
 				333CBADD164FF58D000A689D /* Contrepeterie.m in Sources */,
 				333CBAE01650022D000A689D /* WordstabTableViewController.m in Sources */,
+				3306DE151650554900008F6A /* Element.m in Sources */,
+				3306DE19165061CD00008F6A /* DetailDateCell.m in Sources */,
+				3306DE1C165061F000008F6A /* ElementTableViewCell.m in Sources */,
+				3306DE1F1650620D00008F6A /* DetailAuthorCell.m in Sources */,
+				3306DE221650626800008F6A /* DetailWordDetailsCell.m in Sources */,
+				3306DE251650627E00008F6A /* DetailWordContentCell.m in Sources */,
+				3306DE281650629300008F6A /* DetailCtpContentCell.m in Sources */,
+				3306DE2B165062A600008F6A /* DetailCtpSolutionCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

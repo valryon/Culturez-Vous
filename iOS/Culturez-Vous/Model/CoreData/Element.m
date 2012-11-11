@@ -12,9 +12,11 @@
 @implementation Element
 
 @dynamic date;
+@dynamic dbId;
 @dynamic isFavorite;
 @dynamic title;
 @dynamic voteCount;
-@dynamic dbId;
+@dynamic author;
+@dynamic authorInfo;
 
 @end

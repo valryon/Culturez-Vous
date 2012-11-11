@@ -84,16 +84,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    DetailViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"DetailsView"];
+    DetailTableViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"DetailsView"];
+    
+    // On transmet l'élément à afficher au détail
+    Element *element = [self.cvElementsArray objectAtIndex:[self.tableView indexPathForSelectedRow].row];
+    
+    controller.element = element;
+    
+    // Go !
     [self.navigationController pushViewController:controller animated:YES];
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([[segue identifier] isEqualToString:@"ShowDetails"]) {
-        DetailViewController *detailViewController = [segue destinationViewController];
-        
-        detailViewController.element = [self.cvElementsArray objectAtIndex:[self.tableView indexPathForSelectedRow].row];
-    }
 }
 
 @end
