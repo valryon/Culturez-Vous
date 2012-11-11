@@ -65,7 +65,7 @@
 - (void) insertElement:(Element*)element
 {
     AppDelegate* app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-
+    
     [app.managedObjectContext insertObject:element];
 }
 
@@ -109,16 +109,14 @@
     return request;
 }
 
-- (NSFetchRequest*) prepareFetchRequestPaginated:(NSString*) elementType forPage:(int)page
+- (NSFetchRequest*) prepareFetchRequestPaginated:(NSString*) elementType fromPage:(int)pageFrom toPage:(int) pageTo
 {
-    if(page < 0) page = 0;
-    
     // Requête standard
     NSFetchRequest *request = [self prepareFetchRequest:elementType];
     
     // Pagination
-    request.fetchOffset = page * ELEMENTS_PER_PAGE; // Index de début
-    request.fetchLimit = ELEMENTS_PER_PAGE; // Taille de la page
+    request.fetchOffset = pageFrom * ELEMENTS_PER_PAGE; // Index de début
+    request.fetchLimit = ((pageTo - pageFrom) + 1) * ELEMENTS_PER_PAGE; // Taille de la page
     
     return request;
 }
@@ -151,11 +149,12 @@
 
 #pragma Fonctions de recherche
 
-- (NSArray*) getElements:(NSString*)type withPage:(int) page
+- (NSArray*) getElements:(NSString*)type fromPage:(int)pageFrom toPage:(int) pageTo
+
 {
     AppDelegate* app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     
-    NSFetchRequest *request = [self prepareFetchRequestPaginated:type forPage:page];
+    NSFetchRequest *request = [self prepareFetchRequestPaginated:type fromPage:pageFrom toPage:pageTo];
     
     NSError *error;
     NSArray *array = [app.managedObjectContext executeFetchRequest:request error:&error];

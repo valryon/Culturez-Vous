@@ -12,7 +12,7 @@
 #import "DetailViewController.h"
 #import "DateFormatter.h"
 
-@interface HomeTableViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
+@interface WordstabTableViewController : UITableViewController<UITableViewDelegate, UITableViewDataSource>
 {
     NSMutableArray *cvElementsArray;
     NSManagedObjectContext *managedObjectContext;

@@ -12,8 +12,9 @@
 #import "ElementCache.h"
 #import "DateFormatter.h"
 
+typedef void(^UpdatePageCompleted)(BOOL newElementsFound);
 typedef void(^UpdateCompleted)(void);
-typedef void(^ElementsRetrieved)(int page, NSArray* elements);
+typedef void(^ElementsRetrieved)(NSArray* elements);
 
 @interface ElementManager : NSObject
 
@@ -28,6 +29,6 @@ typedef void(^ElementsRetrieved)(int page, NSArray* elements);
 //
 // Récupération des éléments à partir du cache et téléchargement si nécessaire
 //
-- (void) getElementsWithPage: (int)page withCallback:(ElementsRetrieved) callback;
+- (void) getElementsFromPage: (int)pageFrom toPage:(int)pageTo withCallback:(ElementsRetrieved) callback;
 
 @end

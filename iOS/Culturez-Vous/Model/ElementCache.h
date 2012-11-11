@@ -35,7 +35,7 @@
 //
 // Récupération d'éléments avec pagination
 //
-- (NSArray*) getElements:(NSString*)type withPage:(int) page;
+- (NSArray*) getElements:(NSString*)type fromPage:(int)pageFrom toPage:(int) pageTo;
 
 //
 // Lecture entière du cache
@@ -46,11 +46,5 @@
 // Teste l'existence d'un élément dans le cache par son titre
 //
 - (BOOL)existsWithId:(NSNumber*)dbId;
-
-- (NSFetchRequest*) prepareFetchRequest:(NSString*) elementType;
-
-- (NSFetchRequest*) prepareFetchRequestPaginated:(NSString*) elementType forPage:(int)page;
-
-- (NSFetchRequest*) prepareFetchRequestTitleSearch:(NSString*) title;
 
 @end

@@ -7,4 +7,4 @@
 //
 
 #define ELEMENTS_PER_PAGE 7
-#define PAGES_FIRST_LOADING 2
+#define UPDATE_PAGES_COUNT 3

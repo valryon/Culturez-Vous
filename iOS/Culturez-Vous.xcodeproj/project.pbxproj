@@ -24,9 +24,9 @@
 		333CBAD7164FF58D000A689D /* Definition.m in Sources */ = {isa = PBXBuildFile; fileRef = 333CBAD6164FF58D000A689D /* Definition.m */; };
 		333CBADA164FF58D000A689D /* Word.m in Sources */ = {isa = PBXBuildFile; fileRef = 333CBAD9164FF58D000A689D /* Word.m */; };
 		333CBADD164FF58D000A689D /* Contrepeterie.m in Sources */ = {isa = PBXBuildFile; fileRef = 333CBADC164FF58D000A689D /* Contrepeterie.m */; };
+		333CBAE01650022D000A689D /* WordstabTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 333CBADF1650022D000A689D /* WordstabTableViewController.m */; };
 		33D75560164EA8A8003FA28A /* ElementManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D7555F164EA8A8003FA28A /* ElementManager.m */; };
 		33D81EF61640712A00E531B4 /* ElementTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D81EF21640712A00E531B4 /* ElementTableViewCell.m */; };
-		33D81EF71640712A00E531B4 /* HomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D81EF41640712A00E531B4 /* HomeTableViewController.m */; };
 		33D81EF81640712A00E531B4 /* Storyboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33D81EF51640712A00E531B4 /* Storyboard_iPhone.storyboard */; };
 		33D81EFB1640715500E531B4 /* ElementDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D81EFA1640715500E531B4 /* ElementDownloader.m */; };
 		33D81EFE164075A800E531B4 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D81EFD164075A800E531B4 /* DetailViewController.m */; };
@@ -78,13 +78,13 @@
 		333CBAD9164FF58D000A689D /* Word.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Word.m; path = Model/CoreData/Word.m; sourceTree = "<group>"; };
 		333CBADB164FF58D000A689D /* Contrepeterie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Contrepeterie.h; path = Model/CoreData/Contrepeterie.h; sourceTree = "<group>"; };
 		333CBADC164FF58D000A689D /* Contrepeterie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Contrepeterie.m; path = Model/CoreData/Contrepeterie.m; sourceTree = "<group>"; };
+		333CBADE1650022D000A689D /* WordstabTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WordstabTableViewController.h; path = Views/WordstabTableViewController.h; sourceTree = "<group>"; };
+		333CBADF1650022D000A689D /* WordstabTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WordstabTableViewController.m; path = Views/WordstabTableViewController.m; sourceTree = "<group>"; };
 		33D7555E164EA8A8003FA28A /* ElementManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ElementManager.h; path = Model/ElementManager.h; sourceTree = "<group>"; };
 		33D7555F164EA8A8003FA28A /* ElementManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ElementManager.m; path = Model/ElementManager.m; sourceTree = "<group>"; };
 		33D75567164EB3EA003FA28A /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		33D81EF11640712A00E531B4 /* ElementTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ElementTableViewCell.h; path = Views/ElementTableViewCell.h; sourceTree = "<group>"; };
 		33D81EF21640712A00E531B4 /* ElementTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ElementTableViewCell.m; path = Views/ElementTableViewCell.m; sourceTree = "<group>"; };
-		33D81EF31640712A00E531B4 /* HomeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeTableViewController.h; path = Views/HomeTableViewController.h; sourceTree = "<group>"; };
-		33D81EF41640712A00E531B4 /* HomeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeTableViewController.m; path = Views/HomeTableViewController.m; sourceTree = "<group>"; };
 		33D81EF51640712A00E531B4 /* Storyboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard_iPhone.storyboard; path = Views/Storyboard_iPhone.storyboard; sourceTree = "<group>"; };
 		33D81EF91640715500E531B4 /* ElementDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ElementDownloader.h; path = Model/ElementDownloader.h; sourceTree = "<group>"; };
 		33D81EFA1640715500E531B4 /* ElementDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ElementDownloader.m; path = Model/ElementDownloader.m; sourceTree = "<group>"; };
@@ -186,12 +186,12 @@
 		33D75565164EA9B5003FA28A /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				333CBADE1650022D000A689D /* WordstabTableViewController.h */,
+				333CBADF1650022D000A689D /* WordstabTableViewController.m */,
 				33D81EFC164075A800E531B4 /* DetailViewController.h */,
 				33D81EFD164075A800E531B4 /* DetailViewController.m */,
 				33D81EF11640712A00E531B4 /* ElementTableViewCell.h */,
 				33D81EF21640712A00E531B4 /* ElementTableViewCell.m */,
-				33D81EF31640712A00E531B4 /* HomeTableViewController.h */,
-				33D81EF41640712A00E531B4 /* HomeTableViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -342,7 +342,6 @@
 				33E4CC64163433E1000693F4 /* AppDelegate.m in Sources */,
 				33E4CC6D163433E1000693F4 /* Culturez_Vous.xcdatamodeld in Sources */,
 				33D81EF61640712A00E531B4 /* ElementTableViewCell.m in Sources */,
-				33D81EF71640712A00E531B4 /* HomeTableViewController.m in Sources */,
 				33D81EFB1640715500E531B4 /* ElementDownloader.m in Sources */,
 				33D81EFE164075A800E531B4 /* DetailViewController.m in Sources */,
 				333864FD1644012A00C37665 /* AFHTTPClient.m in Sources */,
@@ -362,6 +361,7 @@
 				333CBAD7164FF58D000A689D /* Definition.m in Sources */,
 				333CBADA164FF58D000A689D /* Word.m in Sources */,
 				333CBADD164FF58D000A689D /* Contrepeterie.m in Sources */,
+				333CBAE01650022D000A689D /* WordstabTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
