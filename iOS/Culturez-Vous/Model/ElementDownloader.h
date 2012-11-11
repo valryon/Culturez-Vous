@@ -9,6 +9,7 @@
 #import "AFXMLRequestOperation.h"
 #import "SMXMLDocument.h"
 #import "ElementCache.h"
+#import "DateFormatter.h"
 
 typedef void(^DownloaderCallback)(NSArray* elements);
 

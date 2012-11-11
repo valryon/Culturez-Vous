@@ -15,18 +15,42 @@
 
 @interface ElementCache : NSObject
 
+//
+// Création d'éléments non attachés à un contexte
+//
 + (Word*) createNewWordNoContext;
 + (Definition*) createNewDefinitionNoContext;
 + (Contrepeterie*) createNewContreperieNoContext;
 
+//
+// Insertion d'un élément dans le cache
+//
+- (void) insertElement:(Element*)element;
+
+//
+// Sauvegarde globale du cache
+//
 - (BOOL) saveCache;
 
+//
+// Récupération d'éléments avec pagination
+//
 - (NSArray*) getElements:(NSString*)type withPage:(int) page;
 
+//
+// Lecture entière du cache
+//
 - (NSArray *)getAllElements:(NSString*)type;
+
+//
+// Teste l'existence d'un élément dans le cache par son titre
+//
+- (BOOL)existsWithId:(NSNumber*)dbId;
 
 - (NSFetchRequest*) prepareFetchRequest:(NSString*) elementType;
 
 - (NSFetchRequest*) prepareFetchRequestPaginated:(NSString*) elementType forPage:(int)page;
+
+- (NSFetchRequest*) prepareFetchRequestTitleSearch:(NSString*) title;
 
 @end

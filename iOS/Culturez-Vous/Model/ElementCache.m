@@ -28,7 +28,7 @@
     NSEntityDescription *entity = [[app.managedObjectModel entitiesByName] objectForKey:@"Definition"];
     
     Definition *def = [[Definition alloc] initWithEntity:entity
-               insertIntoManagedObjectContext:nil];
+                          insertIntoManagedObjectContext:nil];
     
     return def;
 }
@@ -39,59 +39,34 @@
     NSEntityDescription *entity = [[app.managedObjectModel entitiesByName] objectForKey:@"Contrepeterie"];
     
     Contrepeterie *ctp = [[Contrepeterie alloc] initWithEntity:entity
-               insertIntoManagedObjectContext:nil];
+                                insertIntoManagedObjectContext:nil];
     
     return ctp;
 }
 
 
+//- (id)createNewWord:(NSString *)title withDate:(NSDate *)date
+//{
+//    AppDelegate* app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+//
+//    // Création d'un nouveau mot à partir du cache
+//    Word *word = (Word *)[NSEntityDescription insertNewObjectForEntityForName:@"Word" inManagedObjectContext:app.managedObjectContext];
+//
+//    if(word != NULL) {
+//        // Mise à jour des données
+//        [word setTitle:title];
+//        [word setDate:date];
+//    }
+//    return word;
+//}
 
-#pragma TODO Supprimer : Instanciation des objets en cache
+#pragma Insertion objets
 
-- (id)createNewDefinition:(NSString *)details withContent:(NSString *)content
+- (void) insertElement:(Element*)element
 {
     AppDelegate* app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    
-    // Création d'une nouvelle définition
-    Definition *def = (Definition *)[NSEntityDescription insertNewObjectForEntityForName:@"Definition" inManagedObjectContext:app.managedObjectContext];
-    
-    if(def != NULL) {
-        // Mise à jour des données
-        [def setDetails:details];
-        [def setContent:content];
-    }
-    
-    return def;
-}
 
-- (id)createNewWord:(NSString *)title withDate:(NSDate *)date
-{
-    AppDelegate* app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    
-    // Création d'un nouveau mot à partir du cache
-    Word *word = (Word *)[NSEntityDescription insertNewObjectForEntityForName:@"Word" inManagedObjectContext:app.managedObjectContext];
-    
-    if(word != NULL) {
-        // Mise à jour des données
-        [word setTitle:title];
-        [word setDate:date];
-    }
-    return word;
-}
-
-- (id)createNewContrepeterie:(NSString *)title withDate:(NSDate *)date withContent:(NSString*) content withSolution:(NSString*) solution
-{
-    AppDelegate* app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    
-    // Création d'un nouveau mot à partir du cache
-    Contrepeterie *ctp = (Contrepeterie *)[NSEntityDescription insertNewObjectForEntityForName:@"Contrepeterie" inManagedObjectContext:app.managedObjectContext];
-    
-    if(ctp != NULL) {
-        // Mise à jour des données
-        [ctp setTitle:title];
-        [ctp setDate:date];
-    }
-    return ctp;
+    [app.managedObjectContext insertObject:element];
 }
 
 #pragma Sauvegarde du cache
@@ -100,7 +75,7 @@
 {
     AppDelegate* app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     
-    // Sauvegarde dans le cache
+    // Sauvegarde du cache
     NSError *error = nil;
     if (![app.managedObjectContext save:&error]) {
         NSLog(@"%@", [error localizedDescription]);
@@ -111,6 +86,8 @@
 }
 
 #pragma Recherche dans le cache
+
+#pragma Préparation des requêtes
 
 - (NSFetchRequest*) prepareFetchRequest:(NSString*) elementType
 {
@@ -146,6 +123,34 @@
     return request;
 }
 
+- (NSFetchRequest*) prepareFetchRequestTitleSearch:(NSString*) title
+{
+    // Requête standard
+    NSFetchRequest *request = [self prepareFetchRequest:@"Element"];
+    
+    // Recherche fulltext
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"title == %@", title];
+    
+    [request setPredicate:predicate];
+    
+    return request;
+}
+
+- (NSFetchRequest*) prepareFetchRequestIdSearch:(NSNumber*) dbId
+{
+    // Requête standard
+    NSFetchRequest *request = [self prepareFetchRequest:@"Element"];
+    
+    // Recherche fulltext
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"dbId == %@", dbId];
+    
+    [request setPredicate:predicate];
+    
+    return request;
+}
+
+#pragma Fonctions de recherche
+
 - (NSArray*) getElements:(NSString*)type withPage:(int) page
 {
     AppDelegate* app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
@@ -178,6 +183,23 @@
     }
     
     return array;
+}
+
+- (BOOL)existsWithId:(NSNumber*)dbId
+{
+    AppDelegate* app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    
+    NSFetchRequest *request = [self prepareFetchRequestIdSearch:dbId];
+    
+    NSError *error;
+    NSArray *array = [app.managedObjectContext executeFetchRequest:request error:&error];
+    if (array == nil)
+    {
+        NSLog(@"%@", [error localizedDescription]);
+        return false;
+    }
+    
+    return array.count > 0;
 }
 
 @end

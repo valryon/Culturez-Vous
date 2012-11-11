@@ -19,7 +19,7 @@
     
     // On instancie le composant de téléchargement
     downloader = [[ElementDownloader alloc] init];
-
+    
     // Et celui de stockage
     cache = [[ElementCache alloc] init];
     
@@ -34,16 +34,43 @@
     [downloader downloadElementsWithPage:1
                             withCallback:^(NSArray* elements){
                                 
-                                // On regarde s'il y a de nouveaux éléments
-                                // -- Pour cela on récupère tout d'abord la première page du cache
-                                NSArray* firstCachePage = [cache getElements:@"Element" withPage:1];
+                                BOOL saveCache = false;
                                 
-                                for (Element *element in elements) {
-                                    
+                                // Cache debug
+                                //NSArray* f = [cache getElements:@"Element" withPage:1];
+                                NSArray* f = [cache getAllElements:@"Element"];
+                                
+                                for (Element *element in f) {
+                                    NSLog(@"INFO : element in cache %@", element.title);
                                 }
                                 
+                                // On regarde s'il y a de nouveaux éléments
+                                for (Element *element in elements) {
+                                    
+                                    // -- On regarde si des mots ne sont pas dans le cache
+                                    if([cache existsWithId:element.dbId] == false)
+                                    {
+                                        NSLog(@"INFO : element to add %@", element.title);
+                                        saveCache = true;
+                                        
+                                        // On l'ajoute au cache
+                                        [cache insertElement:element];
+                                    }
+                                    else
+                                    {
+                                        //-- Si on le trouve, on considère que les mots suivants sont déjà connus (tri par date)
+                                        break;
+                                    }
+                                }
                                 
-                                if(callback) {
+                                if(saveCache)
+                                {
+                                    // Sauvegarde du cache
+                                    [cache saveCache];
+                                }
+                                
+                                if(callback)
+                                {
                                     NSLog(@"INFO : Mise à jour OK");
                                     callback();
                                 }
@@ -53,13 +80,13 @@
 - (void)getElementsWithPage:(int)page withCallback:(ElementsRetrieved) callback
 {
     // On récupère les éléments de cette page du cache
+    //NSArray* f = [cache getElements:@"Element" withPage:page];
+    NSArray* f = [cache getAllElements:@"Element"];
     
-}
-
-- (NSArray *)getElementsFromCacheWithPage:(int)page
-{
-    // On récupère les éléments de cette page du cache
-    return NULL;
+    if(callback)
+    {
+        callback(page,f);
+    }
 }
 
 

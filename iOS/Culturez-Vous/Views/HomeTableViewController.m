@@ -17,7 +17,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     cvElementsArray = [[NSMutableArray alloc] init];
     
     elementManager = [[ElementManager alloc ]init];
@@ -27,7 +27,11 @@
         
         // Puis on charge la première page
         [elementManager getElementsWithPage:1 withCallback:^(int page, NSArray *elements) {
-            // TODO Ajouter les éléments
+            // Ajouter les éléments
+            [cvElementsArray setArray:elements];
+            
+            // Rafraîchir la vue
+            [self.tableView reloadData];
         }];
         //TODO code
     }];
@@ -60,19 +64,13 @@
     if([element isKindOfClass:[Word class]]) {
         cellIdentifier = @"Word";
     } else if([element isKindOfClass:[Contrepeterie class]]) {
-        cellIdentifier = @"Contrepeterie";
+        //        cellIdentifier = @"Contrepeterie";
+        cellIdentifier = @"Word"; //TODO template
     }
     
     ElementTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     
-    // Format pour la date
-    static NSDateFormatter *dateFormatter = nil;
-    if (dateFormatter == nil) {
-        dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"dd MMM YYYY"];
-    }
-    
-    cell.dateLabel.text = [dateFormatter stringFromDate:[element date]];
+    cell.dateLabel.text = [DateFormatter getStringForDate:element.date withFormat:@"dd MMM YYYY"];
     cell.titleLabel.text = [element title];
     cell.unreadLabel.alpha = 0;
     

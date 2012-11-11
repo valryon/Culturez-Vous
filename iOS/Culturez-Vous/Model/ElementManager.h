@@ -10,6 +10,7 @@
 #import "Element.h"
 #import "ElementDownloader.h"
 #import "ElementCache.h"
+#import "DateFormatter.h"
 
 typedef void(^UpdateCompleted)(void);
 typedef void(^ElementsRetrieved)(int page, NSArray* elements);

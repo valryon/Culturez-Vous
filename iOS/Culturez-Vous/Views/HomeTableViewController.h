@@ -10,6 +10,7 @@
 #import "ElementManager.h"
 #import "ElementTableViewCell.h"
 #import "DetailViewController.h"
+#import "DateFormatter.h"
 
 @interface HomeTableViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 {
