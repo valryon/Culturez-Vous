@@ -1,7 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CulturezVous.Service", "Service\CulturezVous.Service.csproj", "{081589BF-2495-4228-9547-51E7FD2F3EEF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CulturezVous.Service", "CulturezVous.Service\CulturezVous.Service.csproj", "{081589BF-2495-4228-9547-51E7FD2F3EEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CulturezVous.Service.Data", "CulturezVous.Service.Data\CulturezVous.Service.Data.csproj", "{5B2865DF-CC20-48D3-BF9A-2595D99BCF0F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +15,10 @@ Global
 		{081589BF-2495-4228-9547-51E7FD2F3EEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{081589BF-2495-4228-9547-51E7FD2F3EEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{081589BF-2495-4228-9547-51E7FD2F3EEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B2865DF-CC20-48D3-BF9A-2595D99BCF0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B2865DF-CC20-48D3-BF9A-2595D99BCF0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B2865DF-CC20-48D3-BF9A-2595D99BCF0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B2865DF-CC20-48D3-BF9A-2595D99BCF0F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
