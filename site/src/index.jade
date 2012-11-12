@@ -1,0 +1,85 @@
+doctype 5
+html
+
+	head
+		title Culturez-Vous !
+	
+		// styles
+		link(rel = 'stylesheet', media = 'screen', href = 'reset.css')/
+		link(rel = 'stylesheet', media = 'screen', href = 'site.css')/
+
+		// scripts
+		script(src = 'ga.js')
+
+		// misc
+		meta(charset = 'utf-8')/
+		meta(content = 'width=device-width, initial-scale=1, maximum-scale=1', name='viewport')/
+		meta(name = 'description', content = '« Culturez-Vous ! » est une application ludique et littéraire pour Windows Phone 7. Découvrez de nouveaux mots et contrepèteries chaque jour.')/
+		meta(name = 'keywords', content = 'culture, culturez-vous, culturez, vous, mobile, windows, windows phone 7, windows phone, application, mots, contrepèteries, expressions, langue, français, ludique, littéraire, apprentissage, vocabulaire, désuet, amusant')/
+	body
+	
+		div#page
+			header
+				ul 
+					li 
+						a(href = 'http://www.facebook.com/pages/Culturez-Vous/219847274796517'
+						, target = '_blank')
+							img(src = 'static/images/facebook.png')
+							| facebook 
+					li
+						img(src = 'static/images/twitter.png')
+						a(href = 'http://twitter.com/#!/valryon'
+						, target = '_blank')
+							| Damien
+						| , &nbsp;
+						a(href = 'http://twitter.com/#!/yiashen'
+						, target = '_blank')
+							| Matthieu
+			
+			// main section
+			div#content
+				h1
+					img(src = 'static/images/title.jpg')
+					| Culturez-Vous !
+				
+				// panorama panel
+				div#image
+					img(src = 'static/images/panorama.png')
+				
+				// content
+				div#text
+					article.info
+						h2 Qu'est-ce que c'est ?
+						p « Culturez-Vous ! » est une application ludique et littéraire pour <strong>Windows Phone 7</strong>. 
+						p Savez-vous ce qu'est un "Microtyrosemiophile" ou ce que signifie "Flafla" ? Notre but est de vous faire découvrir des mots ou expressions désuets et amusants de la langue française. 
+						p Et tous les dimanches, c’est une contrepèterie qu’il faudra résoudre !
+						
+					article.info
+						h2 À propos
+						p 
+							| Culturez-Vous ! nécessite une connexion de données sur votre téléphone, ainsi que Windows Phone Mango.
+						p 
+							| Nous remercions <a href="http://twitter.com/#!/1jour1mot" target="_blank">1Jour1Mot</a> pour nous fournir le contenu quotidien.
+						p
+							| Pour toute demande de support, contactez-nous via : 
+						p
+							a.support(href = 'mailto:support@culturez-vous.fr') support@culturez-vous.fr
+						
+					article#download
+						a(href = 'http://windowsphone.com/s?appid=fa6990ca-dae8-4c8d-b181-771869320d21')
+							img(src = 'static/images/marketplace.jpg'
+							  , alt = 'Télécharger sur le Marketplace WP7 !' 
+							  , title = 'Télécharger sur le Marketplace WP7 !'
+							  , width = 80
+							  , height = 80)
+							p Télécharger sur le marketplace
+						
+			footer
+				section
+					p
+						| Culturez-Vous ! est une idée originale d'Anaïs Noblanc. Développement par 
+						a(href = 'http://valryon.fr', target = '_blank') Damien Mayance
+						|  et conception par 
+						a(href = 'http://solarsailer.net', target = '_blank') Matthieu Oger
+						| .
+					p.small Culturez-Vous ! - 2012. Tous droits réservés.

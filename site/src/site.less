@@ -1,0 +1,250 @@
+// Museo font
+
+@font-face {
+	font-family: "Museo";
+	src: url('static/fonts/museo-regular.otf');
+}
+
+@font-face {
+	font-family: "Museo";
+	font-style: italic;
+	src: url('static/fonts/museo-italic.otf');
+}
+
+// Constants
+
+@main: red;
+@main-dark: #b4171b;
+
+// Global rules
+
+body {
+ font-family: Museo;
+ font-size: 100%;
+}
+
+em {
+	font-style: italic;
+}
+
+strong {
+	color: black;
+}
+
+a {
+	color: @main;
+	text-decoration: none;
+	.transition(color, .218s);
+}
+
+a:hover {
+	color: @main-dark;
+	.transition(color, .218s);
+}
+
+a.support {
+	background: url("static/images/mail.png") no-repeat left 3px;
+	padding-left: 30px;
+}
+
+.transition(@property, @time) {
+	-webkit-transition: @property @time;
+	-moz-transition: @property @time;
+	-o-transition: @property @time;
+	transition: @property @time;
+}
+
+// Details for desktop
+
+div#page {
+	
+	// Header
+
+	> header {
+		height: 100px;
+		
+		a {
+			color: black;
+		}
+		
+		a:hover {
+			color: grey;
+		}
+		
+		ul {
+			font-size: 1.1em;
+			
+			li {
+				float: left;
+				
+				img { 
+					padding: 0 10px 0 40px;
+					vertical-align: middle; 
+				}
+			}
+		}
+	}
+	
+	// Main content
+
+	> div#content {
+		margin: 0 auto;
+		width: 950px;
+		
+		h1 {
+			margin: 20px 0;
+			font-size: 6em;
+			text-align: center;
+			
+			img {
+				float: right;
+				margin-top: -15px;
+			}
+		}
+		
+		.cell {
+			display: table-cell;
+			vertical-align: middle;
+		}
+		
+		div#image {
+			.cell;
+			
+			img {
+				margin-right: 40px;
+			}
+		}
+		
+		div#text {
+			.cell;
+			padding: 20px 0;
+						
+			article {
+				margin: 20px 0;
+				
+				h2 {
+					margin-bottom: 5px;
+					font-size: 1.8em;
+				}
+				
+				p {
+					font-size: 0.95em;
+					text-align: justify;
+				}
+				
+				&.info {
+					p {
+						padding-bottom: 10px;
+						color: #3c3c3c;
+					}
+				}
+				
+				&#download {
+					a {
+						img, p {	
+							box-shadow: none;
+							.transition(box-shadow, .500s);
+						}
+					}
+					
+					a:hover {
+						img {
+							box-shadow: 0px 0px 10px #390c0b;
+							.transition(box-shadow, .218s);
+						}
+					}
+				
+					img {
+						.cell;
+						float: left;					
+					}
+					
+					p {
+						.cell;
+						width: 190px;
+						height: 60px;
+						padding: 10px;
+						font-size: 1.3em;
+						text-align: left;
+					}
+				}
+			}
+		}
+	}
+	
+	// Footer
+	
+	> footer {
+		margin: 20px 0;
+		text-align: center;
+		color: rgb(144, 141, 141);
+		
+		p {
+			margin: 5px;
+		}
+		
+		p.small {
+			font-size: 0.8em;
+		}
+	}
+}
+
+// Detials for mobile
+
+@media only screen and (max-width: 640px) {
+	div#page {
+		> header {
+			height: 25px;
+			font-size: 0.8em;
+		
+			img {
+				width: 25px;
+				height: 25px;
+				padding: 0 10px 0 20px !important;
+			}	
+		}
+	
+		> div#content {
+			width: auto;
+
+			
+			h1 {
+				background: #e6e6e6;
+				padding: 10px 0;
+				font-size: 2.5em;
+				
+				img {
+					display: none;
+				}
+			}
+			
+			div#image {
+				display: block;
+				text-align: center;
+				
+				img {
+					width: 90%;
+					height: 90%;
+					margin: 0;
+				}
+			}
+			
+			div#text {
+				display: block;
+				padding: 0 15px;
+			}
+		}
+		
+		> footer {
+			margin: 0;
+			padding: 15px;
+
+			p {margin: 0;}
+
+			p:first-child {
+				margin-bottom: 10px;
+				text-align: justify;
+			}
+		}
+	}
+}
