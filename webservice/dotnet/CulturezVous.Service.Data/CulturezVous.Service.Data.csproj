@@ -58,7 +58,16 @@
     <Compile Include="Db\MySqlDao.cs" />
     <Compile Include="Db\GenericDao.cs" />
     <Compile Include="Db\SqlDao.cs" />
-    <Compile Include="Elements\ElementDao.cs" />
+    <Compile Include="Elements\Author.cs" />
+    <Compile Include="Elements\ContreperiePartial.cs" />
+    <Compile Include="Elements\Contrepeterie.cs" />
+    <Compile Include="Elements\Dao\AuthorDao.cs" />
+    <Compile Include="Elements\Dao\ContrepeteriePartialDao.cs" />
+    <Compile Include="Elements\Dao\DefinitionDao.cs" />
+    <Compile Include="Elements\Definition.cs" />
+    <Compile Include="Elements\Element.cs" />
+    <Compile Include="Elements\Dao\ElementDao.cs" />
+    <Compile Include="Elements\Word.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

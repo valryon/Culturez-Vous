@@ -70,6 +70,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Service\Controllers\ElementController.cs" />
     <Compile Include="Areas\Service\Controllers\ServiceBaseController.cs" />
     <Compile Include="Areas\Service\ServiceAreaRegistration.cs" />
@@ -99,6 +101,8 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Areas\Service\Models\" />
     <Folder Include="Models\" />
   </ItemGroup>
@@ -110,6 +114,12 @@
       <Project>{5B2865DF-CC20-48D3-BF9A-2595D99BCF0F}</Project>
       <Name>CulturezVous.Service.Data</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

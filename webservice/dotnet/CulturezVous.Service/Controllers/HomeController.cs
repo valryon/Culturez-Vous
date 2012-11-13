@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Configuration;
 using CulturezVous.Service.Data.Db;
 using CulturezVous.Service.Data.Elements;
+using CulturezVous.Service.Data.Elements.Dao;
 
 namespace CulturezVous.Service.Controllers
 {
@@ -16,10 +17,8 @@ namespace CulturezVous.Service.Controllers
 
         public ActionResult Index()
         {
-            string cs = ConfigurationManager.ConnectionStrings["CV_DB"].ToString();
+            //var elements = new ElementDao(ConfigurationManager.ConnectionStrings["CV_DB"].ToString()).GetAllElements();
 
-            ElementDao dao = new ElementDao(cs);
-            dao.TestDb();
             return View();
         }
 
