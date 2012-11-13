@@ -1,0 +1,16 @@
+﻿<vm:MainViewModel
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vm="clr-namespace:CulturezVous.WP8.ViewModels"
+    SampleProperty="Valeur de propriété d'un texte d'exemple">
+
+    <vm:MainViewModel.Items>
+        <vm:ItemViewModel LineOne="conception une" LineTwo="Maecenas praesent accumsan bibendum" LineThree="Maecenas praesent accumsan bibendum dictumst eleifend facilisi faucibus habitant inceptos interdum lobortis nascetur"/>
+        <vm:ItemViewModel LineOne="conception deux" LineTwo="Dictumst eleifend facilisi faucibus" LineThree="Pharetra placerat pulvinar sagittis senectus sociosqu suscipit torquent ultrices vehicula volutpat maecenas praesent"/>
+        <vm:ItemViewModel LineOne="conception trois" LineTwo="Habitant inceptos interdum lobortis" LineThree="Accumsan bibendum dictumst eleifend facilisi faucibus habitant inceptos interdum lobortis nascetur pharetra placerat"/>
+        <vm:ItemViewModel LineOne="conception quatre" LineTwo="Nascetur pharetra placerat pulvinar" LineThree="Pulvinar sagittis senectus sociosqu suscipit torquent ultrices vehicula volutpat maecenas praesent accumsan bibendum"/>
+        <vm:ItemViewModel LineOne="conception cinq" LineTwo="Sagittis senectus sociosqu suscipit" LineThree="Dictumst eleifend facilisi faucibus habitant inceptos interdum lobortis nascetur pharetra placerat pulvinar sagittis"/>
+        <vm:ItemViewModel LineOne="conception six" LineTwo="Torquent ultrices vehicula volutpat" LineThree="Senectus sociosqu suscipit torquent ultrices vehicula volutpat maecenas praesent accumsan bibendum dictumst eleifend"/>
+    </vm:MainViewModel.Items>
+
+</vm:MainViewModel>
