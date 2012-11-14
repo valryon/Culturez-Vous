@@ -42,6 +42,8 @@ namespace CulturezVous.Service.Data.Db
         /// <returns>Nombre de lignes affectées</rereturns>
         protected abstract int ExecuteNonQuery(string strSql, CommandType type, params DbParameter[] parameterList);
 
+        protected abstract object ExecuteScalar(string strSql, CommandType type, params DbParameter[] parameterList);
+
         /// <summary>
         /// Si une requête a retourné faux, l'exception métier sera stocké dans cette propriété
         /// </summary>

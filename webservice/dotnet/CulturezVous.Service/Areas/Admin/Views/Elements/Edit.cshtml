@@ -35,27 +35,35 @@
             if (Model.Type.ToLower() == "word")
             {
             <li class="active"><a href="#">Nouveau mot</a></li>
-            <li>@Html.ActionLink("Nouvelle contrepéterie", "Edit", new { type = "Contrepeterie" })</li>
+            <li>@Html.ActionLink("Nouvelle contrepéterie", "Create", new { type = "contrepeterie" })</li>
             }
             else if (Model.Type.ToLower() == "contrepeterie")
             {
-            <li>@Html.ActionLink("Nouveau mot", "Edit", new { type = "Word" })</li>
+            <li>@Html.ActionLink("Nouveau mot", "Create", new { type = "word" })</li>
             <li class="active"><a href="#">Nouvelle contrepéterie</a></li>
             }
         }
         else
         {
-            <li>@Html.ActionLink("Nouveau mot", "Edit", new { type = "Word" })</li>
-            <li>@Html.ActionLink("Nouvelle contrepéterie", "Edit", new { type = "Contrepeterie" })</li>
+            <li>@Html.ActionLink("Nouveau mot", "Create", new { type = "word" })</li>
+            <li>@Html.ActionLink("Nouvelle contrepéterie", "Create", new { type = "contrepeterie" })</li>
             <li class="active"><a href="#">Modification d'un élément </a></li>
         }
     </ul>
+}
+@if (string.IsNullOrEmpty(Model.Message) == false)
+{
+    <div class="alert alert-error alert-message fade in" data-alert="alert" id="alertError">
+        <strong>Achtung !</strong>
+        @Model.Message
+    </div>
 }
 @using (Html.BeginForm("Edit", "Elements", FormMethod.Post, new { @class = "form-horizontal" }))
 {
     <fieldset>
         <legend>Propriétés de l'élément</legend>
         @Html.HiddenFor(model => model.ElementId)
+        @Html.HiddenFor(model => model.Type)
         <div class="control-group">
             <label class="control-label">
                 Titre
@@ -66,10 +74,23 @@
         </div>
         <div class="control-group">
             <label class="control-label">
+                Auteur
+            </label>
+            <div class="controls">
+                <select multiple="multiple" name="AuthorId">
+                    @foreach (CulturezVous.Service.Data.Elements.Author a in Model.Authors)
+                    {
+                        <option value="@a.Id" @(a.Id == Model.AuthorId ? "selected=selected" : "")>@a.Name</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">
                 Date
             </label>
             <div class="controls">
-                @Html.EditorFor(model => model.Date)
+                <input type="text" id="Date" name="Date" value="@Model.Date.ToString("dd/MM/yyyy")" />
             </div>
         </div>
         <div class="control-group">
@@ -80,6 +101,14 @@
                 @Html.EditorFor(model => model.VoteCount)
             </div>
         </div>
+        @if (Model.Type.ToLower() == "word")
+        {
+            @Html.Partial("_WordContent", Model);
+        }
+        else if (Model.Type.ToLower() == "contrepeterie")
+        {
+            @Html.Partial("_CtpContent", Model);
+        }
         <div class="form-actions">
             <button type="submit" class="btn btn-primary">
                 Enregistrer
@@ -90,3 +119,11 @@
 <div>
     @Html.ActionLink("Retour à la liste", "Index")
 </div>
+<script>
+    $(function () {
+        $("#Date").datepicker({ dateFormat: 'dd/mm/yy' });
+
+        var d = new Date("@Model.Date.ToString("MM/dd/yyyy")")
+        $('#Date').datepicker().datepicker("setDate", d);
+    });
+</script>

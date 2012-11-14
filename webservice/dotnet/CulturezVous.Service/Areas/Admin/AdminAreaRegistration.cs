@@ -22,6 +22,12 @@ namespace CulturezVous.Service.Areas.Admin
 
             context.MapRoute(
                "admin_elements_add",
+               "admin/elements/add/{type}",
+               new { action = "Create", controller = "Elements"}
+            );
+
+            context.MapRoute(
+               "admin_elements_edit",
                "admin/elements/edit/{type}/{id}/",
                new { action = "Edit", controller = "Elements", id = UrlParameter.Optional }
             );

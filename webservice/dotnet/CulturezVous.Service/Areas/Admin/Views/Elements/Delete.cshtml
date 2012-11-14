@@ -1,0 +1,54 @@
+﻿@model CulturezVous.Service.Areas.Admin.Models.ElementViewModel
+@{
+    ViewBag.Title = "Suppression d'un élément";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Title
+{
+    <h2>
+        Suppression d'un élément
+    </h2>
+}
+@section Nav
+{
+    <ul class="nav nav-list">
+        <li class="nav-header">Actions disponibles</li>
+        <li><a href="@Url.Action("Index", "Elements")">Voir la liste des éléments</a></li>
+        <li>@Html.ActionLink("Nouveau mot", "Create", new { type = "word" })</li>
+        <li>@Html.ActionLink("Nouvelle contrepéterie", "Create", new { type = "contrepeterie" })</li>
+        <li @Html.ActionLink("Modification d'un élément", "Edit", new { id = Model.ElementId, type = "contrepeterie" })</li>
+        <li class="active"><a href="#">Suppression d'un élément </a></li>
+    </ul>
+}
+@using (Html.BeginForm("Delete", "Elements", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    <fieldset>
+        <legend>Propriétés de l'élément</legend>
+        @Html.HiddenFor(model => model.ElementId)
+        <div class="control-group">
+            <label class="control-label">
+                Titre
+            </label>
+            <div class="controls">
+               @Model.Title
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">
+                Date
+            </label>
+            <div class="controls">
+                @Model.Date.ToString("dd/MM/yyyy")
+            </div>
+        </div>
+      
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">
+                Confirmer
+            </button>
+        </div>
+    </fieldset>
+}
+<div>
+    @Html.ActionLink("Retour à la liste", "Index")
+</div>

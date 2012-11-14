@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using CulturezVous.Service.Data.Db;
 using System.Data.Common;
+using MySql.Data.MySqlClient;
 
 namespace CulturezVous.Service.Data.Elements.Dao
 {
@@ -18,7 +19,7 @@ namespace CulturezVous.Service.Data.Elements.Dao
 
         }
 
-              /// <summary>
+        /// <summary>
         /// Récupération de tous les auteurs
         /// </summary>
         /// <returns></returns>
@@ -32,7 +33,7 @@ namespace CulturezVous.Service.Data.Elements.Dao
                 {
                     while (reader.Read())
                     {
-                        Definition d = parseAuthor(reader);
+                        Definition d = parseDefinition(reader);
 
                         defs.Add(d);
                     }
@@ -42,7 +43,45 @@ namespace CulturezVous.Service.Data.Elements.Dao
             return defs;
         }
 
-        private Definition parseAuthor(DbDataReader reader)
+        public bool DeleteByElementId(int id)
+        {
+            int execDef = ExecuteNonQuery("DELETE FROM definitions WHERE element_id = @id", System.Data.CommandType.Text, new MySqlParameter("@id", id));
+
+            return execDef > 0;
+        }
+
+
+        public bool Create(Word word)
+        {
+            bool ret = true;
+
+            foreach (Definition d in word.Definitions)
+            {
+                ret &= Create(word.Id, d);
+            }
+
+            return ret;
+        }
+
+        public bool Create(int elementId, Definition def)
+        {
+            string sql = "INSERT INTO definitions(element_id, definition_detail, definition_content) VALUES (@id,@details,@content);"
+                          + "select last_insert_id();";
+            object ret = ExecuteScalar(sql, System.Data.CommandType.Text
+                , new MySqlParameter("@id", elementId)
+                , new MySqlParameter("@details", def.Details)
+                , new MySqlParameter("@content", def.Content)
+                );
+
+            if (ret != null)
+            {
+                def.Id = Convert.ToInt32(ret);
+            }
+
+            return ret != null;
+        }
+
+        private Definition parseDefinition(DbDataReader reader)
         {
             Definition d = new Definition();
 
@@ -53,6 +92,7 @@ namespace CulturezVous.Service.Data.Elements.Dao
 
             return d;
         }
+
     }
 }
 

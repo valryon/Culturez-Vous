@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using CulturezVous.Service.Data.Db;
 using System.Data.Common;
+using MySql.Data.MySqlClient;
 
 namespace CulturezVous.Service.Data.Elements.Dao
 {
@@ -34,11 +35,11 @@ namespace CulturezVous.Service.Data.Elements.Dao
         /// Récupère tous les éléments
         /// </summary>
         /// <returns></returns>
-        public List<Element> GetAllElements()
+        public List<Element> GetAllElements(bool onlyValid)
         {
             List<Element> element = new List<Element>();
 
-            bool exec = ExecuteReader("SELECT * FROM elements", System.Data.CommandType.Text, (reader) =>
+            bool exec = ExecuteReader("SELECT * FROM elements " + (onlyValid ? "WHERE author_id != 0" : "") + " ORDER BY  `element_id` DESC", System.Data.CommandType.Text, (reader) =>
             {
                 if (reader.HasRows)
                 {
@@ -58,7 +59,7 @@ namespace CulturezVous.Service.Data.Elements.Dao
         {
             Element e = null;
 
-            bool exec = ExecuteReader("SELECT * FROM elements WHERE element_id = " + id, System.Data.CommandType.Text, (reader) =>
+            bool exec = ExecuteReader("SELECT * FROM elements WHERE element_id = @id", System.Data.CommandType.Text, (reader) =>
             {
                 if (reader.HasRows)
                 {
@@ -68,9 +69,117 @@ namespace CulturezVous.Service.Data.Elements.Dao
                         break;
                     }
                 }
-            });
+            }, new MySqlParameter("@id", id));
 
             return e;
+        }
+
+        /// <summary>
+        /// Suppression d'un élément
+        /// </summary>
+        /// <param name="p"></param>
+        public bool Delete(int id)
+        {
+            new DefinitionDao(ConnectionString).DeleteByElementId(id);
+            new ContrepeteriePartialDao(ConnectionString).DeleteByElementId(id);
+
+            int exec = ExecuteNonQuery("DELETE FROM elements WHERE element_id = @id", System.Data.CommandType.Text, new MySqlParameter("@id", id));
+
+            return exec > 0;
+        }
+
+        public bool Create(Element e)
+        {
+            int type = 0;
+            if (e is Word) type = 1;
+            else if (e is Contrepeterie) type = 2;
+            string sql = "INSERT INTO elements(type_id, element_date, element_title, element_favoriteCount, author_id) VALUES (@type,@date,@title,@votes,@author);"
+                            + "select last_insert_id();";
+
+            object execUpdate = ExecuteScalar(sql, System.Data.CommandType.Text
+                , new MySqlParameter("@type", type)
+                , new MySqlParameter("@date", e.Date)
+                , new MySqlParameter("@title", e.Title)
+                , new MySqlParameter("@votes", e.FavoriteCount)
+                , new MySqlParameter("@author", e.Author.Id)
+                );
+
+            // Récupérer l'id
+            if (execUpdate != null)
+            {
+                e.Id = Convert.ToInt32(execUpdate);
+
+                if (e is Word)
+                {
+                    Word w = ((Word)e);
+
+                    foreach (Definition d in w.Definitions)
+                    {
+                        d.WordId = w.Id;
+                    }
+
+                    DefinitionDao dao = new DefinitionDao(ConnectionString);
+
+                    if (dao.Create(w) == false)
+                    {
+                        throw dao.LastException;
+                    }
+                }
+                else
+                {
+                    ContrepeteriePartialDao dao = new ContrepeteriePartialDao(ConnectionString);
+
+                    if (dao.Create((Contrepeterie)e) == false)
+                    {
+                        throw dao.LastException;
+                    }
+                }
+            }
+
+            return true;
+        }
+
+        public void Update(Element e)
+        {
+            int type = 0;
+            if (e is Word) type = 1;
+            else if (e is Contrepeterie) type = 2;
+
+            DefinitionDao defdao = new DefinitionDao(ConnectionString);
+            ContrepeteriePartialDao ctpdao = new ContrepeteriePartialDao(ConnectionString);
+
+            if (e != null && e.Id != 0)
+            {
+                // Suppression de l'ancien contenu
+                if (e is Word)
+                {
+                    defdao.DeleteByElementId(e.Id);
+                }
+                else if (e is Contrepeterie)
+                {
+                   ctpdao.DeleteByElementId(e.Id);
+                }
+
+                string sql = "UPDATE elements SET type_id=@type,element_date=@date,element_title=@title,element_favoriteCount=@votes,author_id=@author WHERE element_id = @id";
+                int execUpdate = ExecuteNonQuery(sql, System.Data.CommandType.Text
+                    , new MySqlParameter("@id", e.Id)
+                    , new MySqlParameter("@type", type)
+                    , new MySqlParameter("@date", e.Date)
+                    , new MySqlParameter("@title", e.Title)
+                    , new MySqlParameter("@votes", e.FavoriteCount)
+                    , new MySqlParameter("@author", e.Author.Id)
+                    );
+
+                // Insertion contenu
+                if (e is Word)
+                {
+                    defdao.Create(e as Word);
+                }
+                else if (e is Contrepeterie)
+                {
+                    ctpdao.Create(e as Contrepeterie);
+                }
+            }
         }
 
         private Element parseElement(DbDataReader reader)
@@ -80,7 +189,8 @@ namespace CulturezVous.Service.Data.Elements.Dao
             //	element_id	type_id	element_date	element_title	element_favoriteCount	author_id
             int id = Convert.ToInt32(reader["element_id"]);
             int type = Convert.ToInt32(reader["type_id"]);
-            DateTime date = Convert.ToDateTime(reader["element_date"]);
+            string dateString = reader["element_date"].ToString();
+            DateTime date = Convert.ToDateTime(dateString);
             string title = reader["element_title"].ToString();
             int voteCount = Convert.ToInt32(reader["element_favoriteCount"]);
             int authorId = Convert.ToInt32(reader["author_id"]);
@@ -108,14 +218,18 @@ namespace CulturezVous.Service.Data.Elements.Dao
             }
 
             e.Date = date;
-            e.Author = m_authors.Where(a => a.Id == authorId).Single();
+
+            var aut = m_authors.Where(a => a.Id == authorId).FirstOrDefault();
+            if (aut == null)
+            {
+                throw new ArgumentException("No author found : " + authorId);
+            }
+            e.Author = aut;
             e.Title = title;
             e.Id = id;
             e.FavoriteCount = voteCount;
 
             return e;
         }
-
-
     }
 }

@@ -138,5 +138,47 @@ namespace CulturezVous.Service.Data.Db
 
             return -1;
         }
+
+        protected override object ExecuteScalar(string strSql, CommandType type, params DbParameter[] parameterList)
+        {
+            SqlConnection currentConnection = null;
+            try
+            {
+                // Initialisation de la connexion
+                using (currentConnection = new SqlConnection(this.ConnectionString))
+                {
+                    currentConnection.Open();
+
+                    // Initialisation de la commande
+                    using (SqlCommand cmd = new SqlCommand(strSql, currentConnection))
+                    {
+                        cmd.CommandType = type;
+                        if (parameterList != null)
+                        {
+                            foreach (var item in parameterList)
+                            {
+                                cmd.Parameters.Add(item);
+                            }
+                        }
+
+                        // Exécution de la commande
+                        object o = cmd.ExecuteScalar();
+
+                        return o;
+                    }
+                }
+
+            }
+            catch (System.Exception e)
+            {
+                LastException = e;
+            }
+            finally
+            {
+                if (currentConnection != null) currentConnection.Close();
+            }
+
+            return null;
+        }
     }
 }

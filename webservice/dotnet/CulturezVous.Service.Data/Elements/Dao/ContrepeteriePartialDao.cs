@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using CulturezVous.Service.Data.Db;
 using System.Data.Common;
+using MySql.Data.MySqlClient;
 
 namespace CulturezVous.Service.Data.Elements.Dao
 {
@@ -42,6 +43,26 @@ namespace CulturezVous.Service.Data.Elements.Dao
             return ctps;
         }
 
+        public bool DeleteByElementId(int id)
+        {
+            int execCtp = ExecuteNonQuery("DELETE FROM contrepetries WHERE element_id = @id", System.Data.CommandType.Text, new MySqlParameter("@id", id));
+
+            return execCtp > 0;
+        }
+
+        public bool Create(Contrepeterie contrepeterie)
+        {
+            string sql = "INSERT INTO contrepetries(element_id, contrepetrie_content, contrepetrie_solution) VALUES (@id,@content,@solution);"
+              + "select last_insert_id();";
+            object ret = ExecuteScalar(sql, System.Data.CommandType.Text
+                , new MySqlParameter("@id", contrepeterie.Id)
+                , new MySqlParameter("@solution", contrepeterie.Solution)
+                , new MySqlParameter("@content", contrepeterie.Content)
+                );
+
+            return ret != null;
+        }
+
         private ContreperiePartial parseCtp(DbDataReader reader)
         {
             ContreperiePartial c = new ContreperiePartial();
@@ -53,5 +74,7 @@ namespace CulturezVous.Service.Data.Elements.Dao
 
             return c;
         }
+
+
     }
 }

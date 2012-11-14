@@ -14,8 +14,8 @@
     <ul class="nav nav-list">
         <li class="nav-header">Actions disponibles</li>
         <li class="active"><a href="#">Voir la liste des éléments</a></li>
-        <li>@Html.ActionLink("Nouveau mot", "Edit", new { type = "Word" })</li>
-        <li>@Html.ActionLink("Nouvelle contrepéterie", "Edit", new { type = "Contrepeterie" })</li>
+        <li>@Html.ActionLink("Nouveau mot", "Create", new { type = "word" })</li>
+        <li>@Html.ActionLink("Nouvelle contrepéterie", "Create", new { type = "contrepeterie" })</li>
     </ul>
 }
 <table class="table table-striped .table-bordered .table-hover">
@@ -63,9 +63,14 @@
                 @item.FavoriteCount
             </td>
             <td>
-                <a href="@Url.Action("Edit", new { id = item.Id, type = item.Type.ToLower() })"><i
-                    class="icon-pencil"></i></a><a href="@Url.Action("Delete", new { id = item.Id, type = item.Type.ToLower() })">
-                        <i class="icon-remove"></i></a>
+                <a href="@Url.Action("Edit", new { id = item.Id, type = item.Type.ToLower() })">
+                    <i class="icon-pencil"></i>
+                </a>
+            </td>
+            <td>
+                <a href="@Url.Action("Delete", new { id = item.Id, type = item.Type.ToLower() })">
+                    <i class="icon-remove"></i>
+                </a>
             </td>
         </tr>
     }

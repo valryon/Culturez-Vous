@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using CulturezVous.Service.Data.Db;
 using System.Data.Common;
+using MySql.Data.MySqlClient;
 
 namespace CulturezVous.Service.Data.Elements.Dao
 {
@@ -52,5 +53,7 @@ namespace CulturezVous.Service.Data.Elements.Dao
 
             return a;
         }
+
+
     }
 }

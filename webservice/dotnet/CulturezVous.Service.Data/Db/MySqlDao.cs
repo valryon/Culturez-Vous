@@ -139,5 +139,49 @@ namespace CulturezVous.Service.Data.Db
 
             return -1;
         }
+
+        protected override object ExecuteScalar(string strSql, CommandType type, params DbParameter[] parameterList)
+        {
+            MySqlConnection currentConnection = null;
+
+            try
+            {
+                // Initialisation de la connexion
+                using (currentConnection = new MySqlConnection(this.ConnectionString))
+                {
+                    currentConnection.Open();
+
+                    // Initialisation de la commande
+                    using (MySqlCommand cmd = new MySqlCommand(strSql, currentConnection))
+                    {
+                        cmd.CommandType = type;
+                        cmd.CommandTimeout = 120;
+
+                        if (parameterList != null)
+                        {
+                            foreach (var item in parameterList)
+                            {
+                                cmd.Parameters.Add(item);
+                            }
+                        }
+
+                        // Exécution de la commande
+                        object value = cmd.ExecuteScalar();
+
+                        return value;
+                    }
+                }
+            }
+            catch (System.Exception e)
+            {
+                LastException = e;
+            }
+            finally
+            {
+                if (currentConnection != null) currentConnection.Close();
+            }
+
+            return null;
+        }
     }
 }

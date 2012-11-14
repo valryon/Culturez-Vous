@@ -2,22 +2,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <title>Culturez-Vous - @ViewBag.Title</title>
-    <link href=@Url.Content("~/Content/bootstrap/css/bootstrap.css") rel="stylesheet" type="text/css" />
-    <link href=@Url.Content("~/Content/bootstrap/css/bootstrap-responsive.css") rel="stylesheet" type="text/css" />
-    <script src="http://ressources.regionsjob.com/js/jquery/jquery.aspx.js"></script>
-    <script src='http://ressources.regionsjob.com/js/jquery/jquery.datepicker.js'></script>
-    <script src='http://ressources.regionsjob.com/js/date.js'></script>
-    <script src='http://ressources.regionsjob.com/js/fonctions.js'></script>
-    <link rel='stylesheet' media='all' href='http://ressources.regionsjob.com/css/jquery/jquery.datepicker.css' />
+    <link href=@Url.Content("~/Content/css/bootstrap.css") rel="stylesheet" type="text/css" />
+    <link href=@Url.Content("~/Content/css/bootstrap-responsive.css") rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="@Url.Content("~/Content/js/jquery-1.7.1.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/js/jquery-ui-1.8.18.custom.min.js")"></script>
+    <link type="text/css" href="@Url.Content("~/Content//css/jquery-ui-1.8.18.custom.css")" rel="stylesheet" />
 </head>
 <body>
     <div class="navbar">
         <div class="navbar-inner">
             <div class="container-fluid">
-                <a class="brand" href="">Culturez-Vous</a>
+                <a class="brand" href="@Url.Action("Index", "Home")">Culturez-Vous</a>
                 <div class="nav-collapse">
                     <ul class="nav">
-                        @*<li>@Html.ActionLink("Statistiques", "Index", "Stats", null, null)</li>*@
+                        <li><a href="@Url.Action("Index", "Admin", new { area = "Admin" })">Admin</a> </li>
                     </ul>
                 </div>
             </div>
