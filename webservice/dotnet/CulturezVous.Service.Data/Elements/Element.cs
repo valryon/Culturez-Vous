@@ -16,5 +16,13 @@ namespace CulturezVous.Service.Data.Elements
         public int FavoriteCount { get; set; }
 
         public Author Author { get; set; }
+
+        public string Type
+        {
+            get
+            {
+                return (GetType().Name);
+            }
+        }
     }
 }

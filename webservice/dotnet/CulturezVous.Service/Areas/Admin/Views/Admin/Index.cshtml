@@ -2,5 +2,9 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Index</h2>
+<h2>
+    Accueil Admin
+</h2>
+<ul>
+    <li>@Html.ActionLink("Liste des éléments", "Index", "Elements")</li>
+</ul>

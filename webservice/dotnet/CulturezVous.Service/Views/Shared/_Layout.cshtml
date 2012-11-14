@@ -25,7 +25,25 @@
     </div>
     <div class="container-fluid">
         <div class="row-fluid">
-            <div class="span12">
+            @if (IsSectionDefined("Title"))
+            {
+                <div class="span12 well">
+                    <div>
+                        @RenderSection("Title")
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="row-fluid">
+            @if (IsSectionDefined("Nav"))
+            {
+                <div class="span3 well">
+                    <div>
+                        @RenderSection("Nav")
+                    </div>
+                </div>
+            }
+            <div class="span9">
                 <div>
                     @RenderBody()
                 </div>
@@ -34,7 +52,8 @@
     </div>
     <div class="footer span12">
         <hr />
-        <p>Copyright Damien Mayance et Matthieu Oger</p>
+        <p>
+            Copyright Damien Mayance et Matthieu Oger</p>
     </div>
 </body>
 </html>

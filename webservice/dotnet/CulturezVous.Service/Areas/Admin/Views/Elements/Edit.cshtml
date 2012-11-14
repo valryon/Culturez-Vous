@@ -1,0 +1,92 @@
+﻿@model CulturezVous.Service.Areas.Admin.Models.ElementViewModel
+@{
+    if (Model.IsCreation)
+    {
+        ViewBag.Title = "Création d'un élément";
+    }
+    else
+    {
+        ViewBag.Title = "Modification d'un élément";
+    }
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Title
+{
+    @if (Model.IsCreation)
+    {
+        <h2>
+            Création d'un élément
+        </h2>
+    }
+    else
+    {
+        <h2>
+            Modification d'un élément
+        </h2>
+    }
+}
+@section Nav
+{
+    <ul class="nav nav-list">
+        <li class="nav-header">Actions disponibles</li>
+        <li><a href="@Url.Action("Index", "Elements")">Voir la liste des éléments</a></li>
+        @if (Model.IsCreation)
+        {
+            if (Model.Type.ToLower() == "word")
+            {
+            <li class="active"><a href="#">Nouveau mot</a></li>
+            <li>@Html.ActionLink("Nouvelle contrepéterie", "Edit", new { type = "Contrepeterie" })</li>
+            }
+            else if (Model.Type.ToLower() == "contrepeterie")
+            {
+            <li>@Html.ActionLink("Nouveau mot", "Edit", new { type = "Word" })</li>
+            <li class="active"><a href="#">Nouvelle contrepéterie</a></li>
+            }
+        }
+        else
+        {
+            <li>@Html.ActionLink("Nouveau mot", "Edit", new { type = "Word" })</li>
+            <li>@Html.ActionLink("Nouvelle contrepéterie", "Edit", new { type = "Contrepeterie" })</li>
+            <li class="active"><a href="#">Modification d'un élément </a></li>
+        }
+    </ul>
+}
+@using (Html.BeginForm("Edit", "Elements", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    <fieldset>
+        <legend>Propriétés de l'élément</legend>
+        @Html.HiddenFor(model => model.ElementId)
+        <div class="control-group">
+            <label class="control-label">
+                Titre
+            </label>
+            <div class="controls">
+                @Html.EditorFor(model => model.Title)
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">
+                Date
+            </label>
+            <div class="controls">
+                @Html.EditorFor(model => model.Date)
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">
+                Votes
+            </label>
+            <div class="controls">
+                @Html.EditorFor(model => model.VoteCount)
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">
+                Enregistrer
+            </button>
+        </div>
+    </fieldset>
+}
+<div>
+    @Html.ActionLink("Retour à la liste", "Index")
+</div>

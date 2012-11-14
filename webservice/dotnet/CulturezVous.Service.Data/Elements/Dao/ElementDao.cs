@@ -51,7 +51,26 @@ namespace CulturezVous.Service.Data.Elements.Dao
                 }
             });
 
-            return element;
+            return element.OrderByDescending(e => e.Date).ToList();
+        }
+
+        public Element GetElementById(int id)
+        {
+            Element e = null;
+
+            bool exec = ExecuteReader("SELECT * FROM elements WHERE element_id = " + id, System.Data.CommandType.Text, (reader) =>
+            {
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        e = parseElement(reader);
+                        break;
+                    }
+                }
+            });
+
+            return e;
         }
 
         private Element parseElement(DbDataReader reader)
@@ -96,5 +115,7 @@ namespace CulturezVous.Service.Data.Elements.Dao
 
             return e;
         }
+
+
     }
 }

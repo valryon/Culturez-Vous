@@ -3,8 +3,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Bienvenue</h2>
-
+@section Title
+{
+    <h2>Bienvenue</h2>
+}
 <p>
     Si vous voyez cette page, c'est que vous soit un peu curieux soit dans l'équipe.
 </p>
@@ -15,9 +17,9 @@
         <li><a href="http://www.windowsphone.com/fr-fr/store/app/culturez-vous/fa6990ca-dae8-4c8d-b181-771869320d21">Accès Marketplace</a></li>
     </ul>
 
-    Les liens utiles mais protégés des curieux :
+    Les liens utiles mais protégés des curieux ;) :
     <ul>
-        <li><a href="https://github.com/Valryon/Culturez-Vous">Dépôt Github</a></li>
         <li><a href="@Url.Action("Index", "Admin", new { area = "Admin" } )">Accès Admin</a></li>
+        <li><a href="https://github.com/Valryon/Culturez-Vous">Dépôt Github</a></li>
     </ul>
 </p>

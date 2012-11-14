@@ -72,6 +72,10 @@
   <ItemGroup>
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ElementsController.cs" />
+    <Compile Include="Areas\Admin\Models\AdminElementsViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\ElementViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\PaginationModel.cs" />
     <Compile Include="Areas\Service\Controllers\ElementController.cs" />
     <Compile Include="Areas\Service\Controllers\ServiceBaseController.cs" />
     <Compile Include="Areas\Service\ServiceAreaRegistration.cs" />
@@ -101,8 +105,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Areas\Service\Models\" />
     <Folder Include="Models\" />
   </ItemGroup>
@@ -121,6 +123,15 @@
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Elements\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Shared\DisplayTemplates\Paginator.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Elements\Edit.cshtml" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -138,7 +149,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>53564</DevelopmentServerPort>
+          <DevelopmentServerPort>64163</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>
