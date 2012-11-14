@@ -96,6 +96,8 @@
                     def.content = content;
                     
                     // TODO insertion de la définition dans le mot
+//                    [word.definitions
+                    
                     NSLog(@"DEBUG: Definition found");
                 }
                 

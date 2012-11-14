@@ -119,6 +119,8 @@
                 DetailCtpContentCell* dc = (DetailCtpContentCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
                 
                 
+                dc.contentLabel.text = ((Contrepeterie *)element).content;
+                
                 cell = dc;
             }
             else
@@ -127,6 +129,7 @@
                 
                 DetailCtpSolutionCell* dc = (DetailCtpSolutionCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
                 
+                dc.solution.text = ((Contrepeterie *)element).solution;
                 
                 cell = dc;
             }

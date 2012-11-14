@@ -363,11 +363,12 @@
                                     <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Contrepeterie content" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gqc-d6-YyO">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Contrepeterie solution bla blab blldsfsdf dsfohjdfsj" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="260" translatesAutoresizingMaskIntoConstraints="NO" id="eCs-Be-lew">
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="178" id="ZOf-kL-yG5"/>
+                                                <constraint firstAttribute="height" constant="59" id="ZzN-DO-P7i"/>
+                                                <constraint firstAttribute="width" constant="260" id="o4c-1j-R5p"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
@@ -375,9 +376,12 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="Gqc-d6-YyO" firstAttribute="top" secondItem="oW6-Yz-b1Q" secondAttribute="top" constant="11" id="Sb8-0P-YZj"/>
-                                    <constraint firstItem="Gqc-d6-YyO" firstAttribute="leading" secondItem="oW6-Yz-b1Q" secondAttribute="leading" constant="46" id="hKi-lL-hY7"/>
+                                    <constraint firstItem="eCs-Be-lew" firstAttribute="centerX" secondItem="oW6-Yz-b1Q" secondAttribute="centerX" type="default" id="5ca-GL-1g7"/>
+                                    <constraint firstItem="eCs-Be-lew" firstAttribute="top" secondItem="oW6-Yz-b1Q" secondAttribute="top" type="default" id="81s-OY-N0k"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="contentLabel" destination="eCs-Be-lew" id="pHM-EV-EZ7"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="ctpSolutionCell" id="oUq-Di-w4F" customClass="DetailCtpSolutionCell">
                                 <rect key="frame" x="0.0" y="267" width="320" height="45"/>
@@ -386,11 +390,12 @@
                                     <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Contrepeterie solution" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZsM-ER-CEh">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Contrepeterie solution bla blab blldsfsdf dsfohjdfsj" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="252" translatesAutoresizingMaskIntoConstraints="NO" id="ZsM-ER-CEh">
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="178" id="j1G-ir-JP6"/>
+                                                <constraint firstAttribute="width" constant="252" id="Tyz-fT-r96"/>
+                                                <constraint firstAttribute="height" constant="58" id="uSk-8h-2VM"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
@@ -398,9 +403,12 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="ZsM-ER-CEh" firstAttribute="top" secondItem="oUq-Di-w4F" secondAttribute="top" constant="11" id="EA5-xO-8FA"/>
-                                    <constraint firstItem="ZsM-ER-CEh" firstAttribute="leading" secondItem="oUq-Di-w4F" secondAttribute="leading" constant="46" id="HtN-yS-HFM"/>
+                                    <constraint firstItem="ZsM-ER-CEh" firstAttribute="leading" secondItem="oUq-Di-w4F" secondAttribute="leading" constant="30" id="hm2-4h-OPj"/>
+                                    <constraint firstItem="ZsM-ER-CEh" firstAttribute="top" secondItem="oUq-Di-w4F" secondAttribute="top" type="default" id="nOT-3C-9dR"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="solution" destination="ZsM-ER-CEh" id="2my-Gx-Cpy"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -426,9 +434,15 @@
         </class>
         <class className="DetailCtpContentCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailCtpContentCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="contentLabel" candidateClass="UILabel"/>
+            </relationships>
         </class>
         <class className="DetailCtpSolutionCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailCtpSolutionCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="solution" candidateClass="UILabel"/>
+            </relationships>
         </class>
         <class className="DetailDateCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailDateCell.h"/>

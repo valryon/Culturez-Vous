@@ -10,4 +10,6 @@
 
 @interface DetailCtpSolutionCell : UITableViewCell
 
+
+@property (weak, nonatomic) IBOutlet UILabel *solution;
 @end

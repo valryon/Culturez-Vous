@@ -10,4 +10,5 @@
 
 @interface DetailCtpContentCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 @end
