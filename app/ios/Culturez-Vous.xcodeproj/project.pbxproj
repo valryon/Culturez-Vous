@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3306DE151650554900008F6A /* Element.m in Sources */ = {isa = PBXBuildFile; fileRef = 3306DE141650554900008F6A /* Element.m */; };
 		3306DE19165061CD00008F6A /* DetailDateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3306DE18165061CD00008F6A /* DetailDateCell.m */; };
 		3306DE1C165061F000008F6A /* ElementTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3306DE1B165061F000008F6A /* ElementTableViewCell.m */; };
 		3306DE1F1650620D00008F6A /* DetailAuthorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3306DE1E1650620D00008F6A /* DetailAuthorCell.m */; };
@@ -28,9 +27,6 @@
 		3338650F16440EC500C37665 /* SMXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 3338650D16440EC500C37665 /* SMXMLDocument.m */; };
 		33386512164419E900C37665 /* ElementCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 33386511164419E900C37665 /* ElementCache.m */; };
 		333CBACE164FED4C000A689D /* DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 333CBACD164FED4C000A689D /* DateFormatter.m */; };
-		333CBAD7164FF58D000A689D /* Definition.m in Sources */ = {isa = PBXBuildFile; fileRef = 333CBAD6164FF58D000A689D /* Definition.m */; };
-		333CBADA164FF58D000A689D /* Word.m in Sources */ = {isa = PBXBuildFile; fileRef = 333CBAD9164FF58D000A689D /* Word.m */; };
-		333CBADD164FF58D000A689D /* Contrepeterie.m in Sources */ = {isa = PBXBuildFile; fileRef = 333CBADC164FF58D000A689D /* Contrepeterie.m */; };
 		333CBAE01650022D000A689D /* WordstabTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 333CBADF1650022D000A689D /* WordstabTableViewController.m */; };
 		33D75560164EA8A8003FA28A /* ElementManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D7555F164EA8A8003FA28A /* ElementManager.m */; };
 		33D81EF81640712A00E531B4 /* Storyboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33D81EF51640712A00E531B4 /* Storyboard_iPhone.storyboard */; };
@@ -47,11 +43,13 @@
 		33E4CC68163433E1000693F4 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33E4CC67163433E1000693F4 /* Default@2x.png */; };
 		33E4CC6A163433E1000693F4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33E4CC69163433E1000693F4 /* Default-568h@2x.png */; };
 		33E4CC6D163433E1000693F4 /* Culturez_Vous.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 33E4CC6B163433E1000693F4 /* Culturez_Vous.xcdatamodeld */; };
+		33E5880716553DCA002BC6AD /* Contrepeterie.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E5880616553DCA002BC6AD /* Contrepeterie.m */; };
+		33E5880A16553DCA002BC6AD /* Definition.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E5880916553DCA002BC6AD /* Definition.m */; };
+		33E5880D16553DCA002BC6AD /* Word.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E5880C16553DCA002BC6AD /* Word.m */; };
+		33E5881016553DCA002BC6AD /* Element.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E5880F16553DCA002BC6AD /* Element.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3306DE131650554900008F6A /* Element.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Element.h; path = Model/CoreData/Element.h; sourceTree = "<group>"; };
-		3306DE141650554900008F6A /* Element.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Element.m; path = Model/CoreData/Element.m; sourceTree = "<group>"; };
 		3306DE17165061CD00008F6A /* DetailDateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailDateCell.h; path = Views/Cells/DetailDateCell.h; sourceTree = "<group>"; };
 		3306DE18165061CD00008F6A /* DetailDateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailDateCell.m; path = Views/Cells/DetailDateCell.m; sourceTree = "<group>"; };
 		3306DE1A165061F000008F6A /* ElementTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ElementTableViewCell.h; path = Views/Cells/ElementTableViewCell.h; sourceTree = "<group>"; };
@@ -92,12 +90,6 @@
 		33386511164419E900C37665 /* ElementCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ElementCache.m; path = Model/ElementCache.m; sourceTree = "<group>"; };
 		333CBACC164FED4C000A689D /* DateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DateFormatter.h; path = Utils/DateFormatter.h; sourceTree = "<group>"; };
 		333CBACD164FED4C000A689D /* DateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DateFormatter.m; path = Utils/DateFormatter.m; sourceTree = "<group>"; };
-		333CBAD5164FF58D000A689D /* Definition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Definition.h; path = Model/CoreData/Definition.h; sourceTree = "<group>"; };
-		333CBAD6164FF58D000A689D /* Definition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Definition.m; path = Model/CoreData/Definition.m; sourceTree = "<group>"; };
-		333CBAD8164FF58D000A689D /* Word.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Word.h; path = Model/CoreData/Word.h; sourceTree = "<group>"; };
-		333CBAD9164FF58D000A689D /* Word.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Word.m; path = Model/CoreData/Word.m; sourceTree = "<group>"; };
-		333CBADB164FF58D000A689D /* Contrepeterie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Contrepeterie.h; path = Model/CoreData/Contrepeterie.h; sourceTree = "<group>"; };
-		333CBADC164FF58D000A689D /* Contrepeterie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Contrepeterie.m; path = Model/CoreData/Contrepeterie.m; sourceTree = "<group>"; };
 		333CBADE1650022D000A689D /* WordstabTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WordstabTableViewController.h; path = Views/WordstabTableViewController.h; sourceTree = "<group>"; };
 		333CBADF1650022D000A689D /* WordstabTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WordstabTableViewController.m; path = Views/WordstabTableViewController.m; sourceTree = "<group>"; };
 		33D7555E164EA8A8003FA28A /* ElementManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ElementManager.h; path = Model/ElementManager.h; sourceTree = "<group>"; };
@@ -123,6 +115,14 @@
 		33E4CC67163433E1000693F4 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		33E4CC69163433E1000693F4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		33E4CC6C163433E1000693F4 /* Culturez_Vous.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Culturez_Vous.xcdatamodel; sourceTree = "<group>"; };
+		33E5880516553DCA002BC6AD /* Contrepeterie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Contrepeterie.h; path = Model/CoreData/Contrepeterie.h; sourceTree = "<group>"; };
+		33E5880616553DCA002BC6AD /* Contrepeterie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Contrepeterie.m; path = Model/CoreData/Contrepeterie.m; sourceTree = "<group>"; };
+		33E5880816553DCA002BC6AD /* Definition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Definition.h; path = Model/CoreData/Definition.h; sourceTree = "<group>"; };
+		33E5880916553DCA002BC6AD /* Definition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Definition.m; path = Model/CoreData/Definition.m; sourceTree = "<group>"; };
+		33E5880B16553DCA002BC6AD /* Word.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Word.h; path = Model/CoreData/Word.h; sourceTree = "<group>"; };
+		33E5880C16553DCA002BC6AD /* Word.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Word.m; path = Model/CoreData/Word.m; sourceTree = "<group>"; };
+		33E5880E16553DCA002BC6AD /* Element.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Element.h; path = Model/CoreData/Element.h; sourceTree = "<group>"; };
+		33E5880F16553DCA002BC6AD /* Element.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Element.m; path = Model/CoreData/Element.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,15 +237,15 @@
 		33D75566164EA9DF003FA28A /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				333CBADB164FF58D000A689D /* Contrepeterie.h */,
-				333CBADC164FF58D000A689D /* Contrepeterie.m */,
-				333CBAD8164FF58D000A689D /* Word.h */,
-				333CBAD9164FF58D000A689D /* Word.m */,
-				333CBAD5164FF58D000A689D /* Definition.h */,
-				333CBAD6164FF58D000A689D /* Definition.m */,
-				3306DE131650554900008F6A /* Element.h */,
-				3306DE141650554900008F6A /* Element.m */,
 				33E4CC6B163433E1000693F4 /* Culturez_Vous.xcdatamodeld */,
+				33E5880E16553DCA002BC6AD /* Element.h */,
+				33E5880F16553DCA002BC6AD /* Element.m */,
+				33E5880B16553DCA002BC6AD /* Word.h */,
+				33E5880C16553DCA002BC6AD /* Word.m */,
+				33E5880816553DCA002BC6AD /* Definition.h */,
+				33E5880916553DCA002BC6AD /* Definition.m */,
+				33E5880516553DCA002BC6AD /* Contrepeterie.h */,
+				33E5880616553DCA002BC6AD /* Contrepeterie.m */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -394,11 +394,7 @@
 				33386512164419E900C37665 /* ElementCache.m in Sources */,
 				33D75560164EA8A8003FA28A /* ElementManager.m in Sources */,
 				333CBACE164FED4C000A689D /* DateFormatter.m in Sources */,
-				333CBAD7164FF58D000A689D /* Definition.m in Sources */,
-				333CBADA164FF58D000A689D /* Word.m in Sources */,
-				333CBADD164FF58D000A689D /* Contrepeterie.m in Sources */,
 				333CBAE01650022D000A689D /* WordstabTableViewController.m in Sources */,
-				3306DE151650554900008F6A /* Element.m in Sources */,
 				3306DE19165061CD00008F6A /* DetailDateCell.m in Sources */,
 				3306DE1C165061F000008F6A /* ElementTableViewCell.m in Sources */,
 				3306DE1F1650620D00008F6A /* DetailAuthorCell.m in Sources */,
@@ -406,6 +402,10 @@
 				3306DE251650627E00008F6A /* DetailWordContentCell.m in Sources */,
 				3306DE281650629300008F6A /* DetailCtpContentCell.m in Sources */,
 				3306DE2B165062A600008F6A /* DetailCtpSolutionCell.m in Sources */,
+				33E5880716553DCA002BC6AD /* Contrepeterie.m in Sources */,
+				33E5880A16553DCA002BC6AD /* Definition.m in Sources */,
+				33E5880D16553DCA002BC6AD /* Word.m in Sources */,
+				33E5881016553DCA002BC6AD /* Element.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -2,7 +2,7 @@
 //  Element.m
 //  Culturez-Vous
 //
-//  Created by Dam on 11/11/12.
+//  Created by Dam on 15/11/12.
 //  Copyright (c) 2012 Damien Mayance & Matthieu Oger. All rights reserved.
 //
 
@@ -11,12 +11,12 @@
 
 @implementation Element
 
+@dynamic author;
+@dynamic authorInfo;
 @dynamic date;
 @dynamic dbId;
 @dynamic isFavorite;
 @dynamic title;
 @dynamic voteCount;
-@dynamic author;
-@dynamic authorInfo;
 
 @end

@@ -84,7 +84,7 @@
                 // Définitions
                 SMXMLElement* definitionsXml = [elementXml childNamed:@"definitions"];
                 
-                for (SMXMLElement *defXml in [definitionsXml childrenNamed:@"definitions"]) {
+                for (SMXMLElement *defXml in [definitionsXml childrenNamed:@"definition"]) {
                     
                     NSString *content = [defXml valueWithPath:@"content"];
                     NSString *details = [defXml valueWithPath:@"details"];
@@ -95,13 +95,14 @@
                     def.details = details;
                     def.content = content;
                     
-                    // TODO insertion de la définition dans le mot
-//                    [word.definitions
+                    [definitionsArray addObject:def];
                     
                     NSLog(@"DEBUG: Definition found");
                 }
                 
-                NSLog(@"DEBUG: Word found %@",word.title);
+                // Insertion des définitions de manière temporaire
+                NSSet *defs = [[NSSet alloc] initWithArray:definitionsArray];
+                [word addTempDefinitions:defs];
             }
             
             element = word;
@@ -116,9 +117,7 @@
             Contrepeterie *ctp = [ElementCache createNewContreperieNoContext];
             
             ctp.content = content;
-            ctp.solution = solution;
-            
-            NSLog(@"DEBUG: Contreperie found %@",ctp.title);
+            ctp.solution = solution;            
             
             element = ctp;
         }
@@ -128,6 +127,8 @@
         element.dbId = dbId;
         element.author = author;
         element.authorInfo = authorInfo;
+        
+        NSLog(@"DEBUG: %@ %@ %@",[element class],[DateFormatter getStringForDate:element.date withFormat:@"dd/MM/yyyy"],element.title);
         
         [elementsArray addObject:element];
         

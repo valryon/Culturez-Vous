@@ -66,6 +66,18 @@
 {
     AppDelegate* app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     
+    // Pour les mots, on transforme les définitions temporaire en définitions pour le cache
+    if([element isKindOfClass:[Word class]])
+    {
+        Word *w = (Word*)element;
+        
+        // Puis remplir le champ definitions
+        [w addDefinitions:w.tempDefinitions];
+        
+        // Et vider les définitions temporaires
+        [w removeTempDefinitions:w.tempDefinitions];
+    }
+    
     [app.managedObjectContext insertObject:element];
 }
 

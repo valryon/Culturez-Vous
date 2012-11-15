@@ -37,8 +37,6 @@
     {
         Word *word = (Word*)element;
         sectionCount += word.definitions.count;
-        
-        sectionCount += 1; // DEBUG
     }
     // + 1 section pour les contrepétries
     else if([element isKindOfClass:[Contrepeterie class]])
@@ -66,6 +64,8 @@
     NSString* cellIdentifier = NULL;
     UITableViewCell *cell = NULL;
     
+    NSLog(@"DEBUG : cell for section %d row %d...", indexPath.section, indexPath.row);
+    
     if(indexPath.section == 0 && indexPath.row == 0)
     {
         cellIdentifier = @"dateCell";
@@ -87,27 +87,42 @@
         
         cell = dc;
     }
-    else if(indexPath.section == 1)
+    else if(indexPath.section > 0)
     {
         if([element isKindOfClass:[Word class]])
         {
-            if(indexPath.row % 2 == 0)
+            Word *word = (Word*)element;
+            
+            // L'index de la définition = la section - 1 puisque la section 0 est statique
+            int indexDef = indexPath.section - 1;
+            
+            // On récupère la définition correspondant à cette cellule
+            NSArray *defArray = [word.definitions allObjects];
+            
+            if(indexDef < defArray.count)
             {
-                cellIdentifier = @"wordDetailsCell";
+                Definition *def = [defArray objectAtIndex:indexDef];
                 
-                DetailWordDetailsCell* dc = (DetailWordDetailsCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-                
-                
-                cell = dc;
-            }
-            else
-            {
-                cellIdentifier = @"wordContentCell";
-                
-                DetailWordContentCell* dc = (DetailWordContentCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-                
-                
-                cell = dc;
+                if(indexPath.row % 2 == 0)
+                {
+                    cellIdentifier = @"wordDetailsCell";
+                    
+                    DetailWordDetailsCell* dc = (DetailWordDetailsCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+                    
+                    dc.detailLabel.text = def.details;
+                    
+                    cell = dc;
+                }
+                else
+                {
+                    cellIdentifier = @"wordContentCell";
+                    
+                    DetailWordContentCell* dc = (DetailWordContentCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+                    
+                    dc.contentLabel.text = def.content;
+                    
+                    cell = dc;
+                }
             }
         }
         else if([element isKindOfClass:[Contrepeterie class]])
@@ -136,10 +151,7 @@
         }
     }
     
-    if(cell == NULL)
-    {
-       cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-    }
+    NSLog(@"DEBUG : cell id %@", cellIdentifier);
     
     return cell;
 }

@@ -332,6 +332,9 @@
                                     <constraint firstItem="h04-9j-w3d" firstAttribute="top" secondItem="SGE-B5-Wxl" secondAttribute="top" constant="11" id="UB2-6J-DPn"/>
                                     <constraint firstItem="h04-9j-w3d" firstAttribute="leading" secondItem="SGE-B5-Wxl" secondAttribute="leading" constant="68" id="rEE-Im-dB4"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="detailLabel" destination="h04-9j-w3d" id="IO7-xR-jwp"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="wordContentCell" id="imG-cf-TDA" customClass="DetailWordContentCell">
                                 <rect key="frame" x="0.0" y="179" width="320" height="44"/>
@@ -355,6 +358,9 @@
                                     <constraint firstItem="2oa-eq-gsP" firstAttribute="top" secondItem="imG-cf-TDA" secondAttribute="top" constant="11" id="XkP-d7-TBA"/>
                                     <constraint firstItem="2oa-eq-gsP" firstAttribute="leading" secondItem="imG-cf-TDA" secondAttribute="leading" constant="70" id="b1a-qR-mza"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="contentLabel" destination="2oa-eq-gsP" id="Opn-Uu-o2k"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="ctpContentCell" id="oW6-Yz-b1Q" customClass="DetailCtpContentCell">
                                 <rect key="frame" x="0.0" y="223" width="320" height="44"/>
@@ -424,59 +430,6 @@
             <point key="canvasLocation" x="1276" y="721"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="DetailAuthorCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailAuthorCell.h"/>
-            <relationships>
-                <relationship kind="action" name="showAuthor:"/>
-                <relationship kind="outlet" name="authorCell" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="DetailCtpContentCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailCtpContentCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="contentLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="DetailCtpSolutionCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailCtpSolutionCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="solution" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="DetailDateCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailDateCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="DetailTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailTableViewController.h"/>
-        </class>
-        <class className="DetailWordContentCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailWordContentCell.h"/>
-        </class>
-        <class className="DetailWordDetailsCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailWordDetailsCell.h"/>
-        </class>
-        <class className="ElementTableViewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ElementTableViewCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="unreadLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="WordstabTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/WordstabTableViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

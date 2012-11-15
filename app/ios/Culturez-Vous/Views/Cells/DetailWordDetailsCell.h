@@ -10,4 +10,6 @@
 
 @interface DetailWordDetailsCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *detailLabel;
+
 @end
