@@ -10,12 +10,13 @@
 #import "SMXMLDocument.h"
 #import "ElementCache.h"
 #import "DateFormatter.h"
+#import "Common.h"
 
 typedef void(^DownloaderCallback)(NSArray* elements);
 
 @interface ElementDownloader : NSObject <NSXMLParserDelegate>
 
-- (void) downloadElementsWithPage:(int)page withCallback:(DownloaderCallback) callback;
+- (void) downloadElementsWithPage:(int)page withCallback:(DownloaderCallback) callback withErrorCallback:(FailureCallback)failureCallback;
 
 - (NSArray*)parseXml:(NSString*) data;
 

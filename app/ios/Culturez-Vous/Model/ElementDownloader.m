@@ -12,7 +12,7 @@
 
 #pragma Téléchargement des données depuis le WS
 
-- (void) downloadElementsWithPage:(int) page withCallback:(DownloaderCallback) callback
+- (void) downloadElementsWithPage:(int)page withCallback:(DownloaderCallback) callback withErrorCallback:(FailureCallback)failureCallback
 {
     if(page < 1) page = 1;
     
@@ -29,7 +29,8 @@
          
          NSArray *elements = [self parseXml:response];
          
-         if(callback) {
+         if(callback)
+         {
              callback(elements);
          }
      }
@@ -37,6 +38,11 @@
      {
          // Erreur survenue
          NSLog(@"ERROR: downElementsWithPage: %@", error);
+         
+         if(failureCallback)
+         {
+             failureCallback(error);
+         }
      }
      ];
     

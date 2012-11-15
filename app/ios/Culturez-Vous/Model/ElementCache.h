@@ -11,7 +11,7 @@
 #import "Word.h"
 #import "Definition.h"
 #import "Contrepeterie.h"
-#import "Constants.h"
+#import "Common.h"
 
 @interface ElementCache : NSObject
 

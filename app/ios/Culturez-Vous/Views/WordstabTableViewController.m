@@ -14,6 +14,32 @@
 @synthesize managedObjectContext;
 @synthesize elementManager;
 
+- (void)loadTwoFirstPages
+{
+    // Puis on charge les deux première page
+    [elementManager getElementsFromPage:0 toPage:2
+        withCallback:^(NSArray *elements) {
+        
+            // Ajouter les éléments
+            [cvElementsArray setArray:elements];
+        
+            // Rafraîchir la vue
+            //[self.tableView reloadData]; // Ne fonctionne plus avec le bazar des threads updateurs
+        
+            [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+        }
+        withFailureCallback:^(NSError *error)
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Lecture du cache impossible"
+                                                            message:[NSString stringWithFormat:@"Et c'est assez mauvais... %@.", error]
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK..."
+                                                  otherButtonTitles:nil];
+            [alert show];
+        }
+     ];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -24,19 +50,20 @@
     
     // On essaie de récupèrer les nouveaux éléments
     [elementManager updateElementsWithCallback:^{
-        
-        // Puis on charge les deux première page
-        [elementManager getElementsFromPage:0 toPage:2 withCallback:^(NSArray *elements) {
+            [self loadTwoFirstPages];
+        }
+        withFailureCallback:^(NSError *error) {
             
-            // Ajouter les éléments
-            [cvElementsArray setArray:elements];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Mise à jour impossible"
+                                                            message:[NSString stringWithFormat:@"Vérifiez votre connexion à Internet... %@.", error]
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK..."
+                                                  otherButtonTitles:nil];
+            [alert show];
             
-            // Rafraîchir la vue
-            //[self.tableView reloadData]; // Ne fonctionne plus avec le bazar des threads updateurs
-            
-            [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
-        }];
-    }];
+            [self loadTwoFirstPages];                               
+        }
+     ];
 }
 
 - (void)didReceiveMemoryWarning

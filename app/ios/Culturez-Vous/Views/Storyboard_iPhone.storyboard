@@ -317,20 +317,21 @@
                                     <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Word details" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h04-9j-w3d">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Word details" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="260" translatesAutoresizingMaskIntoConstraints="NO" id="h04-9j-w3d">
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="113" id="KAy-Bs-YE8"/>
+                                                <constraint firstAttribute="width" constant="260" id="VUD-I1-OKf"/>
+                                                <constraint firstAttribute="height" constant="43" id="gju-ju-ADe"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="h04-9j-w3d" firstAttribute="top" secondItem="SGE-B5-Wxl" secondAttribute="top" constant="11" id="UB2-6J-DPn"/>
-                                    <constraint firstItem="h04-9j-w3d" firstAttribute="leading" secondItem="SGE-B5-Wxl" secondAttribute="leading" constant="68" id="rEE-Im-dB4"/>
+                                    <constraint firstItem="h04-9j-w3d" firstAttribute="top" secondItem="SGE-B5-Wxl" secondAttribute="top" type="default" id="CeY-Li-xxP"/>
+                                    <constraint firstItem="h04-9j-w3d" firstAttribute="centerX" secondItem="SGE-B5-Wxl" secondAttribute="centerX" type="default" id="vYD-aa-yQq"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="detailLabel" destination="h04-9j-w3d" id="IO7-xR-jwp"/>
@@ -343,9 +344,10 @@
                                     <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Word content" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2oa-eq-gsP">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Word content" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="260" translatesAutoresizingMaskIntoConstraints="NO" id="2oa-eq-gsP">
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="114" id="Mku-lE-DUQ"/>
+                                                <constraint firstAttribute="height" constant="42" id="lfI-il-8GD"/>
+                                                <constraint firstAttribute="width" constant="260" id="s6x-rI-bMY"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -355,8 +357,8 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="2oa-eq-gsP" firstAttribute="top" secondItem="imG-cf-TDA" secondAttribute="top" constant="11" id="XkP-d7-TBA"/>
-                                    <constraint firstItem="2oa-eq-gsP" firstAttribute="leading" secondItem="imG-cf-TDA" secondAttribute="leading" constant="70" id="b1a-qR-mza"/>
+                                    <constraint firstItem="2oa-eq-gsP" firstAttribute="top" secondItem="imG-cf-TDA" secondAttribute="top" type="default" id="UcY-ad-wJm"/>
+                                    <constraint firstItem="2oa-eq-gsP" firstAttribute="centerX" secondItem="imG-cf-TDA" secondAttribute="centerX" type="default" id="kA9-Qh-Wz2"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="contentLabel" destination="2oa-eq-gsP" id="Opn-Uu-o2k"/>
@@ -430,6 +432,65 @@
             <point key="canvasLocation" x="1276" y="721"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="DetailAuthorCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailAuthorCell.h"/>
+            <relationships>
+                <relationship kind="action" name="showAuthor:"/>
+                <relationship kind="outlet" name="authorCell" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="DetailCtpContentCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailCtpContentCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="contentLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="DetailCtpSolutionCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailCtpSolutionCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="solution" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="DetailDateCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailDateCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="DetailTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailTableViewController.h"/>
+        </class>
+        <class className="DetailWordContentCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailWordContentCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="contentLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="DetailWordDetailsCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailWordDetailsCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="detailLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ElementTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ElementTableViewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="unreadLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="WordstabTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/WordstabTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
