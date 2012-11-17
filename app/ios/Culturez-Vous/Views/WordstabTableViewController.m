@@ -24,23 +24,18 @@
             [cvElementsArray setArray:elements];
         
             // Rafraîchir la vue
-            dispatch_async(dispatch_get_main_queue(), ^{
-                    [self.tableView reloadData];
-            });
+            [self.tableView reloadData];
         
             [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
         }
         withFailureCallback:^(NSError *error)
         {
-            dispatch_async(dispatch_get_main_queue(), ^{
-            
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Lecture du cache impossible"
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Lecture du cache impossible"
                                                             message:[NSString stringWithFormat:@"Et c'est assez mauvais... %@.", error]
                                                            delegate:nil
                                                   cancelButtonTitle:@"OK..."
                                                   otherButtonTitles:nil];
-                [alert show];
-            });
+            [alert show];
         }
      ];
 }
@@ -124,6 +119,9 @@
     Element *element = [self.cvElementsArray objectAtIndex:[self.tableView indexPathForSelectedRow].row];
     
     controller.element = element;
+    
+    // On le marque comme lu
+    [elementManager markElementAsRead:element];
     
     // Go !
     [self.navigationController pushViewController:controller animated:YES];

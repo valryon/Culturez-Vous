@@ -66,7 +66,8 @@
     NSMutableArray* elementsArray = [[NSMutableArray alloc] init];
     
 	// Récupération des éléménts
-	for (SMXMLElement *elementXml in [document.root childrenNamed:@"element"]) {
+	for (SMXMLElement *elementXml in [document.root childrenNamed:@"element"])
+    {
         
         Element *element = NULL;
         
@@ -90,6 +91,8 @@
                 // Définitions
                 SMXMLElement* definitionsXml = [elementXml childNamed:@"definitions"];
                 
+                int rank = 1;
+                
                 for (SMXMLElement *defXml in [definitionsXml childrenNamed:@"definition"]) {
                     
                     NSString *content = [defXml valueWithPath:@"content"];
@@ -100,10 +103,13 @@
                     
                     def.details = details;
                     def.content = content;
+                    def.rank = [NSNumber numberWithInt:rank];
                     
                     [definitionsArray addObject:def];
                     
                     NSLog(@"DEBUG: Definition found");
+                    
+                    rank++;
                 }
                 
                 // Insertion des définitions de manière temporaire
@@ -133,6 +139,7 @@
         element.dbId = dbId;
         element.author = author;
         element.authorInfo = authorInfo;
+        element.voteCount = voteCount;
         
         NSLog(@"DEBUG: %@ %@ %@",[element class],[DateFormatter getStringForDate:element.date withFormat:@"dd/MM/yyyy"],element.title);
         

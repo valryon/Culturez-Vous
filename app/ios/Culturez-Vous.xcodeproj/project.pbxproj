@@ -44,9 +44,9 @@
 		33E4CC6A163433E1000693F4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33E4CC69163433E1000693F4 /* Default-568h@2x.png */; };
 		33E4CC6D163433E1000693F4 /* Culturez_Vous.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 33E4CC6B163433E1000693F4 /* Culturez_Vous.xcdatamodeld */; };
 		33E5880716553DCA002BC6AD /* Contrepeterie.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E5880616553DCA002BC6AD /* Contrepeterie.m */; };
-		33E5880A16553DCA002BC6AD /* Definition.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E5880916553DCA002BC6AD /* Definition.m */; };
 		33E5880D16553DCA002BC6AD /* Word.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E5880C16553DCA002BC6AD /* Word.m */; };
-		33E5881016553DCA002BC6AD /* Element.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E5880F16553DCA002BC6AD /* Element.m */; };
+		33ECE10A165792D900957CA2 /* Definition.m in Sources */ = {isa = PBXBuildFile; fileRef = 33ECE109165792D900957CA2 /* Definition.m */; };
+		33ECE10E1657953300957CA2 /* Element.m in Sources */ = {isa = PBXBuildFile; fileRef = 33ECE10D1657953300957CA2 /* Element.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -117,12 +117,12 @@
 		33E4CC6C163433E1000693F4 /* Culturez_Vous.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Culturez_Vous.xcdatamodel; sourceTree = "<group>"; };
 		33E5880516553DCA002BC6AD /* Contrepeterie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Contrepeterie.h; path = Model/CoreData/Contrepeterie.h; sourceTree = "<group>"; };
 		33E5880616553DCA002BC6AD /* Contrepeterie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Contrepeterie.m; path = Model/CoreData/Contrepeterie.m; sourceTree = "<group>"; };
-		33E5880816553DCA002BC6AD /* Definition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Definition.h; path = Model/CoreData/Definition.h; sourceTree = "<group>"; };
-		33E5880916553DCA002BC6AD /* Definition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Definition.m; path = Model/CoreData/Definition.m; sourceTree = "<group>"; };
 		33E5880B16553DCA002BC6AD /* Word.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Word.h; path = Model/CoreData/Word.h; sourceTree = "<group>"; };
 		33E5880C16553DCA002BC6AD /* Word.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Word.m; path = Model/CoreData/Word.m; sourceTree = "<group>"; };
-		33E5880E16553DCA002BC6AD /* Element.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Element.h; path = Model/CoreData/Element.h; sourceTree = "<group>"; };
-		33E5880F16553DCA002BC6AD /* Element.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Element.m; path = Model/CoreData/Element.m; sourceTree = "<group>"; };
+		33ECE108165792D900957CA2 /* Definition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Definition.h; path = Model/CoreData/Definition.h; sourceTree = "<group>"; };
+		33ECE109165792D900957CA2 /* Definition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Definition.m; path = Model/CoreData/Definition.m; sourceTree = "<group>"; };
+		33ECE10C1657953300957CA2 /* Element.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Element.h; path = Model/CoreData/Element.h; sourceTree = "<group>"; };
+		33ECE10D1657953300957CA2 /* Element.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Element.m; path = Model/CoreData/Element.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,12 +238,12 @@
 			isa = PBXGroup;
 			children = (
 				33E4CC6B163433E1000693F4 /* Culturez_Vous.xcdatamodeld */,
-				33E5880E16553DCA002BC6AD /* Element.h */,
-				33E5880F16553DCA002BC6AD /* Element.m */,
+				33ECE10C1657953300957CA2 /* Element.h */,
+				33ECE10D1657953300957CA2 /* Element.m */,
+				33ECE108165792D900957CA2 /* Definition.h */,
+				33ECE109165792D900957CA2 /* Definition.m */,
 				33E5880B16553DCA002BC6AD /* Word.h */,
 				33E5880C16553DCA002BC6AD /* Word.m */,
-				33E5880816553DCA002BC6AD /* Definition.h */,
-				33E5880916553DCA002BC6AD /* Definition.m */,
 				33E5880516553DCA002BC6AD /* Contrepeterie.h */,
 				33E5880616553DCA002BC6AD /* Contrepeterie.m */,
 			);
@@ -403,9 +403,9 @@
 				3306DE281650629300008F6A /* DetailCtpContentCell.m in Sources */,
 				3306DE2B165062A600008F6A /* DetailCtpSolutionCell.m in Sources */,
 				33E5880716553DCA002BC6AD /* Contrepeterie.m in Sources */,
-				33E5880A16553DCA002BC6AD /* Definition.m in Sources */,
 				33E5880D16553DCA002BC6AD /* Word.m in Sources */,
-				33E5881016553DCA002BC6AD /* Element.m in Sources */,
+				33ECE10A165792D900957CA2 /* Definition.m in Sources */,
+				33ECE10E1657953300957CA2 /* Element.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

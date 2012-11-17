@@ -2,7 +2,7 @@
 //  Element.h
 //  Culturez-Vous
 //
-//  Created by Dam on 15/11/12.
+//  Created by Dam on 17/11/12.
 //  Copyright (c) 2012 Damien Mayance & Matthieu Oger. All rights reserved.
 //
 
@@ -19,5 +19,6 @@
 @property (nonatomic, retain) NSNumber * isFavorite;
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSNumber * voteCount;
+@property (nonatomic, retain) NSNumber * isRead;
 
 @end

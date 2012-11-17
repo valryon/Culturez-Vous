@@ -31,4 +31,15 @@ typedef void(^ElementsRetrieved)(NSArray* elements);
 //
 - (void) getElementsFromPage: (int)pageFrom toPage:(int)pageTo withCallback:(ElementsRetrieved) callback withFailureCallback:(FailureCallback)failureCallback;
 
+
+//
+// Marquer un élément comme lu
+//
+- (void) markElementAsRead: (Element*)element;
+
+//
+// Marquer un élément comme favoris
+//
+- (void) markElementAsFavorite: (Element*)element;
+
 @end

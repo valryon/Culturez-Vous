@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Culturez-Vous/Model/ElementManager.m"
-         timestampString = "374688561.141297"
+         timestampString = "374838936.848476"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "221"
-         endingLineNumber = "221">
+         startingLineNumber = "239"
+         endingLineNumber = "239">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"

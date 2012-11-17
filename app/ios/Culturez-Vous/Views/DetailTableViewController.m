@@ -96,12 +96,20 @@
             // L'index de la définition = la section - 1 puisque la section 0 est statique
             int indexDef = indexPath.section - 1;
             
-            // On récupère la définition correspondant à cette cellule
             NSArray *defArray = [word.definitions allObjects];
             
             if(indexDef < defArray.count)
             {
-                Definition *def = [defArray objectAtIndex:indexDef];
+                // On tri les définitions par "rang"
+                NSArray *sortedArray;
+                sortedArray = [defArray sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+                    NSNumber *first = [(Definition*)a rank];
+                    NSNumber *second = [(Definition*)b rank];
+                    return [first compare:second];
+                }];
+                
+                // On récupère la définition correspondant à cette cellule
+                Definition *def = [sortedArray objectAtIndex:indexDef];
                 
                 if(indexPath.row % 2 == 0)
                 {

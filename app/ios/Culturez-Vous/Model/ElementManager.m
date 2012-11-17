@@ -102,21 +102,21 @@
             dispatch_async(queuePage, ^{
                 
                 [self updatePage:page
-                withCallback:^(BOOL newElementFound)
+                    withCallback:^(BOOL newElementFound)
                  {
                      loadingComplete = (newElementFound == false);
                      
                      // Débloque le sémaphore
                      dispatch_semaphore_signal(sema);
                  }
-               withFailureCallback:^(NSError *error) {
-                   
-                   errorDownload = error;
-                   
-                   // Débloque le sémaphore
-                   dispatch_semaphore_signal(sema);
-                   
-               }
+             withFailureCallback:^(NSError *error) {
+                 
+                 errorDownload = error;
+                 
+                 // Débloque le sémaphore
+                 dispatch_semaphore_signal(sema);
+                 
+             }
                  ];
             });
             
@@ -133,13 +133,18 @@
             
             if(failureCallback)
             {
-                failureCallback(errorDownload);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    failureCallback(errorDownload);
+                });
             }
         }
         else if(callback)
         {
             NSLog(@"INFO : Mise à jour OK");
-            callback();
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                callback();
+            });
         }
     });
     
@@ -156,5 +161,18 @@
     }
 }
 
+- (void) markElementAsRead: (Element*)element
+{
+    element.isRead = [NSNumber numberWithBool:true];
+    
+    [cache saveCache];
+}
+
+- (void) markElementAsFavorite: (Element*)element
+{
+    element.isFavorite = [NSNumber numberWithBool:true];
+    
+    [cache saveCache];
+}
 
 @end
