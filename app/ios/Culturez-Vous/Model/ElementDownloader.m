@@ -16,8 +16,8 @@
 {
     if(page < 1) page = 1;
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString: [NSString stringWithFormat:@"http://thegreatpaperadventure.com/CulturezVous/index.php/element/page/%d", page]]];
-    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString: [NSString stringWithFormat:@"http://thegreatpaperadventure.com/CulturezVous/index.php/element/page/%d", page]]];
+     
     // Appel au webservice
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     [operation
@@ -47,7 +47,7 @@
      ];
     
     [AFXMLRequestOperation addAcceptableContentTypes: [NSSet setWithObject:@"text/xml"]];
-    
+
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     [queue addOperation:operation];
 }

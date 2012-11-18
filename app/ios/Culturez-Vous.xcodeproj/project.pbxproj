@@ -47,6 +47,9 @@
 		33E5880D16553DCA002BC6AD /* Word.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E5880C16553DCA002BC6AD /* Word.m */; };
 		33ECE10A165792D900957CA2 /* Definition.m in Sources */ = {isa = PBXBuildFile; fileRef = 33ECE109165792D900957CA2 /* Definition.m */; };
 		33ECE10E1657953300957CA2 /* Element.m in Sources */ = {isa = PBXBuildFile; fileRef = 33ECE10D1657953300957CA2 /* Element.m */; };
+		33ED67981658FD9A00D837BE /* ElementTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33ED67971658FD9A00D837BE /* ElementTableViewController.m */; };
+		33ED679C1659018700D837BE /* ContrepeterieTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33ED679B1659018700D837BE /* ContrepeterieTableViewController.m */; };
+		33ED67A1165902BB00D837BE /* FavoritesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33ED67A0165902BB00D837BE /* FavoritesTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -123,6 +126,12 @@
 		33ECE109165792D900957CA2 /* Definition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Definition.m; path = Model/CoreData/Definition.m; sourceTree = "<group>"; };
 		33ECE10C1657953300957CA2 /* Element.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Element.h; path = Model/CoreData/Element.h; sourceTree = "<group>"; };
 		33ECE10D1657953300957CA2 /* Element.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Element.m; path = Model/CoreData/Element.m; sourceTree = "<group>"; };
+		33ED67961658FD9A00D837BE /* ElementTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ElementTableViewController.h; path = Views/ElementTableViewController.h; sourceTree = "<group>"; };
+		33ED67971658FD9A00D837BE /* ElementTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ElementTableViewController.m; path = Views/ElementTableViewController.m; sourceTree = "<group>"; };
+		33ED679A1659018700D837BE /* ContrepeterieTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ContrepeterieTableViewController.h; path = Views/ContrepeterieTableViewController.h; sourceTree = "<group>"; };
+		33ED679B1659018700D837BE /* ContrepeterieTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ContrepeterieTableViewController.m; path = Views/ContrepeterieTableViewController.m; sourceTree = "<group>"; };
+		33ED679F165902BB00D837BE /* FavoritesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FavoritesTableViewController.h; path = Views/FavoritesTableViewController.h; sourceTree = "<group>"; };
+		33ED67A0165902BB00D837BE /* FavoritesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FavoritesTableViewController.m; path = Views/FavoritesTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,27 +149,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3306DE161650617000008F6A /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				3306DE1A165061F000008F6A /* ElementTableViewCell.h */,
-				3306DE1B165061F000008F6A /* ElementTableViewCell.m */,
-				3306DE17165061CD00008F6A /* DetailDateCell.h */,
-				3306DE18165061CD00008F6A /* DetailDateCell.m */,
-				3306DE1D1650620D00008F6A /* DetailAuthorCell.h */,
-				3306DE1E1650620D00008F6A /* DetailAuthorCell.m */,
-				3306DE201650626800008F6A /* DetailWordDetailsCell.h */,
-				3306DE211650626800008F6A /* DetailWordDetailsCell.m */,
-				3306DE231650627E00008F6A /* DetailWordContentCell.h */,
-				3306DE241650627E00008F6A /* DetailWordContentCell.m */,
-				3306DE261650629300008F6A /* DetailCtpContentCell.h */,
-				3306DE271650629300008F6A /* DetailCtpContentCell.m */,
-				3306DE29165062A600008F6A /* DetailCtpSolutionCell.h */,
-				3306DE2A165062A600008F6A /* DetailCtpSolutionCell.m */,
-			);
-			name = Cells;
-			sourceTree = "<group>";
-		};
 		333864E91644012A00C37665 /* AFNetworking */ = {
 			isa = PBXGroup;
 			children = (
@@ -225,11 +213,8 @@
 		33D75565164EA9B5003FA28A /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				3306DE161650617000008F6A /* Cells */,
-				333CBADE1650022D000A689D /* WordstabTableViewController.h */,
-				333CBADF1650022D000A689D /* WordstabTableViewController.m */,
-				33D81EFC164075A800E531B4 /* DetailTableViewController.h */,
-				33D81EFD164075A800E531B4 /* DetailTableViewController.m */,
+				33ED679E1659023000D837BE /* Detail */,
+				33ED679D1659021300D837BE /* Tabs */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -307,6 +292,44 @@
 				33E4CC69163433E1000693F4 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		33ED679D1659021300D837BE /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				3306DE1A165061F000008F6A /* ElementTableViewCell.h */,
+				3306DE1B165061F000008F6A /* ElementTableViewCell.m */,
+				333CBADE1650022D000A689D /* WordstabTableViewController.h */,
+				333CBADF1650022D000A689D /* WordstabTableViewController.m */,
+				33ED679A1659018700D837BE /* ContrepeterieTableViewController.h */,
+				33ED679B1659018700D837BE /* ContrepeterieTableViewController.m */,
+				33ED67961658FD9A00D837BE /* ElementTableViewController.h */,
+				33ED67971658FD9A00D837BE /* ElementTableViewController.m */,
+				33ED679F165902BB00D837BE /* FavoritesTableViewController.h */,
+				33ED67A0165902BB00D837BE /* FavoritesTableViewController.m */,
+			);
+			name = Tabs;
+			sourceTree = "<group>";
+		};
+		33ED679E1659023000D837BE /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				3306DE17165061CD00008F6A /* DetailDateCell.h */,
+				3306DE18165061CD00008F6A /* DetailDateCell.m */,
+				3306DE1D1650620D00008F6A /* DetailAuthorCell.h */,
+				3306DE1E1650620D00008F6A /* DetailAuthorCell.m */,
+				3306DE201650626800008F6A /* DetailWordDetailsCell.h */,
+				3306DE211650626800008F6A /* DetailWordDetailsCell.m */,
+				3306DE231650627E00008F6A /* DetailWordContentCell.h */,
+				3306DE241650627E00008F6A /* DetailWordContentCell.m */,
+				3306DE261650629300008F6A /* DetailCtpContentCell.h */,
+				3306DE271650629300008F6A /* DetailCtpContentCell.m */,
+				3306DE29165062A600008F6A /* DetailCtpSolutionCell.h */,
+				3306DE2A165062A600008F6A /* DetailCtpSolutionCell.m */,
+				33D81EFC164075A800E531B4 /* DetailTableViewController.h */,
+				33D81EFD164075A800E531B4 /* DetailTableViewController.m */,
+			);
+			name = Detail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -406,6 +429,9 @@
 				33E5880D16553DCA002BC6AD /* Word.m in Sources */,
 				33ECE10A165792D900957CA2 /* Definition.m in Sources */,
 				33ECE10E1657953300957CA2 /* Element.m in Sources */,
+				33ED67981658FD9A00D837BE /* ElementTableViewController.m in Sources */,
+				33ED679C1659018700D837BE /* ContrepeterieTableViewController.m in Sources */,
+				33ED67A1165902BB00D837BE /* FavoritesTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

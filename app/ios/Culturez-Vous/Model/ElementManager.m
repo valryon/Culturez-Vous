@@ -150,10 +150,10 @@
     
 }
 
-- (void) getElementsFromPage: (int)pageFrom toPage:(int)pageTo withCallback:(ElementsRetrieved) callback withFailureCallback:(FailureCallback)failureCallback
+- (void) getElements: (NSString*)elementType fromPage: (int)pageFrom toPage:(int)pageTo withCallback:(ElementsRetrieved) callback withFailureCallback:(FailureCallback)failureCallback
 {
     // On récupère les éléments de cette page du cache
-    NSArray* elements = [cache getElements:@"Element" fromPage:pageFrom toPage:pageTo];
+    NSArray* elements = [cache getElements:elementType fromPage:pageFrom toPage:pageTo];
     
     if(callback)
     {

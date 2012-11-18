@@ -29,8 +29,7 @@ typedef void(^ElementsRetrieved)(NSArray* elements);
 //
 // Récupération des éléments à partir du cache et téléchargement si nécessaire
 //
-- (void) getElementsFromPage: (int)pageFrom toPage:(int)pageTo withCallback:(ElementsRetrieved) callback withFailureCallback:(FailureCallback)failureCallback;
-
+- (void) getElements: (NSString*)elementType fromPage: (int)pageFrom toPage:(int)pageTo withCallback:(ElementsRetrieved) callback withFailureCallback:(FailureCallback)failureCallback;
 
 //
 // Marquer un élément comme lu
