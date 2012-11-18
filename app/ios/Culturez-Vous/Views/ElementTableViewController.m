@@ -108,12 +108,13 @@
     
     NSString *cellIdentifier = nil;
     
-    if([element isKindOfClass:[Word class]]) {
-        cellIdentifier = @"Word";
-    } else if([element isKindOfClass:[Contrepeterie class]]) {
-        //        cellIdentifier = @"Contrepeterie";
-        cellIdentifier = @"Word"; //TODO template
-    }
+//    if([element isKindOfClass:[Word class]]) {
+//        cellIdentifier = @"Word";
+//    } else if([element isKindOfClass:[Contrepeterie class]]) {
+//        cellIdentifier = @"Contrepeterie";
+//    }
+    
+    cellIdentifier = @"Element";
     
     ElementTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     
