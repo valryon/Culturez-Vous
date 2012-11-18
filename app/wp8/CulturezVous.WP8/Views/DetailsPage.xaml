@@ -1,0 +1,104 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="CulturezVous.WP7.Views.DetailsPage"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"  
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:vm="clr-namespace:CulturezVous.WP7.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="696" d:DesignWidth="480"
+    shell:SystemTray.IsVisible="True"
+    xmlns:local="clr-namespace:CulturezVous.WP7.Views.ContentPresenters">
+
+    <d:DesignProperties.DataContext>
+        <vm:DetailsPageViewModel/>
+    </d:DesignProperties.DataContext>
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardIn"/>
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+    <Canvas     x:Name="LayoutRootCanvas" 
+                ManipulationStarted="element_ManipulationStarted" 
+                ManipulationDelta="element_ManipulationDelta" 
+                ManipulationCompleted="element_ManipulationCompleted">
+
+        <!--LayoutRoot is the root grid where all page content is placed-->
+        <Grid x:Name="LayoutRoot" Background="Transparent" Width="{Binding ElementName=LayoutRootCanvas, Path=ActualWidth}" Height="{Binding ElementName=LayoutRootCanvas, Path=ActualHeight}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!--TitlePanel contains the name of the application and page title-->
+            <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+                <TextBlock x:Name="dateLabel" Text="{Binding DateLabel}" Style="{StaticResource PhoneTextNormalStyle}" FontSize="{StaticResource PhoneFontSizeMediumLarge}" TextWrapping="Wrap" />
+                <TextBlock x:Name="PageTitle" Text="{Binding Title}" Margin="9,-7,0,0" FontSize="{StaticResource PhoneFontSizeExtraLarge}" TextWrapping="Wrap" />
+            </StackPanel>
+
+            <!--ContentPanel - place additional content here-->
+            <Grid Grid.Row="1" x:Name="ContentPanel"  Margin="21,0,21,0">
+
+                <local:ElementsContentPresenter 
+                        x:Name="previousElementPresenter" 
+                        Visibility="Collapsed"
+                        Content="{Binding ElementViewModel}" 
+                        VerticalContentAlignment="Stretch"
+                        HorizontalContentAlignment="Stretch"
+                        WordTemplate="{StaticResource WordItemTemplate}" 
+                        ContrepetrieTemplate="{StaticResource CTPItemTemplate}"/>
+
+                <local:ElementsContentPresenter 
+                        x:Name="currentElementPResenter"
+                        Content="{Binding ElementViewModel}" 
+                        VerticalContentAlignment="Stretch"
+                        HorizontalContentAlignment="Stretch"
+                        WordTemplate="{StaticResource WordItemTemplate}" 
+                        ContrepetrieTemplate="{StaticResource CTPItemTemplate}" />
+
+                <local:ElementsContentPresenter 
+                        x:Name="nextElementPresenter"
+                        Visibility="Collapsed"
+                        Margin="21,15,0,28"
+                        Content="{Binding ElementViewModel}" 
+                        VerticalContentAlignment="Stretch"
+                        HorizontalContentAlignment="Stretch"
+                        WordTemplate="{StaticResource WordItemTemplate}" 
+                        ContrepetrieTemplate="{StaticResource CTPItemTemplate}"  />
+
+            </Grid>
+        </Grid>
+    </Canvas>
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton  IconUri="Resources/Images/Light/favoriteIcon.png" Text="Favoris" Click="favoriteButton_Click" />
+            <shell:ApplicationBarIconButton  IconUri="Resources/Images/Light/shareIcon.png" Text="Partagez" Click="shareButton_Click"/>
+            <shell:ApplicationBarIconButton  IconUri="Resources/Images/Light/appbar.back.rest.png" Text="Précédent" Click="previousButton_Click"/>
+            <shell:ApplicationBarIconButton  IconUri="Resources/Images/Light/appbar.next.rest.png" Text="Suivant" Click="nextButton_Click"/>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+</phone:PhoneApplicationPage>

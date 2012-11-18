@@ -1,0 +1,286 @@
+﻿{ 
+  "elements" : [ 
+  		{
+			"type" : "word",
+			"id" : "78"	,
+			"date" : "2012-02-25",
+			"title" : "Bonnir / bonir 2 ",
+			"definitions" : [
+				{
+					"details" : "Verbe, argot",
+					"content" : "Parler, raconter, chercher à persuader."
+				},
+				{
+					"details" : "Verbe, argot",
+					"content" : "Tenir des propos quelconques."
+				}
+			],
+			"voteCount" : "78",
+			"author" : "1Jour1Mot",
+			"authorInfo" : "https://twitter.com/#!/1Jour1Mot"
+		},
+		{
+			"type" : "word",
+			"id" : "45"	,
+			"date" : "2012-02-24",
+			"title" : "Trisser, se trisser",
+			"definitions" : [
+				{
+					"details" : "Verbe, populaire",
+					"content" : "Se sauver, s'en aller rapidement, partir vivement."
+				}
+			],
+			"voteCount" : "45781",
+			"author" : "1Jour1Mot",
+			"authorInfo" : "https://twitter.com/#!/1Jour1Mot"
+		},
+		{
+			"type" : "word",
+			"id" : "21"	,
+			"date" : "2011-11-11",
+			"title" : "Bonnir / bonir ",
+			"definitions" : [
+				{
+					"details" : "Verbe, argot",
+					"content" : "Parler, raconter, chercher à persuader."
+				},
+				{
+					"details" : "Verbe, argot",
+					"content" : "Tenir des propos quelconques."
+				}
+			],
+			"voteCount" : "78",
+			"author" : "1Jour1Mot",
+			"authorInfo" : "https://twitter.com/#!/1Jour1Mot"
+		},
+		{
+			"type" : "word",
+			"id" : "56"	,
+			"date" : "2011-10-10",
+			"title" : "Prévarication",
+			"definitions" : [
+				{
+					"details" : "Nom féminin, Droit",
+					"content" : "Délit commis par un fonctionnaire dans l'exercice de ses fonctions."
+				},
+				{
+					"details" : "Nom féminin, Droit",
+					"content" : "Transgression de la loi divine, d'un devoir religieux, d'une obligation morale."
+				}
+			],
+			"voteCount" : "123",
+			"author" : "1Jour1Mot",
+			"authorInfo" : "https://twitter.com/#!/1Jour1Mot"
+		},
+		{
+			"type" : "word",
+			"id" : "145"	,
+			"date" : "2011-09-09",
+			"title" : "Frelampier ",
+			"definitions" : [
+				{
+					"details" : "Nom masculin, vieux, populaire",
+					"content" : "Terme de mépris pour désigner un homme de peu et qui n'est bon à rien."
+				}
+			],
+			"voteCount" : "451",
+			"author" : "1Jour1Mot",
+			"authorInfo" : "https://twitter.com/#!/1Jour1Mot",
+		},
+		{
+			"type" : "word",
+			"id" : "1451"	,
+			"date" : "2011-09-09",
+			"title" : "Frelampier 1",
+			"definitions" : [
+				{
+					"details" : "Nom masculin, vieux, populaire",
+					"content" : "Terme de mépris pour désigner un homme de peu et qui n'est bon à rien."
+				}
+			],
+			"voteCount" : "451",
+			"author" : "1Jour1Mot",
+			"authorInfo" : "https://twitter.com/#!/1Jour1Mot",
+		},
+		{
+			"type" : "word",
+			"id" : "1452"	,
+			"date" : "2011-09-09",
+			"title" : "Frelampier 2",
+			"definitions" : [
+				{
+					"details" : "Nom masculin, vieux, populaire",
+					"content" : "Terme de mépris pour désigner un homme de peu et qui n'est bon à rien."
+				}
+			],
+			"voteCount" : "451",
+			"author" : "1Jour1Mot",
+			"authorInfo" : "https://twitter.com/#!/1Jour1Mot",
+		},
+		{
+			"type" : "word",
+			"id" : "1453"	,
+			"date" : "2011-09-09",
+			"title" : "Frelampier 3",
+			"definitions" : [
+				{
+					"details" : "Nom masculin, vieux, populaire",
+					"content" : "Terme de mépris pour désigner un homme de peu et qui n'est bon à rien."
+				}
+			],
+			"voteCount" : "451",
+			"author" : "1Jour1Mot",
+			"authorInfo" : "https://twitter.com/#!/1Jour1Mot",
+		},
+		{
+			"type" : "word",
+			"id" : "1454"	,
+			"date" : "2011-09-09",
+			"title" : "Frelampier 4",
+			"definitions" : [
+				{
+					"details" : "Nom masculin, vieux, populaire",
+					"content" : "Terme de mépris pour désigner un homme de peu et qui n'est bon à rien."
+				}
+			],
+			"voteCount" : "451",
+			"author" : "1Jour1Mot",
+			"authorInfo" : "https://twitter.com/#!/1Jour1Mot",
+		},
+		{
+			"type" : "word",
+			"id" : "1455"	,
+			"date" : "2011-09-09",
+			"title" : "Frelampier 5",
+			"definitions" : [
+				{
+					"details" : "Nom masculin, vieux, populaire",
+					"content" : "Terme de mépris pour désigner un homme de peu et qui n'est bon à rien."
+				}
+			],
+			"voteCount" : "451",
+			"author" : "1Jour1Mot",
+			"authorInfo" : "https://twitter.com/#!/1Jour1Mot",
+		},
+		{
+			"type" : "word",
+			"id" : "1456"	,
+			"date" : "2011-09-09",
+			"title" : "Frelampier 6",
+			"definitions" : [
+				{
+					"details" : "Nom masculin, vieux, populaire",
+					"content" : "Terme de mépris pour désigner un homme de peu et qui n'est bon à rien."
+				}
+			],
+			"voteCount" : "451",
+			"author" : "1Jour1Mot",
+			"authorInfo" : "https://twitter.com/#!/1Jour1Mot",
+		},
+		{
+			"type" : "word",
+			"id" : "1457"	,
+			"date" : "2011-09-09",
+			"title" : "Frelampier 7",
+			"definitions" : [
+				{
+					"details" : "Nom masculin, vieux, populaire",
+					"content" : "Terme de mépris pour désigner un homme de peu et qui n'est bon à rien."
+				}
+			],
+			"voteCount" : "451",
+			"author" : "1Jour1Mot",
+			"authorInfo" : "https://twitter.com/#!/1Jour1Mot",
+		},
+		{
+			"type" : "word",
+			"id" : "1458"	,
+			"date" : "2011-09-09",
+			"title" : "Frelampier 8",
+			"definitions" : [
+				{
+					"details" : "Nom masculin, vieux, populaire",
+					"content" : "Terme de mépris pour désigner un homme de peu et qui n'est bon à rien."
+				}
+			],
+			"voteCount" : "451",
+			"author" : "1Jour1Mot",
+			"authorInfo" : "https://twitter.com/#!/1Jour1Mot",
+		},
+		{
+			"type" : "word",
+			"id" : "1459"	,
+			"date" : "2011-09-09",
+			"title" : "Frelampier 9",
+			"definitions" : [
+				{
+					"details" : "Nom masculin, vieux, populaire",
+					"content" : "Terme de mépris pour désigner un homme de peu et qui n'est bon à rien."
+				}
+			],
+			"voteCount" : "451",
+			"author" : "1Jour1Mot",
+			"authorInfo" : "https://twitter.com/#!/1Jour1Mot",
+		},
+		{
+			"type" : "contrepeterie",
+			"id" : "164"	,
+			"date" : "2011-09-08",
+			"title" : "Contrepeterie",
+			"content" : "Tu as le choix dans la date.",
+			"preview" : "Tu as le choix...",
+			"solution" : "Tu as le doigt dans la chatte.",
+			"voteCount" : "79784",
+			"author" : "Nicolas PILLON",
+			"authorInfo" : ""
+		},
+		{
+			"type" : "contrepeterie",
+			"id" : "1641"	,
+			"date" : "2011-09-08",
+			"title" : "Contrepeterie 1",
+			"content" : "Tu as le choix dans la date.",
+			"preview" : "Tu as le choix...",
+			"solution" : "Tu as le doigt dans la chatte.",
+			"voteCount" : "797",
+			"author" : "Nicolas PILLON",
+			"authorInfo" : ""
+		},
+		{
+			"type" : "contrepeterie",
+			"id" : "1649"	,
+			"date" : "2011-09-08",
+			"title" : "Contrepeterie 9",
+			"content" : "Tu as le choix dans la date.",
+			"preview" : "Tu as le choix...",
+			"solution" : "Tu as le doigt dans la chatte.",
+			"voteCount" : "797",
+			"author" : "Nicolas PILLON",
+			"authorInfo" : ""
+		},
+		{
+			"type" : "contrepeterie",
+			"id" : "1642"	,
+			"date" : "2011-09-08",
+			"title" : "Contrepeterie 2",
+			"content" : "Tu as le choix dans la date.",
+			"preview" : "Tu as le choix...",
+			"solution" : "Tu as le doigt dans la chatte.",
+			"voteCount" : "7",
+			"author" : "Nicolas PILLON",
+			"authorInfo" : ""
+		},
+		{
+			"type" : "contrepeterie",
+			"id" : "1643"	,
+			"date" : "2012-03-22",
+			"title" : "Contrepeterie Wabon",
+			"content" : "Tu as le choix dans la date.",
+			"preview" : "Tu as le choix...",
+			"solution" : "Tu as le doigt dans la chatte.",
+			"voteCount" : "45",
+			"author" : "Nicolas PILLON",
+			"authorInfo" : ""
+		}
+  ]
+} 
