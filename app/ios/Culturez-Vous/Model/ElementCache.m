@@ -162,7 +162,6 @@
 #pragma Fonctions de recherche
 
 - (NSArray*) getElements:(NSString*)type fromPage:(int)pageFrom toPage:(int) pageTo
-
 {
     AppDelegate* app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     

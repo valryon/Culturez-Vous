@@ -161,6 +161,16 @@
     }
 }
 
+- (void) getAllElements: (NSString*)elementType withCallback:(ElementsRetrieved) callback withFailureCallback:(FailureCallback)failureCallback
+{
+    NSArray* elements = [cache getAllElements:elementType];
+    
+    if(callback)
+    {
+        callback(elements);
+    }
+}
+
 - (void) markElementAsRead: (Element*)element
 {
     element.isRead = [NSNumber numberWithBool:true];

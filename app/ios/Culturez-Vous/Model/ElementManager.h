@@ -32,6 +32,11 @@ typedef void(^ElementsRetrieved)(NSArray* elements);
 - (void) getElements: (NSString*)elementType fromPage: (int)pageFrom toPage:(int)pageTo withCallback:(ElementsRetrieved) callback withFailureCallback:(FailureCallback)failureCallback;
 
 //
+// Récupérer tous les éléments
+//
+- (void) getAllElements: (NSString*)elementType withCallback:(ElementsRetrieved) callback withFailureCallback:(FailureCallback)failureCallback;
+
+//
 // Marquer un élément comme lu
 //
 - (void) markElementAsRead: (Element*)element;

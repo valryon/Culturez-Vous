@@ -8,10 +8,6 @@
 
 #import "ElementTableViewController.h"
 
-@interface ElementTableViewController ()
-
-@end
-
 @implementation ElementTableViewController
 
 @synthesize cvElementsArray;
@@ -32,21 +28,21 @@
 {
     // Puis on charge les deux première page
     [elementManager getElements:
-     [self getElementType]
-                       fromPage:0 toPage:2
-                   withCallback:^(NSArray *elements) {
+                        [self getElementType]
+                        fromPage:0 toPage:2
+                        withCallback:^(NSArray *elements) {
                        
-                       // Ajouter les éléments
-                       [cvElementsArray setArray:elements];
+                            // Ajouter les éléments
+                            [cvElementsArray setArray:elements];
                        
-                       // Rafraîchir la vue
-                       [self.tableView reloadData];
+                            // Rafraîchir la vue
+                            [self.tableView reloadData];
                        
-                       [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
-                   }
-            withFailureCallback:^(NSError *error)
-     {
-         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Lecture du cache impossible"
+//                            [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+                        }
+                        withFailureCallback:^(NSError *error)
+                        {
+                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Lecture du cache impossible"
                                                          message:[NSString stringWithFormat:@"Et c'est assez mauvais... %@.", error]
                                                         delegate:nil
                                                cancelButtonTitle:@"OK..."
@@ -60,26 +56,29 @@
 {
     [super viewDidLoad];
     
-    cvElementsArray = [[NSMutableArray alloc] init];
+    [self.tableView registerNib:[UINib nibWithNibName:@"ElementCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"Element"];
     
     elementManager = [[ElementManager alloc ]init];
     
-    // On essaie de récupèrer les nouveaux éléments
-    [elementManager updateElementsWithCallback:^{
-        [self loadTwoFirstPages];
-    }
+    cvElementsArray = [[NSMutableArray alloc] init];
+    
+    // On affiche les premières pages aussi vite que possible
+    [self loadTwoFirstPages];
+    
+    // Puis on essaie de récupèrer les nouveaux éléments en tâche de fond
+    [elementManager updateElementsWithCallback:^
+                            {
+                                [self loadTwoFirstPages];
+                            }
                            withFailureCallback:^(NSError *error) {
                                
-                               dispatch_async(dispatch_get_main_queue(), ^{
-                                   UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Mise à jour impossible"
-                                                                                   message:[NSString stringWithFormat:@"Vérifiez votre connexion à Internet... %@.", error]
-                                                                                  delegate:nil
-                                                                         cancelButtonTitle:@"OK..."
-                                                                         otherButtonTitles:nil];
+                                   UIAlertView *alert = [[UIAlertView alloc]
+                                                initWithTitle:@"Mise à jour impossible"
+                                                message:[NSString stringWithFormat:@"Vérifiez votre connexion à Internet... %@.", error]
+                                                delegate:nil
+                                                cancelButtonTitle:@"OK..."
+                                                otherButtonTitles:nil];
                                    [alert show];
-                               });
-                               
-                               [self loadTwoFirstPages];
                            }
      ];
 }
@@ -143,4 +142,5 @@
     // Go !
     [self.navigationController pushViewController:controller animated:YES];
 }
+
 @end

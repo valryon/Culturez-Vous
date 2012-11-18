@@ -12,55 +12,6 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Element" id="c4R-fP-6An" customClass="ElementTableViewCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" text="Titre du mot" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S2F-qG-GBX">
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="left" text="23 novembre 2012" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUh-Lu-Co5">
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="267" id="Ltp-qZ-eyl"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="left" text="Nouveau !" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZtD-nP-PLA">
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="66" id="Yev-B6-CDk"/>
-                                                <constraint firstAttribute="height" constant="21" id="vW5-lA-77h"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="S2F-qG-GBX" secondAttribute="trailing" constant="20" type="default" id="FGy-J4-0Zg"/>
-                                    <constraint firstItem="S2F-qG-GBX" firstAttribute="top" secondItem="c4R-fP-6An" secondAttribute="top" constant="2" id="Iqf-WX-VJK"/>
-                                    <constraint firstItem="ZtD-nP-PLA" firstAttribute="top" secondItem="c4R-fP-6An" secondAttribute="top" constant="11" id="OJ0-vj-ren"/>
-                                    <constraint firstItem="eUh-Lu-Co5" firstAttribute="leading" secondItem="c4R-fP-6An" secondAttribute="leading" constant="20" type="default" id="Ulh-oV-oAQ"/>
-                                    <constraint firstItem="eUh-Lu-Co5" firstAttribute="top" secondItem="c4R-fP-6An" secondAttribute="top" constant="20" type="default" id="kh6-u5-g8E"/>
-                                    <constraint firstAttribute="trailing" secondItem="ZtD-nP-PLA" secondAttribute="trailing" constant="40" id="tGv-FU-mm8"/>
-                                    <constraint firstItem="S2F-qG-GBX" firstAttribute="leading" secondItem="c4R-fP-6An" secondAttribute="leading" constant="20" type="default" id="ukN-3M-izn"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="dateLabel" destination="eUh-Lu-Co5" id="XIO-Ea-klb"/>
-                                    <outlet property="titleLabel" destination="S2F-qG-GBX" id="MVX-dN-vFT"/>
-                                    <outlet property="unreadLabel" destination="ZtD-nP-PLA" id="N9G-eD-lVH"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="rgy-wx-DTC" id="WL7-SR-zfU"/>
                             <outlet property="delegate" destination="rgy-wx-DTC" id="kqO-yc-Ylt"/>
@@ -121,7 +72,6 @@
         <!--Navigation Controller - Favoris-->
         <scene sceneID="YIz-Gf-FX6">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Mbw-SA-aLf" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="Gpl-w7-Ub4" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Favoris" id="0wT-G3-XW9"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Fes-Lk-eLT">
@@ -131,6 +81,7 @@
                         <segue destination="Z32-ZZ-gHh" kind="relationship" relationship="rootViewController" id="LXJ-dh-yAr"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mbw-SA-aLf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-845" y="713"/>
         </scene>
@@ -148,6 +99,9 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Item" id="6D6-aJ-tuR"/>
+                    <connections>
+                        <segue destination="zFQ-f3-POY" kind="push" id="JRE-B5-PXM"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1SV-Po-evQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -429,7 +383,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="btf-Aj-DSz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1276" y="721"/>
+            <point key="canvasLocation" x="860" y="713"/>
         </scene>
     </scenes>
     <classes>
@@ -476,14 +430,6 @@
                 <relationship kind="outlet" name="detailLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
-        <class className="ElementTableViewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ElementTableViewCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="unreadLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
         <class className="ElementTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ElementTableViewController.h"/>
             <relationships>
@@ -506,6 +452,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Kvw-yH-Va5"/>
+        <segue reference="JRE-B5-PXM"/>
     </inferredMetricsTieBreakers>
 </document>

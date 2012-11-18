@@ -32,6 +32,7 @@
 		33D81EF81640712A00E531B4 /* Storyboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33D81EF51640712A00E531B4 /* Storyboard_iPhone.storyboard */; };
 		33D81EFB1640715500E531B4 /* ElementDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D81EFA1640715500E531B4 /* ElementDownloader.m */; };
 		33D81EFE164075A800E531B4 /* DetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D81EFD164075A800E531B4 /* DetailTableViewController.m */; };
+		33DE8D2E1659583C00DED4AB /* ElementCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33DE8D2D1659583C00DED4AB /* ElementCell.xib */; };
 		33E4CC52163433E1000693F4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33E4CC51163433E1000693F4 /* UIKit.framework */; };
 		33E4CC54163433E1000693F4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33E4CC53163433E1000693F4 /* Foundation.framework */; };
 		33E4CC56163433E1000693F4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33E4CC55163433E1000693F4 /* CoreGraphics.framework */; };
@@ -103,6 +104,7 @@
 		33D81EFA1640715500E531B4 /* ElementDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ElementDownloader.m; path = Model/ElementDownloader.m; sourceTree = "<group>"; };
 		33D81EFC164075A800E531B4 /* DetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailTableViewController.h; path = Views/DetailTableViewController.h; sourceTree = "<group>"; };
 		33D81EFD164075A800E531B4 /* DetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailTableViewController.m; path = Views/DetailTableViewController.m; sourceTree = "<group>"; };
+		33DE8D2D1659583C00DED4AB /* ElementCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ElementCell.xib; sourceTree = "<group>"; };
 		33E4CC4D163433E1000693F4 /* Culturez-Vous.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Culturez-Vous.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		33E4CC51163433E1000693F4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		33E4CC53163433E1000693F4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -235,6 +237,31 @@
 			name = CoreData;
 			sourceTree = "<group>";
 		};
+		33DE8D301659593E00DED4AB /* Generic */ = {
+			isa = PBXGroup;
+			children = (
+				33ED67961658FD9A00D837BE /* ElementTableViewController.h */,
+				33ED67971658FD9A00D837BE /* ElementTableViewController.m */,
+				33DE8D2D1659583C00DED4AB /* ElementCell.xib */,
+				3306DE1A165061F000008F6A /* ElementTableViewCell.h */,
+				3306DE1B165061F000008F6A /* ElementTableViewCell.m */,
+			);
+			name = Generic;
+			sourceTree = "<group>";
+		};
+		33DE8D311659595200DED4AB /* Elements */ = {
+			isa = PBXGroup;
+			children = (
+				33ED679A1659018700D837BE /* ContrepeterieTableViewController.h */,
+				33ED679B1659018700D837BE /* ContrepeterieTableViewController.m */,
+				33ED679F165902BB00D837BE /* FavoritesTableViewController.h */,
+				33ED67A0165902BB00D837BE /* FavoritesTableViewController.m */,
+				333CBADE1650022D000A689D /* WordstabTableViewController.h */,
+				333CBADF1650022D000A689D /* WordstabTableViewController.m */,
+			);
+			name = Elements;
+			sourceTree = "<group>";
+		};
 		33E4CC42163433E1000693F4 = {
 			isa = PBXGroup;
 			children = (
@@ -297,16 +324,8 @@
 		33ED679D1659021300D837BE /* Tabs */ = {
 			isa = PBXGroup;
 			children = (
-				3306DE1A165061F000008F6A /* ElementTableViewCell.h */,
-				3306DE1B165061F000008F6A /* ElementTableViewCell.m */,
-				333CBADE1650022D000A689D /* WordstabTableViewController.h */,
-				333CBADF1650022D000A689D /* WordstabTableViewController.m */,
-				33ED679A1659018700D837BE /* ContrepeterieTableViewController.h */,
-				33ED679B1659018700D837BE /* ContrepeterieTableViewController.m */,
-				33ED67961658FD9A00D837BE /* ElementTableViewController.h */,
-				33ED67971658FD9A00D837BE /* ElementTableViewController.m */,
-				33ED679F165902BB00D837BE /* FavoritesTableViewController.h */,
-				33ED67A0165902BB00D837BE /* FavoritesTableViewController.m */,
+				33DE8D301659593E00DED4AB /* Generic */,
+				33DE8D311659595200DED4AB /* Elements */,
 			);
 			name = Tabs;
 			sourceTree = "<group>";
@@ -389,6 +408,7 @@
 				33E4CC6A163433E1000693F4 /* Default-568h@2x.png in Resources */,
 				33D81EF81640712A00E531B4 /* Storyboard_iPhone.storyboard in Resources */,
 				3338650E16440EC500C37665 /* README.md in Resources */,
+				33DE8D2E1659583C00DED4AB /* ElementCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
