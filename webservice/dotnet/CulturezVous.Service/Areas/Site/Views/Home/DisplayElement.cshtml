@@ -1,0 +1,57 @@
+﻿@model CulturezVous.Service.Models.ElementViewModel
+@{
+    ViewBag.Title = Model.Title;
+}
+<div id="text">
+    <article class="info">
+    <h2>
+        @Model.Title
+    </h2>
+    <p>
+        Expression du @Model.Date.ToString("dd MMM yyyy")
+    </p>
+</article>
+    @if (string.IsNullOrEmpty(Model.Details1) == false && string.IsNullOrEmpty(Model.Content1) == false)
+    {
+        <article class="info">
+            <h3>
+                @Model.Details1
+            </h3>   
+            <p>
+                @Model.Content1
+            </p>
+        </article>
+    }
+    @if (string.IsNullOrEmpty(Model.Details2) == false && string.IsNullOrEmpty(Model.Content2) == false)
+    {
+        <article class="info">
+            <h3>
+                @Model.Details2
+            </h3>   
+            <p>
+                @Model.Content2
+            </p>
+        </article>
+    }
+    @if (string.IsNullOrEmpty(Model.Details3) == false && string.IsNullOrEmpty(Model.Content3) == false)
+    {
+        <article class="info">
+            <h3>
+                @Model.Details3
+            </h3>   
+            <p>
+                @Model.Content3
+            </p>
+        </article>
+    }
+</div>
+
+<div>
+    <h2>Retrouvez ce mot sur l'application Culturez-Vous !</h2>
+
+    <article id="download"><a href="http://windowsphone.com/s?appid=fa6990ca-dae8-4c8d-b181-771869320d21">
+        <img src="@Url.Content("~/Content/img/marketplace.jpg")" alt="Télécharger sur le Marketplace WP7 !" title="Télécharger sur le Marketplace WP7 !" width="80" height="80">
+        <p>Télécharger sur le marketplace</p></a>
+    </article>
+
+</div>

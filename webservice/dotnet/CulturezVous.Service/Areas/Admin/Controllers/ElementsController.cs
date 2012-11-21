@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using CulturezVous.Service.Areas.Admin.Models;
-using CulturezVous.Service.Data.Elements.Dao;
-using System.Configuration;
 using CulturezVous.Service.Data.Elements;
+using CulturezVous.Service.Data.Elements.Dao;
+using CulturezVous.Service.Models;
 
 namespace CulturezVous.Service.Areas.Admin.Controllers
 {
@@ -88,7 +87,7 @@ namespace CulturezVous.Service.Areas.Admin.Controllers
 
                 if (e != null)
                 {
-                    viewModel = loadViewModel(e);
+                    viewModel.LoadFromElement(e);
                 }
                 else
                 {
@@ -129,7 +128,7 @@ namespace CulturezVous.Service.Areas.Admin.Controllers
                 AuthorDao autdao = new AuthorDao(cvDb);
                 var authors = autdao.GetAuthors();
 
-                Element e = createElement(model);
+                Element e = model.ToElement();
 
                 // Création
                 if (model.ElementId == 0)
@@ -166,7 +165,7 @@ namespace CulturezVous.Service.Areas.Admin.Controllers
 
             if (e != null)
             {
-                viewModel = loadViewModel(e);
+                viewModel.LoadFromElement(e);
             }
             else
             {
@@ -184,112 +183,6 @@ namespace CulturezVous.Service.Areas.Admin.Controllers
 
             return RedirectToAction("Index");
         }
-
-        private static ElementViewModel loadViewModel(Element e)
-        {
-            ElementViewModel viewModel = new ElementViewModel();
-
-            viewModel.Title = e.Title;
-            viewModel.Type = e.Type;
-            viewModel.ElementId = e.Id;
-            viewModel.Date = e.Date;
-            viewModel.VoteCount = e.FavoriteCount;
-            viewModel.AuthorId = e.Author.Id;
-
-            viewModel.Type = e.Type;
-
-            if (e is Word)
-            {
-                Word word = e as Word;
-
-                if (word.Definitions.Count > 0)
-                {
-                    viewModel.Details1 = word.Definitions[0].Details;
-                    viewModel.Content1 = word.Definitions[0].Content;
-                }
-                if (word.Definitions.Count > 1)
-                {
-                    viewModel.Details2 = word.Definitions[1].Details;
-                    viewModel.Content2 = word.Definitions[1].Content;
-                }
-                if (word.Definitions.Count > 2)
-                {
-                    viewModel.Details3 = word.Definitions[2].Details;
-                    viewModel.Content3 = word.Definitions[2].Content;
-                }
-            }
-            else if (e is Contrepeterie)
-            {
-                Contrepeterie ctp = e as Contrepeterie;
-
-                viewModel.Solution = ctp.Solution;
-                viewModel.Content = ctp.Content;
-            }
-
-            return viewModel;
-        }
-
-        private static Element createElement(ElementViewModel viewModel)
-        {
-            AuthorDao autdao = new AuthorDao(cvDb);
-            var authors = autdao.GetAuthors();
-
-            Element e = null;
-
-            if (viewModel.Type == "word")
-            {
-                Word w = new Word();
-
-                if (string.IsNullOrEmpty(viewModel.Details1) == false && string.IsNullOrEmpty(viewModel.Content1) == false)
-                {
-                    w.Definitions.Add(new Definition()
-                    {
-                        Id = viewModel.IdDef1,
-                        Content = viewModel.Content1,
-                        Details = viewModel.Details1,
-                        WordId = w.Id
-                    });
-                }
-                if (string.IsNullOrEmpty(viewModel.Details2) == false && string.IsNullOrEmpty(viewModel.Content2) == false)
-                {
-                    w.Definitions.Add(new Definition()
-                    {
-                        Id = viewModel.IdDef2,
-                        Content = viewModel.Content2,
-                        Details = viewModel.Details2,
-                        WordId = w.Id
-                    });
-                }
-                if (string.IsNullOrEmpty(viewModel.Details3) == false && string.IsNullOrEmpty(viewModel.Content3) == false)
-                {
-                    w.Definitions.Add(new Definition()
-                    {
-                        Id = viewModel.IdDef3,
-                        Content = viewModel.Content3,
-                        Details = viewModel.Details3,
-                        WordId = w.Id
-                    });
-                }
-
-                e = w;
-            }
-            else
-            {
-                Contrepeterie ctp = new Contrepeterie();
-
-                ctp.Content = viewModel.Content;
-                ctp.Solution = viewModel.Solution;
-
-                e = ctp;
-            }
-
-            e.Author = authors.Where(a => a.Id == viewModel.AuthorId).FirstOrDefault();
-            e.Id = viewModel.ElementId;
-            e.Title = viewModel.Title;
-            e.Date = viewModel.Date;
-            e.FavoriteCount = viewModel.VoteCount;
-
-            return e;
-        }
+       
     }
 }

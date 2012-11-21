@@ -1,0 +1,39 @@
+﻿<html>
+<head>
+    <title>Culturez-Vous ! - @ViewBag.Title</title>
+    <!-- styles-->
+    <link rel="stylesheet" media="screen" href="@Url.Content("~/Content/css/reset.css")">
+    <link rel="stylesheet" media="screen" href="@Url.Content("~/Content/css/site.css")">
+    <!-- scripts-->
+    <script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script>
+    <!-- misc-->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+    <meta name="description" content="« Culturez-Vous ! » est une application ludique et littéraire pour Windows Phone 7. Découvrez de nouveaux mots et contrepèteries chaque jour.">
+    <meta name="keywords" content="culture, culturez-vous, culturez, vous, mobile, windows, windows phone 7, windows phone, application, mots, contrepèteries, expressions, langue, français, ludique, littéraire, apprentissage, vocabulaire, désuet, amusant">
+</head>
+<body>
+    <div id="page">
+        <header>
+        <ul> 
+          <li> <a href="http://www.facebook.com/pages/Culturez-Vous/219847274796517" target="_blank"><img src="@Url.Content("~/Content/img/facebook.png")">facebook </a></li>
+          <li><img src="@Url.Content("~/Content/img/twitter.png")"><a href="http://twitter.com/#!/valryon" target="_blank">Damien</a>, &nbsp;<a href="http://twitter.com/#!/yiashen" target="_blank">Matthieu</a></li>
+        </ul>
+      </header>
+        <!-- main section-->
+        <div id="content">
+            <h1>
+                <img src="@Url.Content("~/Content/img//title.jpg")">Culturez-Vous !
+            </h1>
+            @RenderBody()
+        </div>
+        <footer>
+        <section>
+          <p>Culturez-Vous ! est une idée originale d'Anaïs Noblanc. Développement par <a href="http://valryon.fr" target="_blank">Damien Mayance</a> et conception par <a href="http://solarsailer.net" target="_blank">Matthieu Oger</a>.</p>
+          <p class="small">Culturez-Vous ! - 2012/2013. Tous droits réservés.</p>
+        </section>
+		<br />
+      </footer>
+    </div>
+</body>
+</html>
