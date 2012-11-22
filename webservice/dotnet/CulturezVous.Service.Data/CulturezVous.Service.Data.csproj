@@ -56,6 +56,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Crypto\CVCrypto.cs" />
     <Compile Include="Db\MySqlDao.cs" />
     <Compile Include="Db\GenericDao.cs" />
     <Compile Include="Db\SqlDao.cs" />
@@ -70,6 +71,9 @@
     <Compile Include="Elements\Dao\ElementDao.cs" />
     <Compile Include="Elements\Word.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reponse\ServiceCodes.cs" />
+    <Compile Include="Reponse\ServiceResponse.cs" />
+    <Compile Include="Serializer\JsonHelper.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

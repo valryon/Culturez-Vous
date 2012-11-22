@@ -79,8 +79,6 @@
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\ElementsController.cs" />
     <Compile Include="Areas\Admin\Models\AdminElementsViewModel.cs" />
-    <Compile Include="Areas\Service\Models\ServiceCodes.cs" />
-    <Compile Include="Areas\Service\Models\ServiceResponse.cs" />
     <Compile Include="Models\ElementViewModel.cs" />
     <Compile Include="Areas\Admin\Models\PaginationModel.cs" />
     <Compile Include="Areas\Service\Controllers\ElementController.cs" />

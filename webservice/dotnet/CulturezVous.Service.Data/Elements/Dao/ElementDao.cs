@@ -182,6 +182,22 @@ namespace CulturezVous.Service.Data.Elements.Dao
             }
         }
 
+        /// <summary>
+        /// Ajoute une vue au compteur de favoris
+        /// </summary>
+        /// <param name="element"></param>
+        /// <returns></returns>
+        public bool UpdateFavoriteView(Element e)
+        {
+            string sql = "UPDATE elements SET element_favoriteCount=@votes WHERE element_id = @id";
+            int execUpdate = ExecuteNonQuery(sql, System.Data.CommandType.Text
+                , new MySqlParameter("@id", e.Id)
+                , new MySqlParameter("@votes", e.FavoriteCount)
+                );
+
+            return execUpdate > 0;
+        }
+
         private Element parseElement(DbDataReader reader)
         {
             Element e = null;

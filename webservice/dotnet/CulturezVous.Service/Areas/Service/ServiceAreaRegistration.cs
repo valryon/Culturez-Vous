@@ -16,13 +16,31 @@ namespace CulturezVous.Service.Areas.Service
         {
             context.MapRoute(
                 "Service_element_last",
-                "ws/elements.{format}/{page}",
+                "ws/elements/{page}",
                 new { controller = "Element", action = "LastElements" }
             );
 
             context.MapRoute(
+                "Service_element",
+                "ws/element/{id}",
+                new { controller = "Element", action = "Detail" }
+            );
+
+            context.MapRoute(
+                "Service_element_bestof",
+                "ws/florilege",
+                new { controller = "Element", action = "BestOf" }
+            );
+
+            context.MapRoute(
+                "Service_element_favorite",
+                "ws/favorite/{id}",
+                new { controller = "Element", action = "Favorite" }
+            );
+
+            context.MapRoute(
                 "Service_default",
-                "ws/{controller}/{action}.{format}",
+                "ws/{controller}/{action}",
                 new { controller = "Element" }
             );
         }

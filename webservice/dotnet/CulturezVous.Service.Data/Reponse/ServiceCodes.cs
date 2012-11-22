@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace CulturezVous.Service.Areas.Service.Models
+namespace CulturezVous.Service.Data.Response
 {
+    /// <summary>
+    /// Codes d'erreur du service
+    /// </summary>
     public enum ServiceCodes
     {
         OK = 0,
