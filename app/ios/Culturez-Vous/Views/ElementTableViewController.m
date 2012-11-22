@@ -24,25 +24,32 @@
     return false;
 }
 
-- (void)loadTwoFirstPages
+- (void)loadPage:(int)pageFrom toPage:(int)pageTo
 {
+    NSLog(@"DEBUG : Affichage page %d à %d",pageFrom, pageTo);
+    
     // Puis on charge les deux première page
     [elementManager getElements:
-                        [self getElementType]
-                        fromPage:0 toPage:2
-                        withCallback:^(NSArray *elements) {
+     [self getElementType]
+                       fromPage:pageFrom toPage:pageTo
+                   withCallback:^(NSArray *elements) {
                        
-                            // Ajouter les éléments
-                            [cvElementsArray setArray:elements];
+                       // Ajouter les éléments
+                       [cvElementsArray addObjectsFromArray:elements];
                        
-                            // Rafraîchir la vue
-                            [self.tableView reloadData];
+                       if(self.lastPage == nil || [self.lastPage intValue] < pageTo)
+                       {
+                           self.lastPage = [[NSNumber alloc] initWithInt:pageTo];
+                       }
                        
-//                            [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
-                        }
-                        withFailureCallback:^(NSError *error)
-                        {
-                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Lecture du cache impossible"
+                       // Rafraîchir la vue
+                       [self.tableView reloadData];
+                       
+                       //                            [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+                   }
+            withFailureCallback:^(NSError *error)
+     {
+         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Lecture du cache impossible"
                                                          message:[NSString stringWithFormat:@"Et c'est assez mauvais... %@.", error]
                                                         delegate:nil
                                                cancelButtonTitle:@"OK..."
@@ -62,25 +69,54 @@
     
     cvElementsArray = [[NSMutableArray alloc] init];
     
-    // On affiche les premières pages aussi vite que possible
-    [self loadTwoFirstPages];
-    
     // Puis on essaie de récupèrer les nouveaux éléments en tâche de fond
     [elementManager updateElementsWithCallback:^
-                            {
-                                [self loadTwoFirstPages];
-                            }
+     {
+         [self loadPage:0 toPage:2];
+     }
                            withFailureCallback:^(NSError *error) {
                                
-                                   UIAlertView *alert = [[UIAlertView alloc]
-                                                initWithTitle:@"Mise à jour impossible"
-                                                message:[NSString stringWithFormat:@"Vérifiez votre connexion à Internet... %@.", error]
-                                                delegate:nil
-                                                cancelButtonTitle:@"OK..."
-                                                otherButtonTitles:nil];
-                                   [alert show];
+                               UIAlertView *alert = [[UIAlertView alloc]
+                                                     initWithTitle:@"Mise à jour impossible"
+                                                     message:[NSString stringWithFormat:@"Vérifiez votre connexion à Internet... %@.", error]
+                                                     delegate:nil
+                                                     cancelButtonTitle:@"OK..."
+                                                     otherButtonTitles:nil];
+                               [alert show];
                            }
      ];
+    
+    
+    __block ElementTableViewController *controller = self;
+    
+    // setup pull-to-refresh
+    [self.tableView addPullToRefreshWithActionHandler:^{
+        NSLog(@"Pull to refresh");
+        
+        [controller.elementManager updateElementsWithCallback:^
+         {
+#warning Ajouter les nouveaux éléments ?
+             [controller.tableView.pullToRefreshView stopAnimating];
+         }
+        withFailureCallback:^(NSError *error) {
+                [controller.tableView.pullToRefreshView stopAnimating];
+         }
+         ];
+        
+        [controller.tableView.pullToRefreshView stopAnimating];
+    }];
+    
+    // setup infinite scrolling
+    [self.tableView addInfiniteScrollingWithActionHandler:^{
+        NSLog(@"Infinite scroll");
+        
+        [controller loadPage:[self.lastPage intValue] toPage:([self.lastPage intValue] + 1)];
+        
+        [controller.tableView.infiniteScrollingView stopAnimating];
+    }];
+    
+    // trigger the refresh manually at the end of viewDidLoad
+    [self.tableView triggerPullToRefresh];
 }
 
 - (void)didReceiveMemoryWarning
@@ -107,11 +143,11 @@
     
     NSString *cellIdentifier = nil;
     
-//    if([element isKindOfClass:[Word class]]) {
-//        cellIdentifier = @"Word";
-//    } else if([element isKindOfClass:[Contrepeterie class]]) {
-//        cellIdentifier = @"Contrepeterie";
-//    }
+    //    if([element isKindOfClass:[Word class]]) {
+    //        cellIdentifier = @"Word";
+    //    } else if([element isKindOfClass:[Contrepeterie class]]) {
+    //        cellIdentifier = @"Contrepeterie";
+    //    }
     
     cellIdentifier = @"Element";
     

@@ -15,6 +15,7 @@
 #import "Word.h"
 #import "Contrepeterie.h"
 #import "Definition.h"
+#import "SVPullToRefresh.h"
 
 @interface ElementTableViewController : UITableViewController<UITableViewDelegate, UITableViewDataSource>
 {
@@ -32,6 +33,8 @@
 @property(nonatomic, strong) IBOutlet UITableView *tableView;
 
 @property (nonatomic, retain) ElementManager *elementManager;
+
+@property (nonatomic, retain) NSNumber *lastPage;
 
 -(NSString*) getElementType;
 

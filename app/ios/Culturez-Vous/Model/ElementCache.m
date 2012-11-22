@@ -169,7 +169,7 @@
     
     NSError *error;
     NSArray *array = [app.managedObjectContext executeFetchRequest:request error:&error];
-    if (array == nil)
+    if (error != nil)
     {
         NSLog(@"%@", [error localizedDescription]);
         return NULL;

@@ -28,6 +28,9 @@
 		33386512164419E900C37665 /* ElementCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 33386511164419E900C37665 /* ElementCache.m */; };
 		333CBACE164FED4C000A689D /* DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 333CBACD164FED4C000A689D /* DateFormatter.m */; };
 		333CBAE01650022D000A689D /* WordstabTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 333CBADF1650022D000A689D /* WordstabTableViewController.m */; };
+		334658B4165EC6AD00A3EA45 /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 334658B1165EC6AD00A3EA45 /* UIScrollView+SVInfiniteScrolling.m */; };
+		334658B5165EC6AD00A3EA45 /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 334658B3165EC6AD00A3EA45 /* UIScrollView+SVPullToRefresh.m */; };
+		334658B8165EC84600A3EA45 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 334658B7165EC84600A3EA45 /* QuartzCore.framework */; };
 		33D75560164EA8A8003FA28A /* ElementManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D7555F164EA8A8003FA28A /* ElementManager.m */; };
 		33D81EF81640712A00E531B4 /* Storyboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33D81EF51640712A00E531B4 /* Storyboard_iPhone.storyboard */; };
 		33D81EFB1640715500E531B4 /* ElementDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D81EFA1640715500E531B4 /* ElementDownloader.m */; };
@@ -96,6 +99,12 @@
 		333CBACD164FED4C000A689D /* DateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DateFormatter.m; path = Utils/DateFormatter.m; sourceTree = "<group>"; };
 		333CBADE1650022D000A689D /* WordstabTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WordstabTableViewController.h; path = Views/WordstabTableViewController.h; sourceTree = "<group>"; };
 		333CBADF1650022D000A689D /* WordstabTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WordstabTableViewController.m; path = Views/WordstabTableViewController.m; sourceTree = "<group>"; };
+		334658AF165EC6AD00A3EA45 /* SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPullToRefresh.h; sourceTree = "<group>"; };
+		334658B0165EC6AD00A3EA45 /* UIScrollView+SVInfiniteScrolling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVInfiniteScrolling.h"; sourceTree = "<group>"; };
+		334658B1165EC6AD00A3EA45 /* UIScrollView+SVInfiniteScrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVInfiniteScrolling.m"; sourceTree = "<group>"; };
+		334658B2165EC6AD00A3EA45 /* UIScrollView+SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVPullToRefresh.h"; sourceTree = "<group>"; };
+		334658B3165EC6AD00A3EA45 /* UIScrollView+SVPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVPullToRefresh.m"; sourceTree = "<group>"; };
+		334658B7165EC84600A3EA45 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		33D7555E164EA8A8003FA28A /* ElementManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ElementManager.h; path = Model/ElementManager.h; sourceTree = "<group>"; };
 		33D7555F164EA8A8003FA28A /* ElementManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ElementManager.m; path = Model/ElementManager.m; sourceTree = "<group>"; };
 		33D75567164EB3EA003FA28A /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
@@ -143,6 +152,7 @@
 			files = (
 				33E4CC52163433E1000693F4 /* UIKit.framework in Frameworks */,
 				33E4CC54163433E1000693F4 /* Foundation.framework in Frameworks */,
+				334658B8165EC84600A3EA45 /* QuartzCore.framework in Frameworks */,
 				33E4CC56163433E1000693F4 /* CoreGraphics.framework in Frameworks */,
 				33E4CC58163433E1000693F4 /* CoreData.framework in Frameworks */,
 			);
@@ -196,6 +206,18 @@
 				333CBACD164FED4C000A689D /* DateFormatter.m */,
 			);
 			name = Utils;
+			sourceTree = "<group>";
+		};
+		334658AE165EC6AD00A3EA45 /* SVPullToRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				334658AF165EC6AD00A3EA45 /* SVPullToRefresh.h */,
+				334658B0165EC6AD00A3EA45 /* UIScrollView+SVInfiniteScrolling.h */,
+				334658B1165EC6AD00A3EA45 /* UIScrollView+SVInfiniteScrolling.m */,
+				334658B2165EC6AD00A3EA45 /* UIScrollView+SVPullToRefresh.h */,
+				334658B3165EC6AD00A3EA45 /* UIScrollView+SVPullToRefresh.m */,
+			);
+			path = SVPullToRefresh;
 			sourceTree = "<group>";
 		};
 		33D75564164EA99F003FA28A /* Model */ = {
@@ -270,6 +292,7 @@
 				333864E91644012A00C37665 /* AFNetworking */,
 				33E4CC50163433E1000693F4 /* Frameworks */,
 				33E4CC4E163433E1000693F4 /* Products */,
+				334658AE165EC6AD00A3EA45 /* SVPullToRefresh */,
 			);
 			sourceTree = "<group>";
 		};
@@ -284,6 +307,7 @@
 		33E4CC50163433E1000693F4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				334658B7165EC84600A3EA45 /* QuartzCore.framework */,
 				33E4CC51163433E1000693F4 /* UIKit.framework */,
 				33E4CC53163433E1000693F4 /* Foundation.framework */,
 				33E4CC55163433E1000693F4 /* CoreGraphics.framework */,
@@ -452,6 +476,8 @@
 				33ED67981658FD9A00D837BE /* ElementTableViewController.m in Sources */,
 				33ED679C1659018700D837BE /* ContrepeterieTableViewController.m in Sources */,
 				33ED67A1165902BB00D837BE /* FavoritesTableViewController.m in Sources */,
+				334658B4165EC6AD00A3EA45 /* UIScrollView+SVInfiniteScrolling.m in Sources */,
+				334658B5165EC6AD00A3EA45 /* UIScrollView+SVPullToRefresh.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
