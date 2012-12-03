@@ -69,6 +69,15 @@
     
     cvElementsArray = [[NSMutableArray alloc] init];
     
+    /*
+    [elementManager getAllElements:@"Word" withCallback:^(NSArray *elements) {
+        NSLog(@"%@",elements);
+        [cvElementsArray setArray:elements];
+    } withFailureCallback:^(NSError *error) {
+        NSLog(@"Poueté");
+    }];
+    */
+    
     // Puis on essaie de récupèrer les nouveaux éléments en tâche de fond
     [elementManager updateElementsWithCallback:^
      {
@@ -85,7 +94,7 @@
                                [alert show];
                            }
      ];
-    
+    /*
     
     __block ElementTableViewController *controller = self;
     
@@ -117,6 +126,8 @@
     
     // trigger the refresh manually at the end of viewDidLoad
     [self.tableView triggerPullToRefresh];
+     
+     */
 }
 
 - (void)didReceiveMemoryWarning

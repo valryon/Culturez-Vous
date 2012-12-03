@@ -12,12 +12,12 @@
 #import "DateFormatter.h"
 #import "Common.h"
 
-typedef void(^DownloaderCallback)(NSArray* elements);
+typedef void(^DownloaderCallback)(NSManagedObjectContext* context);
 
 @interface ElementDownloader : NSObject <NSXMLParserDelegate>
 
 - (void) downloadElementsWithPage:(int)page withCallback:(DownloaderCallback) callback withErrorCallback:(FailureCallback)failureCallback;
 
-- (NSArray*)parseXml:(NSString*) data;
+- (void) parseXml:(NSString*) xml WithContext:(NSManagedObjectContext*)context;
 
 @end

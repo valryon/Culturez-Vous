@@ -30,33 +30,39 @@
 - (void) updatePage:(int)page withCallback:(UpdatePageCompleted) callback withFailureCallback:(FailureCallback)failureCallback
 {
     [downloader downloadElementsWithPage:page
-                            withCallback:^(NSArray* elements){
+                            withCallback:^(NSManagedObjectContext *context){
                                 
                                 BOOL newElementsFound = false;
                                 
                                 // On regarde s'il y a de nouveaux éléments pour cette page
-                                for (Element *element in elements) {
+                                for (Element *element in [context insertedObjects])
+                                {
+                                    if( [element isKindOfClass:[Element class]] == false) continue;
                                     
-                                    // -- On regarde si des mots ne sont pas dans le cache
-                                    if([cache existsWithId:element.dbId] == false)
+                                    // -- On regarde si des mots sont dans le cache
+                                    if([cache existsWithId:element.dbId])
                                     {
-                                        NSLog(@"INFO : element to add %@", element.title);
-                                        newElementsFound = true;
-                                        
-                                        // On l'ajoute au cache
-                                        [cache insertElement:element];
+                                        // On le supprime du contexte temporaire
+                                        [context delete:element];
                                     }
                                     else
                                     {
-                                        //-- Si on le trouve, on considère que les mots suivants sont déjà connus (tri par date)
-                                        break;
+                                        // Si on ne le trouve pas on considère qu'il doit être ajouté
+                                        NSLog(@"INFO : element to add %@", element.title);
+                                        newElementsFound = true;
                                     }
                                 }
                                 
                                 if(newElementsFound)
                                 {
-                                    // Sauvegarde du cache
-                                    [cache saveCache];
+                                    // Ajout en sauvant dans le cache
+                                    NSError *error;
+                                    [context save:&error];
+                                    
+                                    if(error)
+                                    {
+                                        NSLog(@"ERROR: %@",[error localizedDescription]);
+                                    }
                                 }
                                 
                                 if(callback)
@@ -79,75 +85,23 @@
     // On télécharge les premières page du service, à la recherche de nouveautés
     NSLog(@"INFO : Mise à jour demandée...");
     
-    // ATTENTION LES YEUX
-    // On charge autant de pages que nécessaire pour avoir un minimum d'éléments à afficher
-    dispatch_queue_t queue = dispatch_queue_create("com.culturezvous.updatequeue", NULL);
+    //En asynchrone
+    dispatch_queue_t queuePage = dispatch_queue_create("com.culturezvous.updatpage", NULL);
     
-    // On crée un thread qui va attendre que la mise à jour soit terminée
-    dispatch_async(queue, ^{
-        
-        __block NSError *errorDownload = NULL;
-        __block BOOL loadingComplete = false;
-        int page = 1;
-        
-        // On retourne en mode synchrone donc
-        while(loadingComplete == false && page < UPDATE_PAGES_COUNT)
-        {
-            // Le sémaphore permet de débloquer le thread synchrone quand la requête async est terminée
-            dispatch_semaphore_t sema = dispatch_semaphore_create(0);
-            
-            // Cette requête async c'est notre récupération d'éléments pour une page
-            dispatch_queue_t queuePage = dispatch_queue_create("com.culturezvous.updatpage", NULL);
-            
-            dispatch_async(queuePage, ^{
-                
-                [self updatePage:page
-                    withCallback:^(BOOL newElementFound)
-                 {
-                     loadingComplete = (newElementFound == false);
-                     
-                     // Débloque le sémaphore
-                     dispatch_semaphore_signal(sema);
-                 }
-             withFailureCallback:^(NSError *error) {
-                 
-                 errorDownload = error;
-                 
-                 // Débloque le sémaphore
-                 dispatch_semaphore_signal(sema);
-                 
-             }
-                 ];
-            });
-            
-            // Attente d'un signal
-            dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
-            sema = NULL;
-            
-            page++;
-        }
-        
-        if(errorDownload != NULL)
-        {
-            NSLog(@"INFO : Erreur lors de la mise à jour de la page %d.", page);
-            
-            if(failureCallback)
-            {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    failureCallback(errorDownload);
-                });
-            }
-        }
-        else if(callback)
-        {
-            NSLog(@"INFO : Mise à jour OK");
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                callback();
-            });
-        }
+    dispatch_async(queuePage, ^{
+        [self updatePage:1 withCallback:^(BOOL newElementsFound)
+         {
+             NSLog(@"INFO : Mise à jour terminée !");
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 callback();
+             });
+         } withFailureCallback:^(NSError *error)
+         {
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 failureCallback(error);
+             });
+         }];
     });
-    
 }
 
 - (void) getElements: (NSString*)elementType fromPage: (int)pageFrom toPage:(int)pageTo withCallback:(ElementsRetrieved) callback withFailureCallback:(FailureCallback)failureCallback
@@ -175,14 +129,14 @@
 {
     element.isRead = [NSNumber numberWithBool:true];
     
-    [cache saveCache];
+    //    [cache saveCache];
 }
 
 - (void) markElementAsFavorite: (Element*)element
 {
     element.isFavorite = [NSNumber numberWithBool:true];
     
-    [cache saveCache];
+    //    [cache saveCache];
 }
 
 @end

@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Culturez-Vous/Model/ElementManager.m"
-         timestampString = "374956924.049384"
+         timestampString = "376262460.088205"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "249"
-         endingLineNumber = "249">
+         startingLineNumber = "205"
+         endingLineNumber = "205">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
@@ -25,6 +25,32 @@
          startingLineNumber = "27"
          endingLineNumber = "27"
          landmarkName = "-configureView"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Culturez-Vous/Model/ElementContextHelper.m"
+         timestampString = "376260732.632422"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "172"
+         endingLineNumber = "172"
+         landmarkName = "-mergeChanges:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Culturez-Vous/Model/ElementContextHelper.m"
+         timestampString = "376260732.632422"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "164"
+         endingLineNumber = "164"
+         landmarkName = "+saveDataInContext:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

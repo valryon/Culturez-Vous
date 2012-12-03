@@ -2,7 +2,7 @@
 //  Word.h
 //  Culturez-Vous
 //
-//  Created by Dam on 15/11/12.
+//  Created by Dam on 01/12/12.
 //  Copyright (c) 2012 Damien Mayance & Matthieu Oger. All rights reserved.
 //
 
@@ -15,7 +15,6 @@
 @interface Word : Element
 
 @property (nonatomic, retain) NSSet *definitions;
-@property (nonatomic, retain) NSSet *tempDefinitions;
 @end
 
 @interface Word (CoreDataGeneratedAccessors)
@@ -24,10 +23,5 @@
 - (void)removeDefinitionsObject:(Definition *)value;
 - (void)addDefinitions:(NSSet *)values;
 - (void)removeDefinitions:(NSSet *)values;
-
-- (void)addTempDefinitionsObject:(Definition *)value;
-- (void)removeTempDefinitionsObject:(Definition *)value;
-- (void)addTempDefinitions:(NSSet *)values;
-- (void)removeTempDefinitions:(NSSet *)values;
 
 @end

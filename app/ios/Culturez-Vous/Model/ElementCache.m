@@ -10,91 +10,74 @@
 
 @implementation ElementCache
 
-+ (Word*) createNewWordNoContext
++ (Word*) createNewWord:(NSManagedObjectContext *) context
 {
-    AppDelegate* app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    
-    NSEntityDescription *entity = [[app.managedObjectModel entitiesByName] objectForKey:@"Word"];
+    NSEntityDescription *entity = [[[ElementContextHelper managedObjectModel] entitiesByName] objectForKey:@"Word"];
     
     Word *word = [[Word alloc] initWithEntity:entity
-               insertIntoManagedObjectContext:nil];
+               insertIntoManagedObjectContext:context];
     
     return word;
 }
-+ (Definition*) createNewDefinitionNoContext
++ (Definition*) createNewDefinition:(NSManagedObjectContext *) context
 {
-    AppDelegate* app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    
-    NSEntityDescription *entity = [[app.managedObjectModel entitiesByName] objectForKey:@"Definition"];
+    NSEntityDescription *entity = [[[ElementContextHelper managedObjectModel]entitiesByName] objectForKey:@"Definition"];
     
     Definition *def = [[Definition alloc] initWithEntity:entity
-                          insertIntoManagedObjectContext:nil];
+                          insertIntoManagedObjectContext:context];
     
     return def;
 }
-+ (Contrepeterie*) createNewContreperieNoContext
++ (Contrepeterie*) createNewContreperie:(NSManagedObjectContext *) context
 {
-    AppDelegate* app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    
-    NSEntityDescription *entity = [[app.managedObjectModel entitiesByName] objectForKey:@"Contrepeterie"];
+    NSEntityDescription *entity = [[[ElementContextHelper managedObjectModel] entitiesByName] objectForKey:@"Contrepeterie"];
     
     Contrepeterie *ctp = [[Contrepeterie alloc] initWithEntity:entity
-                                insertIntoManagedObjectContext:nil];
+                                insertIntoManagedObjectContext:context];
     
     return ctp;
 }
-
-
-//- (id)createNewWord:(NSString *)title withDate:(NSDate *)date
-//{
-//    AppDelegate* app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-//
-//    // Création d'un nouveau mot à partir du cache
-//    Word *word = (Word *)[NSEntityDescription insertNewObjectForEntityForName:@"Word" inManagedObjectContext:app.managedObjectContext];
-//
-//    if(word != NULL) {
-//        // Mise à jour des données
-//        [word setTitle:title];
-//        [word setDate:date];
-//    }
-//    return word;
-//}
 
 #pragma Insertion objets
 
 - (void) insertElement:(Element*)element
 {
-    AppDelegate* app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectID *objectID = [element objectID];
     
-    // Pour les mots, on transforme les définitions temporaire en définitions pour le cache
-    if([element isKindOfClass:[Word class]])
+    [ElementContextHelper saveDataInContext:^(NSManagedObjectContext *localContext)
     {
-        Word *w = (Word*)element;
+        Element *localElement = (Element *)[localContext objectWithID:objectID];
         
-        // Puis remplir le champ definitions
-        [w addDefinitions:w.tempDefinitions];
+        // Insertion dans le contexte
+        [localContext insertObject:localElement];
         
-        // Et vider les définitions temporaires
-        [w removeTempDefinitions:w.tempDefinitions];
-    }
-    
-    [app.managedObjectContext insertObject:element];
+    }];
 }
 
-#pragma Sauvegarde du cache
-
--(BOOL)saveCache
+- (void) insertElements:(NSArray*)elements
 {
-    AppDelegate* app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    NSMutableArray *objectsIDs = [[NSMutableArray alloc] init];
     
-    // Sauvegarde du cache
-    NSError *error = nil;
-    if (![app.managedObjectContext save:&error]) {
-        NSLog(@"%@", [error localizedDescription]);
-        return false;
+    for (Element *element in elements)
+    {
+        [objectsIDs addObject:[element objectID]];
     }
     
-    return true;
+    [ElementContextHelper saveDataInContext:^(NSManagedObjectContext *localContext)
+     {
+         for (NSManagedObjectID *oid in objectsIDs)
+         {
+             Element *localElement = (Element *)[localContext objectWithID:oid];
+         
+            // Insertion dans le contexte
+            //[localContext insertObject:localElement];
+         }
+         
+         for (Element *element in elements)
+         {
+             [localContext insertObject:element];
+         }
+     }];
 }
 
 #pragma Recherche dans le cache
@@ -103,11 +86,9 @@
 
 - (NSFetchRequest*) prepareFetchRequest:(NSString*) elementType
 {
-    AppDelegate* app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    
     // Récupération d'éléments
     NSEntityDescription *entityDescription = [NSEntityDescription
-                                              entityForName:elementType inManagedObjectContext:app.managedObjectContext];
+                                              entityForName:elementType inManagedObjectContext:[ElementContextHelper defaultContext]];
     
     // Création d'une requête
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
@@ -128,7 +109,9 @@
     
     // Pagination
     request.fetchOffset = pageFrom * ELEMENTS_PER_PAGE; // Index de début
-    request.fetchLimit = ((pageTo - pageFrom) + 1) * ELEMENTS_PER_PAGE; // Taille de la page
+    request.fetchLimit = ELEMENTS_PER_PAGE; // Taille de la page
+    
+    NSLog(@"DEBUG : Paging from %d to %d", request.fetchOffset, (request.fetchOffset + request.fetchLimit));
     
     return request;
 }
@@ -163,16 +146,20 @@
 
 - (NSArray*) getElements:(NSString*)type fromPage:(int)pageFrom toPage:(int) pageTo
 {
-    AppDelegate* app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    
     NSFetchRequest *request = [self prepareFetchRequestPaginated:type fromPage:pageFrom toPage:pageTo];
     
     NSError *error;
-    NSArray *array = [app.managedObjectContext executeFetchRequest:request error:&error];
+    NSArray *array = [[ElementContextHelper defaultContext] executeFetchRequest:request error:&error];
+    
     if (error != nil)
     {
-        NSLog(@"%@", [error localizedDescription]);
+        NSLog(@"CacheManager.getElements - %@", [error localizedDescription]);
         return NULL;
+    }
+    
+    for (Element* element in array)
+    {
+        NSLog(@"Found: %@", element.title);
     }
     
     return array;
@@ -180,15 +167,13 @@
 
 - (NSArray *)getAllElements:(NSString*)type
 {
-    AppDelegate* app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    
     NSFetchRequest *request = [self prepareFetchRequest:type];
     
     NSError *error;
-    NSArray *array = [app.managedObjectContext executeFetchRequest:request error:&error];
+    NSArray *array = [[ElementContextHelper defaultContext] executeFetchRequest:request error:&error];
     if (array == nil)
     {
-        NSLog(@"%@", [error localizedDescription]);
+        NSLog(@"ERROR: CacheManager.getAllElements - %@", [error localizedDescription]);
         return NULL;
     }
     
@@ -197,15 +182,15 @@
 
 - (BOOL)existsWithId:(NSNumber*)dbId
 {
-    AppDelegate* app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    
-    NSFetchRequest *request = [self prepareFetchRequestIdSearch:dbId];
+//    NSFetchRequest *request = [self prepareFetchRequestIdSearch:dbId];
+  
+    NSFetchRequest *request = [self prepareFetchRequest:@"Element"];
     
     NSError *error;
-    NSArray *array = [app.managedObjectContext executeFetchRequest:request error:&error];
+    NSArray *array = [[ElementContextHelper defaultContext] executeFetchRequest:request error:&error];
     if (array == nil)
     {
-        NSLog(@"%@", [error localizedDescription]);
+        NSLog(@"ERROR: CacheManager.existsWithId - %@", [error localizedDescription]);
         return false;
     }
     

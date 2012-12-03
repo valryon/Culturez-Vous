@@ -2,7 +2,7 @@
 //  Word.m
 //  Culturez-Vous
 //
-//  Created by Dam on 15/11/12.
+//  Created by Dam on 01/12/12.
 //  Copyright (c) 2012 Damien Mayance & Matthieu Oger. All rights reserved.
 //
 
@@ -13,6 +13,5 @@
 @implementation Word
 
 @dynamic definitions;
-@dynamic tempDefinitions;
 
 @end

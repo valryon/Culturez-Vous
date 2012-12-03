@@ -1,0 +1,3 @@
+[submodule "app/ios/Libraries/PonyDebugger"]
+	path = app/ios/Libraries/PonyDebugger
+	url = git://github.com/square/PonyDebugger.git

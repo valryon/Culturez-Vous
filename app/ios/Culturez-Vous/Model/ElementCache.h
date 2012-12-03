@@ -12,15 +12,16 @@
 #import "Definition.h"
 #import "Contrepeterie.h"
 #import "Common.h"
+#import "ElementContextHelper.h"
 
-@interface ElementCache : NSObject
+@interface ElementCache : NSOperation
 
 //
-// Création d'éléments non attachés à un contexte
+// Création d'éléments
 //
-+ (Word*) createNewWordNoContext;
-+ (Definition*) createNewDefinitionNoContext;
-+ (Contrepeterie*) createNewContreperieNoContext;
++ (Word*) createNewWord:(NSManagedObjectContext *) context;
++ (Definition*) createNewDefinition:(NSManagedObjectContext *) context;
++ (Contrepeterie*) createNewContreperie:(NSManagedObjectContext *) context;
 
 //
 // Insertion d'un élément dans le cache
@@ -28,9 +29,9 @@
 - (void) insertElement:(Element*)element;
 
 //
-// Sauvegarde globale du cache
+// Insertion d'une liste d'éléments dans le cache
 //
-- (BOOL) saveCache;
+- (void) insertElements:(NSArray*)elements;
 
 //
 // Récupération d'éléments avec pagination
