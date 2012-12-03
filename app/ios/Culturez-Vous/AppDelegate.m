@@ -12,6 +12,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [ElementContextHelper initialize:[self applicationDocumentsDirectory]];
+    
+    [ElementContextHelper enableDebug];
+    
     return YES;
 }
 

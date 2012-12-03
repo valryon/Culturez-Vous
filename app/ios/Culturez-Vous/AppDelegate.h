@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ElementContextHelper.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

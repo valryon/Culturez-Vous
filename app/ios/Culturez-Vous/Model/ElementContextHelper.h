@@ -7,9 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "AppDelegate.h"
+
+#if ENABLE_PONYDEBUGGER
+#import <PonyDebugger/PonyDebugger.h>
+#endif
 
 @interface ElementContextHelper : NSObject
+
++(void) initialize:(NSURL *)documentUrl;
++(void) enableDebug;
 
 + (NSManagedObjectContext *)defaultContext;
 + (NSManagedObjectContext *)context;

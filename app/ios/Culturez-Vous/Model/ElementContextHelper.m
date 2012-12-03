@@ -35,6 +35,8 @@
 
 @implementation ElementContextHelper
 
+static NSURL* documentUrl;
+
 // Contexte principal
 static NSManagedObjectContext *defaultManagedObjectContext = nil;
 // Queue pour la sauvegarde asynchrone
@@ -43,6 +45,50 @@ static dispatch_queue_t coredata_background_save_queue;
 static NSPersistentStoreCoordinator *store_coordinator;
 static NSManagedObjectModel *object_model;
 
++(void) initialize:(NSURL *)docUrl
+{
+    NSLog(@"Initializing context");
+    
+    documentUrl = docUrl;
+    
+    // Instancie le context principal
+    [self defaultContext];
+}
+
++(void) enableDebug
+{
+    //PONIES !!!!
+    // Don't use PonyDebugger unless we have ENABLE_PONYDEBUGGER enabled.
+    // When ENABLE_PONYDEBUGGER is enabled -lSocketRocket -lPonyDebugger
+    // should be added to "Other linker flags" settings.
+    // Release builds should not use PonyDebugger
+    
+#if ENABLE_PONYDEBUGGER
+
+    NSLog(@"PONIES !!!");
+    
+    PDDebugger *debugger = [PDDebugger defaultInstance];
+    
+    // Enable Network debugging, and automatically track network traffic that comes through any classes that NSURLConnectionDelegate methods.
+    [debugger enableNetworkTrafficDebugging];
+    [debugger forwardAllNetworkTraffic];
+    
+    // Enable Core Data debugging, and broadcast the main managed object context.
+    [debugger enableCoreDataDebugging];
+    [debugger addManagedObjectContext:[self defaultContext] withName:@"Culturez-Vous main"];
+    
+    // Enable View Hierarchy debugging. This will swizzle UIView methods to monitor changes in the hierarchy
+    // Choose a few UIView key paths to display as attributes of the dom nodes
+    [debugger enableViewHierarchyDebugging];
+    [debugger setDisplayedViewAttributeKeyPaths:@[@"frame", @"hidden", @"alpha", @"opaque"]];
+    
+    // Connect on launch.
+    [debugger connectToURL:[NSURL URLWithString:@"ws://localhost:9000/device"]];
+    
+#endif
+    
+
+}
 
 #pragma mark - Création des objets Core Data
 
@@ -83,10 +129,8 @@ static NSManagedObjectModel *object_model;
 + (NSPersistentStoreCoordinator *)persistentStoreCoordinator
 {
     if(store_coordinator == nil)
-    {
-        
-        AppDelegate* app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-        NSURL *storeURL = [[app applicationDocumentsDirectory] URLByAppendingPathComponent:@"Culturez_Vous.sqlite"];
+    {   
+        NSURL *storeURL = [documentUrl URLByAppendingPathComponent:@"Culturez_Vous.sqlite"];
         
         NSError *error = nil;
         NSPersistentStoreCoordinator *persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
