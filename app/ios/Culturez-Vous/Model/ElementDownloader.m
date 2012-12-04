@@ -93,8 +93,8 @@
                     
                     int rank = 1;
                     
-                    for (SMXMLElement *defXml in [definitionsXml childrenNamed:@"definition"]) {
-                        
+                    for (SMXMLElement *defXml in [definitionsXml childrenNamed:@"definition"])
+                    {
                         NSString *content = [defXml valueWithPath:@"content"];
                         NSString *details = [defXml valueWithPath:@"details"];
                         

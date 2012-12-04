@@ -69,38 +69,15 @@
     
     cvElementsArray = [[NSMutableArray alloc] init];
     
-    /*
-    [elementManager getAllElements:@"Word" withCallback:^(NSArray *elements) {
-        NSLog(@"%@",elements);
-        [cvElementsArray setArray:elements];
-    } withFailureCallback:^(NSError *error) {
-        NSLog(@"Poueté");
-    }];
-    */
+    // Charge les deux premières pages avant la mise à jour
+    [self loadPage:0 toPage:2];
     
     // Puis on essaie de récupèrer les nouveaux éléments en tâche de fond
-    [elementManager updateElementsWithCallback:^
-     {
-         [self loadPage:0 toPage:2];
-     }
-                           withFailureCallback:^(NSError *error) {
-                               
-                               UIAlertView *alert = [[UIAlertView alloc]
-                                                     initWithTitle:@"Mise à jour impossible"
-                                                     message:[NSString stringWithFormat:@"Vérifiez votre connexion à Internet... %@.", error]
-                                                     delegate:nil
-                                                     cancelButtonTitle:@"OK..."
-                                                     otherButtonTitles:nil];
-                               [alert show];
-                           }
-     ];
-    /*
-    
     __block ElementTableViewController *controller = self;
     
     // setup pull-to-refresh
     [self.tableView addPullToRefreshWithActionHandler:^{
-        NSLog(@"Pull to refresh");
+        NSLog(@"DEBUG: Pull to refresh");
         
         [controller.elementManager updateElementsWithCallback:^
          {
@@ -117,17 +94,16 @@
     
     // setup infinite scrolling
     [self.tableView addInfiniteScrollingWithActionHandler:^{
-        NSLog(@"Infinite scroll");
+        NSLog(@"DEBUG: Infinite scroll");
         
         [controller loadPage:[self.lastPage intValue] toPage:([self.lastPage intValue] + 1)];
         
         [controller.tableView.infiniteScrollingView stopAnimating];
     }];
     
-    // trigger the refresh manually at the end of viewDidLoad
-    [self.tableView triggerPullToRefresh];
-     
-     */
+    // Forcer une première mise à jour
+#warning Todo
+    //[self.tableView triggerPullToRefresh];
 }
 
 - (void)didReceiveMemoryWarning

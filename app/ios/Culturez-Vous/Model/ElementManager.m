@@ -43,7 +43,8 @@
                                     if([cache existsWithId:element.dbId])
                                     {
                                         // On le supprime du contexte temporaire
-                                        [context delete:element];
+                                        NSLog(@"INFO : element already in cached %@", element.title);
+                                        [context deleteObject:element];
                                     }
                                     else
                                     {

@@ -29,6 +29,14 @@
           ([NSThread isMainThread] ? @" *** on Main Thread ***" : @""));
     
 	[self mergeChangesFromContextDidSaveNotification:notification];
+    
+    NSError *error;
+    [self save:&error];
+    
+    if(error)
+    {
+        NSLog(@"ERROR: Main cache save error: %@", [error localizedDescription]);
+    }
 }
 
 @end
