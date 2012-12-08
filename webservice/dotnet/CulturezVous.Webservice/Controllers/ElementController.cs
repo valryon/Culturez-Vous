@@ -8,7 +8,7 @@ using CulturezVous.Service.Data.Elements.Dao;
 using CulturezVous.Service.Data.Elements;
 using CulturezVous.Service.Data.Response;
 
-namespace CulturezVous.Service.Areas.Service.Controllers
+namespace CulturezVous.Webservice.Controllers
 {
     /// <summary>
     /// Contrôleur principal du webservice pour la gestion des éléments

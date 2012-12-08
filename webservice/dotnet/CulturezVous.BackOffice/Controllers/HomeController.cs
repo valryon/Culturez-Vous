@@ -7,9 +7,9 @@ using CulturezVous.Service.Areas.Admin.Models;
 using CulturezVous.Service.Data.Elements.Dao;
 using System.Configuration;
 
-namespace CulturezVous.Service.Areas.Admin.Controllers
+namespace CulturezVous.BackOffice.Controllers
 {
-    public class AdminController : Controller
+    public class HomeController : Controller
     {
         //
         // GET: /Admin/Admin/

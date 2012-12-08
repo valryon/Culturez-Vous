@@ -24,7 +24,7 @@ namespace CulturezVous.Webservice
             routes.MapRoute(
                "Service_element_last",
                "elements/{page}",
-               new { controller = "Element", action = "LastElements" }
+               new { controller = "Element", action = "LastElements", page = 1 }
            );
 
             routes.MapRoute(

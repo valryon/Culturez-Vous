@@ -7,7 +7,7 @@ using CulturezVous.Service.Data.Elements;
 using CulturezVous.Service.Data.Elements.Dao;
 using CulturezVous.Service.Models;
 
-namespace CulturezVous.Service.Areas.Admin.Controllers
+namespace CulturezVous.BackOffice.Controllers
 {
     public class ElementsController : Controller
     {

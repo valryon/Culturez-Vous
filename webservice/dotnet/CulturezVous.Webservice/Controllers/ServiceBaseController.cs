@@ -12,7 +12,7 @@ using CulturezVous.Service.Data.Response;
 using CulturezVous.Service.Data.Serializer;
 using CulturezVous.Service.Data.Crypto;
 
-namespace CulturezVous.Service.Areas.Service.Controllers
+namespace CulturezVous.Webservice.Controllers
 {
     /// <summary>
     /// Contrôleur commun avec aide à la sérialisation et à l'encryption des données
