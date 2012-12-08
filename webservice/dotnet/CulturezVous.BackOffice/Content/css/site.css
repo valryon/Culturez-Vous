@@ -1,0 +1,187 @@
+@font-face {
+  font-family: "Museo";
+  src: url('/Content/fonts/museo-regular.otf');
+}
+@font-face {
+  font-family: "Museo";
+  font-style: italic;
+  src: url('/Content/fonts/museo-italic.otf');
+}
+body {
+  font-family: Museo;
+  font-size: 100%;
+}
+em {
+  font-style: italic;
+}
+strong {
+  color: black;
+}
+a {
+  color: #ff0000;
+  text-decoration: none;
+  -webkit-transition: color 0.218s;
+  -moz-transition: color 0.218s;
+  -o-transition: color 0.218s;
+  transition: color 0.218s;
+}
+a:hover {
+  color: #b4171b;
+  -webkit-transition: color 0.218s;
+  -moz-transition: color 0.218s;
+  -o-transition: color 0.218s;
+  transition: color 0.218s;
+}
+a.support {
+  background: url("/Content/img/mail.png") no-repeat left 3px;
+  padding-left: 30px;
+}
+div#page > header {
+  height: 100px;
+}
+div#page > header a {
+  color: black;
+}
+div#page > header a:hover {
+  color: grey;
+}
+div#page > header ul {
+  font-size: 1.1em;
+}
+div#page > header ul li {
+  float: left;
+}
+div#page > header ul li img {
+  padding: 0 10px 0 40px;
+  vertical-align: middle;
+}
+div#page > div#content {
+  margin: 0 auto;
+  width: 950px;
+}
+div#page > div#content h1 {
+  margin: 20px 0;
+  font-size: 6em;
+  text-align: center;
+}
+div#page > div#content h1 img {
+  float: right;
+  margin-top: -15px;
+}
+div#page > div#content .cell {
+  display: table-cell;
+  vertical-align: middle;
+}
+div#page > div#content div#image {
+  display: table-cell;
+  vertical-align: middle;
+}
+div#page > div#content div#image img {
+  margin-right: 40px;
+}
+div#page > div#content div#text {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 20px 0;
+}
+div#page > div#content div#text article {
+  margin: 20px 0;
+}
+div#page > div#content div#text article h2 {
+  margin-bottom: 5px;
+  font-size: 1.8em;
+}
+div#page > div#content div#text article p {
+  font-size: 0.95em;
+  text-align: justify;
+}
+div#page > div#content div#text article.info p {
+  padding-bottom: 10px;
+  color: #3c3c3c;
+}
+div#page > div#content div#text article#download a img,
+div#page > div#content div#text article#download a p {
+  box-shadow: none;
+  -webkit-transition: box-shadow 0.5s;
+  -moz-transition: box-shadow 0.5s;
+  -o-transition: box-shadow 0.5s;
+  transition: box-shadow 0.5s;
+}
+div#page > div#content div#text article#download a:hover img {
+  box-shadow: 0px 0px 10px #390c0b;
+  -webkit-transition: box-shadow 0.218s;
+  -moz-transition: box-shadow 0.218s;
+  -o-transition: box-shadow 0.218s;
+  transition: box-shadow 0.218s;
+}
+div#page > div#content div#text article#download img {
+  display: table-cell;
+  vertical-align: middle;
+  float: left;
+}
+div#page > div#content div#text article#download p {
+  display: table-cell;
+  vertical-align: middle;
+  width: 190px;
+  height: 60px;
+  padding: 10px;
+  font-size: 1.3em;
+  text-align: left;
+}
+div#page > footer {
+  margin: 20px 0;
+  text-align: center;
+  color: #908d8d;
+}
+div#page > footer p {
+  margin: 5px;
+}
+div#page > footer p.small {
+  font-size: 0.8em;
+}
+@media only screen and (max-width: 640px) {
+  div#page > header {
+    height: 25px;
+    font-size: 0.8em;
+  }
+  div#page > header img {
+    width: 25px;
+    height: 25px;
+    padding: 0 10px 0 20px !important;
+  }
+  div#page > div#content {
+    width: auto;
+  }
+  div#page > div#content h1 {
+    background: #e6e6e6;
+    padding: 10px 0;
+    font-size: 2.5em;
+  }
+  div#page > div#content h1 img {
+    display: none;
+  }
+  div#page > div#content div#image {
+    display: block;
+    text-align: center;
+  }
+  div#page > div#content div#image img {
+    width: 90%;
+    height: 90%;
+    margin: 0;
+  }
+  div#page > div#content div#text {
+    display: block;
+    padding: 0 15px;
+  }
+  div#page > footer {
+    margin: 0;
+    padding: 15px;
+  }
+  div#page > footer p {
+    margin: 0;
+  }
+  div#page > footer p:first-child {
+    margin-bottom: 10px;
+    text-align: justify;
+  }
+}
