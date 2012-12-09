@@ -13,10 +13,20 @@
         <div class="navbar-inner">
             <div class="container-fluid">
                 <a class="brand" href="@Url.Action("Index", "Home")">Culturez-Vous</a>
+
                 <div class="nav-collapse">
                     <ul class="nav">
                         <li><a href="@Url.Action("Index", "Admin", new { area = "Admin" })">Admin</a> </li>
                     </ul>
+
+                    @if (Request.IsAuthenticated)
+                    {
+                        <ul class="nav nav-pills">
+                            <li>
+                                @Html.ActionLink(User.Identity.Name, "LogOff", "Account")
+                            </li>
+                        </ul>
+                    }
                 </div>
             </div>
         </div>
@@ -51,7 +61,8 @@
     <div class="footer span12">
         <hr />
         <p>
-            Copyright Damien Mayance et Matthieu Oger</p>
+            Copyright Damien Mayance et Matthieu Oger
+        </p>
     </div>
 </body>
 </html>

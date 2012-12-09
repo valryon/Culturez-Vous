@@ -1,5 +1,4 @@
-﻿using CulturezVous.Service.Areas.Service.Controllers;
-using CulturezVous.Service.Data.Response;
+﻿using CulturezVous.Service.Data.Response;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -23,6 +23,18 @@ namespace CulturezVous.BackOffice
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                "Authentification",
+                "login",
+                new { controller = "Account", action = "LogOn" }
+            );
+
+            routes.MapRoute(
+                "Authentification_out",
+                "logoff",
+                new { controller = "Account", action = "LogOff" }
+            );
+
+            routes.MapRoute(
                 "Default", // Nom d'itinéraire
                 "{controller}/{action}/{id}", // URL avec des paramètres
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Paramètres par défaut

@@ -15,59 +15,60 @@ namespace CulturezVous.Webservice.Controllers
     /// </summary>
     public class ElementController : ServiceBaseController
     {
-        private static int pageSize = 7;
+        private string cvDb;
+        private bool useEncryption;
 
-        private static string cvDb = ConfigurationManager.ConnectionStrings["CV_DB"].ToString();
+        public ElementController()
+        {
+            cvDb = ConfigurationManager.ConnectionStrings["CV_DB"].ToString();
+            useEncryption = Convert.ToBoolean(ConfigurationManager.AppSettings["UseEncryption"].ToString());
+        }
 
         /// <summary>
-        /// Récupération des éléments avec pagination
+        /// Récupération d'éléments
         /// </summary>
-        /// <param name="format"></param>
-        /// <param name="page"></param>
+        /// <param name="type"></param>
+        /// <param name="startFrom"></param>
+        /// <param name="count"></param>
         /// <returns></returns>
-        public ActionResult LastElements(int page)
+        public ActionResult Elements(string type = "Element", int startFrom = 0, int count = 20)
         {
-            if (page < 0) page = 1;
             ServiceResponse r = new ServiceResponse();
 
             ElementDao dao = new ElementDao(cvDb);
             List<Element> elements = dao.GetAllElements(true);
 
+            // Filtrer par type
+            if (type == "Word")
+            {
+                elements = elements.Where(e => e is Word).ToList();
+            }
+            else if (type == "Contrepeterie")
+            {
+                elements = elements.Where(e => e is Contrepeterie).ToList();
+            }
+            else if (type != "Element")
+            {
+                elements = null;
+                r.Code = (int)ServiceCodes.InvalidParameters;
+                r.Message = type + " is not a valid element type. Use Element|Word|Contrepeterie";
+            }
+
             if (elements != null & elements.Count > 0)
             {
-                elements = elements.OrderByDescending(e => e.Date).Skip((page - 1) * pageSize).Take(pageSize).ToList();
+                elements = elements.OrderByDescending(e => e.Date).Skip(startFrom).Take(count).ToList();
 
                 r.Code = (int)ServiceCodes.OK;
                 r.ResponseData = elements;
             }
-            else
+            else if(dao.LastException != null)
             {
                 r.Code = (int)ServiceCodes.InternalError;
                 r.Message = "Elements not retrieved. " + dao.LastException;
             }
-            return PrepareResponse(r);
+
+            return PrepareResponse(r, useEncryption);
         }
-
-        /// <summary>
-        /// Récupération des éléments avec pagination
-        /// </summary>
-        /// <param name="format"></param>
-        /// <param name="page"></param>
-        /// <returns></returns>
-        public ActionResult BestOf()
-        {
-            ElementDao dao = new ElementDao(cvDb);
-            List<Element> elements = dao.GetAllElements(true);
-
-            elements = elements.OrderByDescending(e => e.FavoriteCount).Take(3 * pageSize).ToList();
-
-            ServiceResponse r = new ServiceResponse();
-            r.Code = (int)ServiceCodes.OK;
-            r.ResponseData = elements;
-
-            return PrepareResponse(r);
-        }
-
 
         public ActionResult Detail(int id)
         {
@@ -89,7 +90,7 @@ namespace CulturezVous.Webservice.Controllers
                 r.ResponseData = element;
             }
 
-            return PrepareResponse(r);
+            return PrepareResponse(r, useEncryption);
         }
 
         private static object updateLock = new object();
@@ -137,7 +138,7 @@ namespace CulturezVous.Webservice.Controllers
                 }
             }
 
-            return PrepareResponse(r);
+            return PrepareResponse(r, useEncryption);
         }
 
     }

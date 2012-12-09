@@ -12,6 +12,7 @@ namespace CulturezVous.Service.Data.Response
     {
         OK = 0,
         UnknowId = 100,
+        InvalidParameters = 101,
         InternalError = 200
     }
 }

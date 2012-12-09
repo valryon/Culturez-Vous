@@ -9,6 +9,7 @@ using CulturezVous.Service.Models;
 
 namespace CulturezVous.BackOffice.Controllers
 {
+    [Authorize]
     public class ElementsController : Controller
     {
         private static string cvDb = ConfigurationManager.ConnectionStrings["CV_DB"].ToString();

@@ -23,20 +23,14 @@ namespace CulturezVous.Webservice
 
             routes.MapRoute(
                "Service_element_last",
-               "elements/{page}",
-               new { controller = "Element", action = "LastElements", page = 1 }
+               "elements/{type}",
+               new { controller = "Element", action = "Elements", type = "Element" }
            );
 
             routes.MapRoute(
                 "Service_element",
                 "element/{id}",
                 new { controller = "Element", action = "Detail" }
-            );
-
-            routes.MapRoute(
-                "Service_element_bestof",
-                "florilege",
-                new { controller = "Element", action = "BestOf" }
             );
 
             routes.MapRoute(
