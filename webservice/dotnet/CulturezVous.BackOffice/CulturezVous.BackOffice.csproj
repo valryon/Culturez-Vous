@@ -97,6 +97,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ElementsController.cs" />
+    <Compile Include="Controllers\ImportController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -154,6 +155,8 @@
     <Content Include="Content\fonts\museo-regular.otf" />
     <None Include="Properties\PublishProfiles\Dragon.pubxml" />
     <Content Include="Views\Account\LogOn.cshtml" />
+    <Content Include="Views\Import\Index.cshtml" />
+    <Content Include="Views\Import\Import.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CulturezVous.Service.Data\CulturezVous.Service.Data.csproj">

@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Import ancien webservice";
+}
+<h2>
+    Import ancien webservice
+</h2>
+<p>
+   Ce process va récupérer les nouveaux éléments du vieux webservice et les ajouter à cette nouvelle base de donnnées.
+</p>
+@using (Html.BeginForm("Import", "Import", FormMethod.Post))
+{
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary">
+             Démarrer l'import
+        </button>
+    </div>
+}

@@ -32,5 +32,10 @@ namespace CulturezVous.Service.Data.Elements
                 return (GetType().Name);
             }
         }
+
+        public Element()
+        {
+            Author = new Author();
+        }
     }
 }

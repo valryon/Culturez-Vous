@@ -13,20 +13,25 @@
         <div class="navbar-inner">
             <div class="container-fluid">
                 <a class="brand" href="@Url.Action("Index", "Home")">Culturez-Vous</a>
-
                 <div class="nav-collapse">
                     <ul class="nav">
-                        <li><a href="@Url.Action("Index", "Admin", new { area = "Admin" })">Admin</a> </li>
+                        <li><a href="@Url.Action("Index", "Home")">Admin</a> </li>
+                        <li><a href="@Url.Action("Index", "Elements")">Elements</a> </li>
+                        <li><a href="@Url.Action("Index", "Import")">Import</a> </li>
                     </ul>
-
-                    @if (Request.IsAuthenticated)
-                    {
-                        <ul class="nav nav-pills">
-                            <li>
-                                @Html.ActionLink(User.Identity.Name, "LogOff", "Account")
-                            </li>
-                        </ul>
-                    }
+                    <p class="navbar-text pull-right">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <span><strong>@User.Identity.Name</strong> @Html.ActionLink("Déconnexion", "LogOff", "Account")
+                            </span>
+                        }
+                        else
+                        {
+                            <span>
+                                @Html.ActionLink("Connexion", "LogOn", "Account")
+                            </span>
+                        }
+                    </p>
                 </div>
             </div>
         </div>
