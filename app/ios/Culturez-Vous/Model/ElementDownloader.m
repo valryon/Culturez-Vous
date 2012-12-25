@@ -22,9 +22,7 @@
         return;
     }
     
-//    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString: [NSString stringWithFormat:@"http://5.39.86.57/Elements/%@?startFrom=%d&count=%d",type,page * ELEMENTS_PER_PAGE, ELEMENTS_PER_PAGE]]];
-
-        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString: [NSString stringWithFormat:@"http://5.39.86.57/Elements/Contrepeterie?startFrom=%d&count=%d",page * ELEMENTS_PER_PAGE, ELEMENTS_PER_PAGE]]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString: [NSString stringWithFormat:@"http://5.39.86.57/Elements/%@?startFrom=%d&count=%d",type,page * ELEMENTS_PER_PAGE, ELEMENTS_PER_PAGE]]];
     
     NSLog(@"INFO : Downloading %@", request.URL);
     
@@ -189,10 +187,8 @@
         element.author = authorName;
         element.authorInfo = authorInfo;
         element.voteCount = [[NSNumber alloc] initWithInt:voteCount];
-        
-        NSLog(@"DEBUG: %@ %@ %@",[element class],[DateFormatter getStringForDate:element.date withFormat:@"dd/MM/yyyy"],element.title);
-        
     }
+    
     
 }
 
