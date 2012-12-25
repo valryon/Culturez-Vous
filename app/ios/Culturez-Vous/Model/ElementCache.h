@@ -29,11 +29,6 @@
 - (void) insertElement:(Element*)element;
 
 //
-// Insertion d'une liste d'éléments dans le cache
-//
-- (void) insertElements:(NSArray*)elements;
-
-//
 // Récupération d'éléments avec pagination
 //
 - (NSArray*) getElements:(NSString*)type forPage:(int)page;

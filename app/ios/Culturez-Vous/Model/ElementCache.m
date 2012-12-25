@@ -54,32 +54,6 @@
     }];
 }
 
-- (void) insertElements:(NSArray*)elements
-{
-    NSMutableArray *objectsIDs = [[NSMutableArray alloc] init];
-    
-    for (Element *element in elements)
-    {
-        [objectsIDs addObject:[element objectID]];
-    }
-    
-    [ElementContextHelper saveDataInContext:^(NSManagedObjectContext *localContext)
-     {
-         for (NSManagedObjectID *oid in objectsIDs)
-         {
-             Element *localElement = (Element *)[localContext objectWithID:oid];
-         
-            // Insertion dans le contexte
-            //[localContext insertObject:localElement];
-         }
-         
-         for (Element *element in elements)
-         {
-             [localContext insertObject:element];
-         }
-     }];
-}
-
 #pragma Recherche dans le cache
 
 #pragma Préparation des requêtes
@@ -180,9 +154,7 @@
 
 - (BOOL)existsWithId:(NSNumber*)dbId
 {
-//    NSFetchRequest *request = [self prepareFetchRequestIdSearch:dbId];
-  
-    NSFetchRequest *request = [self prepareFetchRequest:@"Element"];
+    NSFetchRequest *request = [self prepareFetchRequestIdSearch:dbId];
     
     NSError *error;
     NSArray *array = [[ElementContextHelper defaultContext] executeFetchRequest:request error:&error];
