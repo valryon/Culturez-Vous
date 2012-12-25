@@ -22,9 +22,9 @@
         return;
     }
     
-    //    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString: [NSString stringWithFormat:@"http://5.39.86.57/Elements/%@?startFrom=%d&count=%d",type,page * ELEMENTS_PER_PAGE, ELEMENTS_PER_PAGE]]];
-    
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString: [NSString stringWithFormat:@"http://5.39.86.57/"]]];
+//    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString: [NSString stringWithFormat:@"http://5.39.86.57/Elements/%@?startFrom=%d&count=%d",type,page * ELEMENTS_PER_PAGE, ELEMENTS_PER_PAGE]]];
+
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString: [NSString stringWithFormat:@"http://5.39.86.57/Elements/Contrepeterie?startFrom=%d&count=%d",page * ELEMENTS_PER_PAGE, ELEMENTS_PER_PAGE]]];
     
     NSLog(@"INFO : Downloading %@", request.URL);
     
@@ -41,11 +41,8 @@
          // Décrypter le résultat
          NSString* json = [self decryptResponse:response];
          
-         // Un peu de ménage
-         NSString* cleanJson = [self cleanResponse:json];
-         
          // Parser le JSON
-         [self parseJson:cleanJson WithContext:localContext];
+         [self parseJson:json WithContext:localContext];
          
          NSLog(@"INFO : Download complete!");
          
@@ -72,15 +69,6 @@
     [queue addOperation:operation];
 }
 
-- (NSString*) cleanResponse:(NSString*)response
-{
-    NSMutableString* r = [[NSMutableString alloc] initWithString:response];
-    
-    [r replaceOccurrencesOfString:@"\\" withString:@"" options:NSCaseInsensitiveSearch range:(NSRange){0,[r length]}];
-    
-    return r;
-}
-
 - (NSString*) decryptResponse:(NSString*)response
 {
 #warning TODO Encryption AES 128 padding et clé
@@ -92,8 +80,6 @@
     NSError *error;
     NSData* data = [json dataUsingEncoding:NSUTF8StringEncoding];
     
-    NSLog(@"----- %@ ------", json);
-    
     // Désérialiser le Json
     id jsonObjects = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
     
@@ -104,12 +90,110 @@
         return;
     }
     
-    NSArray *keys = [jsonObjects allKeys];
+    // Récupération des valeurs du webservice
+    NSString *code = [jsonObjects valueForKey:@"code"];
+    int codeInt = [code intValue];
+    id r = [jsonObjects valueForKey:@"r"];
+
+    NSLog(@"INFO: Code %@", code);
     
-    // values in foreach loop
-    for (NSString *key in keys) {
-        NSLog(@"%@ is %@",key, [jsonObjects objectForKey:key]);
+    // On s'assure que le code vaut bien 0
+    if(code == NULL || (codeInt != 0))
+    {
+        return;
     }
+    
+    // On parse la réponse
+    for (NSDictionary* item in r)
+    {
+        Element *element = NULL;
+        
+        // author
+        NSDictionary *author = [item valueForKey:@"author"];
+        NSString *authorName = [author valueForKey:@"name"];
+        NSString *authorInfo = [author valueForKey:@"info"];
+        
+        // date
+        NSString *dateString = [item valueForKey:@"date"];
+        NSDate *date = [DateFormatter getDateFromString:dateString withFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
+        
+        // type
+        NSString *type = [item valueForKey:@"type"];
+        
+        // id
+        NSString *dbIdString = [item valueForKey:@"id"];
+        int dbId = [dbIdString intValue];
+        
+        // title
+        NSString *title = [item valueForKey:@"title"];
+        
+        // votes
+        NSString *voteCountString = [item valueForKey:@"voteCount"];
+        int voteCount = [voteCountString intValue];
+        
+        // Mot
+        if([type isEqualToString:@"Word"]){
+            
+            Word *word = [ElementCache createNewWord:context];
+            
+            if(word != NULL) {
+                NSMutableArray* definitionsArray = [[NSMutableArray alloc] init];
+                
+                // Définitions
+                int rank = 1;
+                
+                for (NSDictionary *def in [item valueForKey:@"definitions"])
+                {
+                    NSString *content = [def valueForKey:@"content"];
+                    NSString *details = [def valueForKey:@"details"];
+                    
+                    Definition *def = [ElementCache createNewDefinition:context];
+                    
+                    def.details = details;
+                    def.content = content;
+                    def.rank = [NSNumber numberWithInt:rank];
+                    [def setMot:word];
+                    
+                    [definitionsArray addObject:def];
+                    
+                    NSLog(@"DEBUG: Definition %@", def.details);
+                    
+                    rank++;
+                }
+                
+                // Insertion des définitions de manière temporaire
+                NSSet *defs = [[NSSet alloc] initWithArray:definitionsArray];
+                [word addDefinitions:defs];
+            }
+            
+            element = word;
+        }
+        // Contrepeterie
+        else if([type isEqualToString:@"Contrepeterie"]) {
+            
+            // Contenu et solution
+            NSString *content = [item valueForKey:@"content"];
+            NSString *solution = [item valueForKey:@"solution"];
+            
+            Contrepeterie *ctp = [ElementCache createNewContreperie:context];
+            
+            ctp.content = content;
+            ctp.solution = solution;
+            
+            element = ctp;
+        }
+        
+        element.title = title;
+        element.date = date;
+        element.dbId = [[NSNumber alloc] initWithInt:dbId];
+        element.author = authorName;
+        element.authorInfo = authorInfo;
+        element.voteCount = [[NSNumber alloc] initWithInt:voteCount];
+        
+        NSLog(@"DEBUG: %@ %@ %@",[element class],[DateFormatter getStringForDate:element.date withFormat:@"dd/MM/yyyy"],element.title);
+        
+    }
+    
 }
 
 - (void) parseXml:(NSString*) xml WithContext:(NSManagedObjectContext*)context
