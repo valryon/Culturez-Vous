@@ -22,7 +22,9 @@
         return;
     }
     
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString: [NSString stringWithFormat:@"http://5.39.86.57/Elements/%@?startFrom=%d&count=%d",type,page * ELEMENTS_PER_PAGE, ELEMENTS_PER_PAGE]]];
+    //    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString: [NSString stringWithFormat:@"http://5.39.86.57/Elements/%@?startFrom=%d&count=%d",type,page * ELEMENTS_PER_PAGE, ELEMENTS_PER_PAGE]]];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString: [NSString stringWithFormat:@"http://5.39.86.57/"]]];
     
     NSLog(@"INFO : Downloading %@", request.URL);
     
@@ -39,8 +41,11 @@
          // Décrypter le résultat
          NSString* json = [self decryptResponse:response];
          
+         // Un peu de ménage
+         NSString* cleanJson = [self cleanResponse:json];
+         
          // Parser le JSON
-         [self parseJson:response WithContext:localContext];
+         [self parseJson:cleanJson WithContext:localContext];
          
          NSLog(@"INFO : Download complete!");
          
@@ -67,6 +72,15 @@
     [queue addOperation:operation];
 }
 
+- (NSString*) cleanResponse:(NSString*)response
+{
+    NSMutableString* r = [[NSMutableString alloc] initWithString:response];
+    
+    [r replaceOccurrencesOfString:@"\\" withString:@"" options:NSCaseInsensitiveSearch range:(NSRange){0,[r length]}];
+    
+    return r;
+}
+
 - (NSString*) decryptResponse:(NSString*)response
 {
 #warning TODO Encryption AES 128 padding et clé
@@ -78,13 +92,23 @@
     NSError *error;
     NSData* data = [json dataUsingEncoding:NSUTF8StringEncoding];
     
+    NSLog(@"----- %@ ------", json);
+    
+    // Désérialiser le Json
+    id jsonObjects = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+    
     if (error)
     {
         NSLog(@"ERROR: ElementDownloader.parseJson: document parsing: %@", error);
+        
+        return;
     }
-    else
-    {
-
+    
+    NSArray *keys = [jsonObjects allKeys];
+    
+    // values in foreach loop
+    for (NSString *key in keys) {
+        NSLog(@"%@ is %@",key, [jsonObjects objectForKey:key]);
     }
 }
 
@@ -99,7 +123,7 @@
         NSLog(@"ERROR: ElementDownloader.parseXml: document parsing: %@", error);
     }
     else
-    {   
+    {
         // Récupération des éléménts
         for (SMXMLElement *elementXml in [document.root childrenNamed:@"element"])
         {
