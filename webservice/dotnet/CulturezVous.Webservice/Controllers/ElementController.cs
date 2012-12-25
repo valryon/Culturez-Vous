@@ -54,17 +54,20 @@ namespace CulturezVous.Webservice.Controllers
                 r.Message = type + " is not a valid element type. Use Element|Word|Contrepeterie";
             }
 
-            if (elements != null & elements.Count > 0)
+            if (elements != null)
             {
-                elements = elements.OrderByDescending(e => e.Date).Skip(startFrom).Take(count).ToList();
+                if (elements.Count > 0)
+                {
+                    elements = elements.OrderByDescending(e => e.Date).Skip(startFrom).Take(count).ToList();
 
-                r.Code = (int)ServiceCodes.OK;
-                r.ResponseData = elements;
-            }
-            else if(dao.LastException != null)
-            {
-                r.Code = (int)ServiceCodes.InternalError;
-                r.Message = "Elements not retrieved. " + dao.LastException;
+                    r.Code = (int)ServiceCodes.OK;
+                    r.ResponseData = elements;
+                }
+                else if (dao.LastException != null)
+                {
+                    r.Code = (int)ServiceCodes.InternalError;
+                    r.Message = "Elements not retrieved. " + dao.LastException;
+                }
             }
 
             return PrepareResponse(r, useEncryption);

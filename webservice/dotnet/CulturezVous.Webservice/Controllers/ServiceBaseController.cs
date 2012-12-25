@@ -34,10 +34,10 @@ namespace CulturezVous.Webservice.Controllers
             }
             else
             {
-                return new JsonResult()
+                return new ContentResult()
                 {
-                    Data = json,
-                    JsonRequestBehavior = JsonRequestBehavior.AllowGet
+                    Content = json,
+                    ContentType = "text/json"
                 };
             }
         }
