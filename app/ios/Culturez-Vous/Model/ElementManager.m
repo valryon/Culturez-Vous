@@ -27,9 +27,10 @@
 }
 
 // Fonction récursive de mise à jour
-- (void) updatePage:(int)page withCallback:(UpdatePageCompleted) callback withFailureCallback:(FailureCallback)failureCallback
+- (void) updatePage:(int)page forType:(NSString*)type withCallback:(UpdatePageCompleted) callback withFailureCallback:(FailureCallback)failureCallback
 {
     [downloader downloadElementsWithPage:page
+                                 forType:type
                             withCallback:^(NSManagedObjectContext *context){
                                 
                                 BOOL newElementsFound = false;
@@ -43,7 +44,7 @@
                                     if([cache existsWithId:element.dbId])
                                     {
                                         // On le supprime du contexte temporaire
-                                        NSLog(@"INFO : element already in cached %@", element.title);
+                                        NSLog(@"INFO : element already cached %@", element.title);
                                         [context deleteObject:element];
                                     }
                                     else
@@ -81,18 +82,18 @@
      ];
 }
 
-- (void) updateElementsWithCallback:(UpdateCompleted) callback withFailureCallback:(FailureCallback)failureCallback
+- (void) updateElements: (NSString*)elementType withCallback:(UpdateCompleted) callback withFailureCallback:(FailureCallback)failureCallback
 {
-    // On télécharge les premières page du service, à la recherche de nouveautés
-    NSLog(@"INFO : Mise à jour demandée...");
+    // On télécharge la première page du service, à la recherche de nouveauté
+    NSLog(@"INFO : Update...");
     
     //En asynchrone
     dispatch_queue_t queuePage = dispatch_queue_create("com.culturezvous.updatpage", NULL);
     
     dispatch_async(queuePage, ^{
-        [self updatePage:1 withCallback:^(BOOL newElementsFound)
+        [self updatePage:0 forType:elementType withCallback:^(BOOL newElementsFound)
          {
-             NSLog(@"INFO : Mise à jour terminée !");
+             NSLog(@"INFO : Update OK !");
              dispatch_async(dispatch_get_main_queue(), ^{
                  callback();
              });
@@ -105,14 +106,37 @@
     });
 }
 
-- (void) getElements: (NSString*)elementType fromPage: (int)pageFrom toPage:(int)pageTo withCallback:(ElementsRetrieved) callback withFailureCallback:(FailureCallback)failureCallback
+- (void) getElements: (NSString*)elementType forPage: (int)page withCallback:(ElementsRetrieved) callback withFailureCallback:(FailureCallback)failureCallback
 {
-    // On récupère les éléments de cette page du cache
-    NSArray* elements = [cache getElements:elementType fromPage:pageFrom toPage:pageTo];
+    // On regarde combien d'éléments on a en cache pour ces pages
+    int elementCacheCount = [cache getElementsCount:elementType forPage:page];
     
-    if(callback)
+    // S'il n'y a pas assez d'éléments on essaie d'en télécharger pour compléter
+    if(elementCacheCount < ELEMENTS_PER_PAGE)
     {
-        callback(elements);
+        [self updatePage:page forType:elementType withCallback:^(BOOL newElementsFound) {
+            NSArray* elements = [cache getElements:elementType forPage:page];
+    
+            if(callback)
+            {
+                callback(elements);
+            }
+        } withFailureCallback:^(NSError *error) {
+            if(failureCallback)
+            {
+                failureCallback(error);
+            }
+        }];
+    }
+    else{
+    
+        // Enfin on récupère les éléments de cette page du cache
+        NSArray* elements = [cache getElements:elementType forPage:page];
+    
+        if(callback)
+        {
+            callback(elements);
+        }
     }
 }
 

@@ -102,16 +102,14 @@
     return request;
 }
 
-- (NSFetchRequest*) prepareFetchRequestPaginated:(NSString*) elementType fromPage:(int)pageFrom toPage:(int) pageTo
+- (NSFetchRequest*) prepareFetchRequestPaginated:(NSString*) elementType forPage:(int)page
 {
     // Requête standard
     NSFetchRequest *request = [self prepareFetchRequest:elementType];
     
     // Pagination
-    request.fetchOffset = pageFrom * ELEMENTS_PER_PAGE; // Index de début
+    request.fetchOffset = page * ELEMENTS_PER_PAGE; // Index de début
     request.fetchLimit = ELEMENTS_PER_PAGE; // Taille de la page
-    
-    NSLog(@"DEBUG : Paging from %d to %d", request.fetchOffset, (request.fetchOffset + request.fetchLimit));
     
     return request;
 }
@@ -144,9 +142,9 @@
 
 #pragma Fonctions de recherche
 
-- (NSArray*) getElements:(NSString*)type fromPage:(int)pageFrom toPage:(int) pageTo
+- (NSArray*) getElements:(NSString*)type forPage:(int)page
 {
-    NSFetchRequest *request = [self prepareFetchRequestPaginated:type fromPage:pageFrom toPage:pageTo];
+    NSFetchRequest *request = [self prepareFetchRequestPaginated:type forPage:page];
     
     NSError *error;
     NSArray *array = [[ElementContextHelper defaultContext] executeFetchRequest:request error:&error];
@@ -157,12 +155,12 @@
         return NULL;
     }
     
-    for (Element* element in array)
-    {
-        NSLog(@"Found: %@", element.title);
-    }
-    
     return array;
+}
+
+- (int) getElementsCount:(NSString*)type forPage:(int)page
+{
+    return [[self getElements:type forPage:page] count];
 }
 
 - (NSArray *)getAllElements:(NSString*)type

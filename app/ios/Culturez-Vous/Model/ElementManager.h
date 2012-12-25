@@ -24,12 +24,12 @@ typedef void(^ElementsRetrieved)(NSArray* elements);
 //
 // Mise à jour du cache si nécessaire
 //
-- (void) updateElementsWithCallback:(UpdateCompleted) callback withFailureCallback:(FailureCallback)failureCallback;
+- (void) updateElements: (NSString*)elementType withCallback:(UpdateCompleted) callback withFailureCallback:(FailureCallback)failureCallback;
 
 //
 // Récupération des éléments à partir du cache et téléchargement si nécessaire
 //
-- (void) getElements: (NSString*)elementType fromPage: (int)pageFrom toPage:(int)pageTo withCallback:(ElementsRetrieved) callback withFailureCallback:(FailureCallback)failureCallback;
+- (void) getElements: (NSString*)elementType forPage: (int)page withCallback:(ElementsRetrieved) callback withFailureCallback:(FailureCallback)failureCallback;
 
 //
 // Récupérer tous les éléments

@@ -36,7 +36,12 @@
 //
 // Récupération d'éléments avec pagination
 //
-- (NSArray*) getElements:(NSString*)type fromPage:(int)pageFrom toPage:(int) pageTo;
+- (NSArray*) getElements:(NSString*)type forPage:(int)page;
+
+//
+// Récupération du nombre d'éléments pour la page indiquée
+//
+- (int) getElementsCount:(NSString*)type forPage:(int)page;
 
 //
 // Lecture entière du cache

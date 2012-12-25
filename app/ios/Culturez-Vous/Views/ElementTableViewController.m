@@ -14,6 +14,8 @@
 @synthesize managedObjectContext;
 @synthesize elementManager;
 
+static BOOL isLoadingElements;
+
 -(NSString*) getElementType
 {
     return @"Element";
@@ -24,44 +26,45 @@
     return false;
 }
 
-- (void)loadPage:(int)pageFrom toPage:(int)pageTo
+- (void)loadPage:(int)page
 {
-    NSLog(@"DEBUG : Affichage page %d à %d",pageFrom, pageTo);
-    
     // Puis on charge les deux première page
     [elementManager getElements:
-     [self getElementType]
-                       fromPage:pageFrom toPage:pageTo
-                   withCallback:^(NSArray *elements) {
+                    [self getElementType]
+                    forPage:page
+                    withCallback:^(NSArray *elements) {
                        
                        // Ajouter les éléments
                        [cvElementsArray addObjectsFromArray:elements];
                        
-                       if(self.lastPage == nil || [self.lastPage intValue] < pageTo)
+                       if(self.lastPage == nil || [self.lastPage intValue] < page)
                        {
-                           self.lastPage = [[NSNumber alloc] initWithInt:pageTo];
+                           self.lastPage = [[NSNumber alloc] initWithInt:page];
                        }
                        
+                        NSLog(@"DEBUG: LastPage=%d", [self.lastPage intValue]);
+                        
                        // Rafraîchir la vue
                        [self.tableView reloadData];
                        
                        //                            [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
                    }
-            withFailureCallback:^(NSError *error)
-     {
+                  withFailureCallback:^(NSError *error) {
          UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Lecture du cache impossible"
                                                          message:[NSString stringWithFormat:@"Et c'est assez mauvais... %@.", error]
                                                         delegate:nil
                                                cancelButtonTitle:@"OK..."
                                                otherButtonTitles:nil];
          [alert show];
-     }
+                  }
      ];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    isLoadingElements = false;
     
     [self.tableView registerNib:[UINib nibWithNibName:@"ElementCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"Element"];
     
@@ -70,7 +73,7 @@
     cvElementsArray = [[NSMutableArray alloc] init];
     
     // Charge les deux premières pages avant la mise à jour
-    [self loadPage:0 toPage:2];
+    [self loadPage:0];
     
     // Puis on essaie de récupèrer les nouveaux éléments en tâche de fond
     __block ElementTableViewController *controller = self;
@@ -79,13 +82,17 @@
     [self.tableView addPullToRefreshWithActionHandler:^{
         NSLog(@"DEBUG: Pull to refresh");
         
-        [controller.elementManager updateElementsWithCallback:^
+        [controller.elementManager updateElements:[controller getElementType]
+        withCallback:^
          {
-#warning Ajouter les nouveaux éléments ?
+             [controller.cvElementsArray removeAllObjects];
+             controller.lastPage = 0;
+             [controller loadPage:0];
+             
              [controller.tableView.pullToRefreshView stopAnimating];
          }
         withFailureCallback:^(NSError *error) {
-                [controller.tableView.pullToRefreshView stopAnimating];
+            [controller.tableView.pullToRefreshView stopAnimating];
          }
          ];
         
@@ -94,11 +101,19 @@
     
     // setup infinite scrolling
     [self.tableView addInfiniteScrollingWithActionHandler:^{
-        NSLog(@"DEBUG: Infinite scroll");
         
-        [controller loadPage:[self.lastPage intValue] toPage:([self.lastPage intValue] + 1)];
+        if(isLoadingElements == false)
+        {
+            isLoadingElements = true;
+            
+            NSLog(@"DEBUG: Infinite scroll");
         
-        [controller.tableView.infiniteScrollingView stopAnimating];
+            [controller loadPage:[self.lastPage intValue] + 1];
+        
+            [controller.tableView.infiniteScrollingView stopAnimating];
+            
+            isLoadingElements = false;
+        }
     }];
     
     // Forcer une première mise à jour

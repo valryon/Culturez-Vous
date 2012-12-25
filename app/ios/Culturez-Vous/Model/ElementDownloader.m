@@ -12,11 +12,19 @@
 
 #pragma Téléchargement des données depuis le WS
 
-- (void) downloadElementsWithPage:(int)page withCallback:(DownloaderCallback) callback withErrorCallback:(FailureCallback)failureCallback
+- (void) downloadElementsWithPage:(int)page forType:(NSString*)type withCallback:(DownloaderCallback) callback withErrorCallback:(FailureCallback)failureCallback
 {
-    if(page < 1) page = 1;
+    if([type isEqualToString:@"Word"] == false && [type isEqualToString:@"Contrepeterie"] == false && [type isEqualToString:@"Element"] == false)
+    {
+        NSLog(@"ERROR: Invalid requested type %@!!!", type);
+        
+        failureCallback(nil);
+        return;
+    }
     
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString: [NSString stringWithFormat:@"http://thegreatpaperadventure.com/CulturezVous/index.php/element/page/%d", page]]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString: [NSString stringWithFormat:@"http://5.39.86.57/Elements/%@?startFrom=%d&count=%d",type,page * ELEMENTS_PER_PAGE, ELEMENTS_PER_PAGE]]];
+    
+    NSLog(@"INFO : Downloading %@", request.URL);
     
     // Appel au webservice
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
@@ -25,11 +33,16 @@
      {
          // On parse les éléments récupérés
          NSString *response = [operation responseString];
-         NSLog(@"INFO : downElementsWithPage");
          
          NSManagedObjectContext *localContext = [ElementContextHelper context];
          
-         [self parseXml:response WithContext:localContext];
+         // Décrypter le résultat
+         NSString* json = [self decryptResponse:response];
+         
+         // Parser le JSON
+         [self parseJson:response WithContext:localContext];
+         
+         NSLog(@"INFO : Download complete!");
          
          if(callback)
          {
@@ -52,6 +65,27 @@
     
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     [queue addOperation:operation];
+}
+
+- (NSString*) decryptResponse:(NSString*)response
+{
+#warning TODO Encryption AES 128 padding et clé
+    return response;
+}
+
+- (void) parseJson:(NSString*) json WithContext:(NSManagedObjectContext*)context
+{
+    NSError *error;
+    NSData* data = [json dataUsingEncoding:NSUTF8StringEncoding];
+    
+    if (error)
+    {
+        NSLog(@"ERROR: ElementDownloader.parseJson: document parsing: %@", error);
+    }
+    else
+    {
+
+    }
 }
 
 - (void) parseXml:(NSString*) xml WithContext:(NSManagedObjectContext*)context

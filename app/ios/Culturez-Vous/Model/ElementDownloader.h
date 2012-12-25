@@ -16,7 +16,7 @@ typedef void(^DownloaderCallback)(NSManagedObjectContext* context);
 
 @interface ElementDownloader : NSObject <NSXMLParserDelegate>
 
-- (void) downloadElementsWithPage:(int)page withCallback:(DownloaderCallback) callback withErrorCallback:(FailureCallback)failureCallback;
+- (void) downloadElementsWithPage:(int)page forType:(NSString*)type withCallback:(DownloaderCallback) callback withErrorCallback:(FailureCallback)failureCallback;
 
 - (void) parseXml:(NSString*) xml WithContext:(NSManagedObjectContext*)context;
 
