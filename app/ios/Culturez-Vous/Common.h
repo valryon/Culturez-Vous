@@ -9,4 +9,4 @@
 
 typedef void(^FailureCallback)(NSError* error);
 
-#define ELEMENTS_PER_PAGE 10
+#define ELEMENTS_PER_PAGE 12

@@ -244,8 +244,6 @@
                         
                         [definitionsArray addObject:def];
                         
-                        NSLog(@"DEBUG: Definition %@", def.details);
-                        
                         rank++;
                     }
                     
@@ -278,40 +276,6 @@
             element.authorInfo = authorInfo;
             element.voteCount = voteCount;
             
-            NSLog(@"DEBUG: %@ %@ %@",[element class],[DateFormatter getStringForDate:element.date withFormat:@"dd/MM/yyyy"],element.title);
-            
-            // Flux d'exemple
-            //        <element>
-            //        <type>mot</type>
-            //        <id>230</id>
-            //        <date>2012-10-29 00:00:00</date>
-            //        <title>Matutinal</title>
-            //        <definitions>
-            //        <definition>
-            //        <details>adjectif, litt&#xE9;raire, vieux</details>
-            //        <content>Qui est relatif au matin, appartient au matin.</content>
-            //        </definition>
-            //        <definition>
-            //        <details>exemple</details>
-            //        <content>&#xC9;toile matutinale.</content>
-            //        </definition>
-            //        </definitions>
-            //        <voteCount>0</voteCount>
-            //        <author>1Jour1Mot</author>
-            //        <authorInfo>https://twitter.com/#!/1jour1mot</authorInfo>
-            //        </element>
-            //        <element>
-            //        <type>contrep&#xE9;trie</type>
-            //        <id>223</id>
-            //        <date>2012-10-28 00:00:00</date>
-            //        <title>R&#xE9;forme du budget</title>
-            //        <definitions/>
-            //        <content>Faites monter les salaires! Nous profiterons ainsi des plaisirs de la chope.</content>
-            //        <solution>Faites monter les salopes ! Nous profiterons ainsi des plaisirs de la chair.</solution>
-            //        <voteCount>80</voteCount>
-            //        <author>Contrepetephile</author>
-            //        <authorInfo>https://twitter.com/#!/contrepetephile</authorInfo>
-            //        </element>
         }
         
     }

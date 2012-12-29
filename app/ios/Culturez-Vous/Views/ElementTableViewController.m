@@ -57,8 +57,6 @@ static BOOL isLoadingElements;
                        {
                            self.lastPage = [[NSNumber alloc] initWithInt:page];
                        }
-                       
-                        NSLog(@"DEBUG: LastPage=%d", [self.lastPage intValue]);
                         
                         [self endLoadingElements];
                         

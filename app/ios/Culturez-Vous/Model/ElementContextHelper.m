@@ -24,9 +24,9 @@
 
 - (void) mergeChangesFromNotification:(NSNotification *)notification;
 {
-	NSLog(@"DEBUG: Merging changes to %@context%@",
-          self == [ElementContextHelper defaultContext] ? @"*** DEFAULT *** " : @"",
-          ([NSThread isMainThread] ? @" *** on Main Thread ***" : @""));
+//	NSLog(@"DEBUG: Merging changes to %@context%@",
+//          self == [ElementContextHelper defaultContext] ? @"*** DEFAULT *** " : @"",
+//          ([NSThread isMainThread] ? @" *** on Main Thread ***" : @""));
     
 	[self mergeChangesFromContextDidSaveNotification:notification];
     
