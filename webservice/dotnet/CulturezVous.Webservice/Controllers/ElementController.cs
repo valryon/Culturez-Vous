@@ -58,7 +58,8 @@ namespace CulturezVous.Webservice.Controllers
             {
                 if (elements.Count > 0)
                 {
-                    elements = elements.OrderByDescending(e => e.Date).Skip(startFrom).Take(count).ToList();
+                    DateTime tomorrow = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day).AddDays(1);
+                    elements = elements.OrderByDescending(e => e.Date).Where(e => e.Date < tomorrow).Skip(startFrom).Take(count).ToList();
 
                     r.Code = (int)ServiceCodes.OK;
                     r.ResponseData = elements;
