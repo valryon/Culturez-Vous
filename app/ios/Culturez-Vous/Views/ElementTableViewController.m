@@ -26,8 +26,24 @@ static BOOL isLoadingElements;
     return false;
 }
 
+- (void) startLoadingElements
+{
+    isLoadingElements = true;
+}
+
+- (void) endLoadingElements
+{
+    isLoadingElements = false;
+    
+    [self.tableView.infiniteScrollingView stopAnimating];
+}
+
 - (void)loadPage:(int)page
 {
+    if(isLoadingElements) return;
+    
+    [self startLoadingElements];
+    
     // Puis on charge les deux première page
     [elementManager getElements:
                     [self getElementType]
@@ -44,12 +60,17 @@ static BOOL isLoadingElements;
                        
                         NSLog(@"DEBUG: LastPage=%d", [self.lastPage intValue]);
                         
+                        [self endLoadingElements];
+                        
                        // Rafraîchir la vue
                        [self.tableView reloadData];
                        
                        //                            [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
                    }
                   withFailureCallback:^(NSError *error) {
+                      
+                        [self endLoadingElements];
+                      
          UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Lecture du cache impossible"
                                                          message:[NSString stringWithFormat:@"Et c'est assez mauvais... %@.", error]
                                                         delegate:nil
@@ -95,8 +116,6 @@ static BOOL isLoadingElements;
             [controller.tableView.pullToRefreshView stopAnimating];
          }
          ];
-        
-        [controller.tableView.pullToRefreshView stopAnimating];
     }];
     
     // setup infinite scrolling
@@ -104,21 +123,14 @@ static BOOL isLoadingElements;
         
         if(isLoadingElements == false)
         {
-            isLoadingElements = true;
-            
             NSLog(@"DEBUG: Infinite scroll");
         
             [controller loadPage:[self.lastPage intValue] + 1];
-        
-            [controller.tableView.infiniteScrollingView stopAnimating];
-            
-            isLoadingElements = false;
         }
     }];
     
     // Forcer une première mise à jour
-#warning Todo
-    //[self.tableView triggerPullToRefresh];
+    [self.tableView triggerPullToRefresh];
 }
 
 - (void)didReceiveMemoryWarning

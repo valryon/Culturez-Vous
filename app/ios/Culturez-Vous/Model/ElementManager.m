@@ -44,13 +44,11 @@
                                     if([cache existsWithId:element.dbId])
                                     {
                                         // On le supprime du contexte temporaire
-                                        NSLog(@"INFO : element already cached %@", element.title);
                                         [context deleteObject:element];
                                     }
                                     else
                                     {
                                         // Si on ne le trouve pas on considère qu'il doit être ajouté
-                                        NSLog(@"INFO : element to add %@", element.title);
                                         newElementsFound = true;
                                     }
                                 }

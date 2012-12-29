@@ -154,8 +154,6 @@
                     
                     [definitionsArray addObject:def];
                     
-                    NSLog(@"DEBUG: Definition %@", def.details);
-                    
                     rank++;
                 }
                 
