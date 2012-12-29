@@ -83,10 +83,17 @@ namespace CulturezVous.Webservice.Controllers
 
             Element element = dao.GetElementById(id);
 
+            DateTime tomorrow = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day).AddDays(1);
+
             if (element == null)
             {
                 r.Code = (int)ServiceCodes.UnknowId;
                 r.Message = "Unknow element: " + id;
+            }
+            else if (element.Date >= tomorrow)
+            {
+                r.Code = (int)ServiceCodes.NotPublishedElement;
+                r.Message = "Element not published for now: " + id; ;
             }
             else
             {

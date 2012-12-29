@@ -13,6 +13,7 @@ namespace CulturezVous.Service.Data.Response
         OK = 0,
         UnknowId = 100,
         InvalidParameters = 101,
+        NotPublishedElement = 102,
         InternalError = 200
     }
 }
